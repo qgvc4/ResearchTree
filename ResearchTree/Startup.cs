@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using ResearchTree.Models;
 
 namespace ResearchTree
 {
@@ -23,6 +26,18 @@ namespace ResearchTree
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // don't know if this is really needed
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            // database connection
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<ResearchTreeContext>
+                (options => options.UseSqlServer(connection));
+
             services.AddMvc();
         }
 
