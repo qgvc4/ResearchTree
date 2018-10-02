@@ -62,7 +62,7 @@ namespace ResearchTree.Controllers
             }
 
             feed.Id = id;
-            feed.Date = DateTime.Now;
+            feed.ModifyTime = DateTime.Now;
 
             _context.Entry(feed).State = EntityState.Modified;
 
@@ -94,7 +94,7 @@ namespace ResearchTree.Controllers
                 return BadRequest(ModelState);
             }
 
-            feed.Date = DateTime.Now;
+            feed.ModifyTime = DateTime.Now;
 
             _context.Feeds.Add(feed);
             await _context.SaveChangesAsync();

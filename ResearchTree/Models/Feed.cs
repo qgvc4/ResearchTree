@@ -18,7 +18,7 @@ namespace ResearchTree.Models
         public string Description { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime ModifyTime { get; set; }
 
         public byte[] Attachment { get; set; }
     }
