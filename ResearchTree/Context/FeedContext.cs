@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ResearchTree.Models;
+using ResearchTree.Models.DALs;
 
 namespace ResearchTree.Context
 {

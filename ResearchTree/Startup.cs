@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using ResearchTree.Context;
+using ResearchTree.Models.FeedService;
+using ResearchTree.Models.JobService;
 
 namespace ResearchTree
 {
@@ -36,6 +38,10 @@ namespace ResearchTree
             var connection = @"Server=(localdb)\mssqllocaldb;Database=ResearchTreeLocalDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<FeedContext>
                 (options => options.UseSqlServer(connection));
+            services.AddDbContext<JobContext>
+                (options => options.UseSqlServer(connection));
+            services.AddScoped<FeedHelper>();
+            services.AddScoped<JobHelper>();
 
             services.AddMvc();
         }

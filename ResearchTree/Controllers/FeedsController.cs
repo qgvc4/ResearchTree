@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Models;
+using ResearchTree.Models.FeedService;
+using Feed = ResearchTree.Models.DALs.Feed;
 
 namespace ResearchTree.Controllers
 {
@@ -15,17 +15,19 @@ namespace ResearchTree.Controllers
     public class FeedsController : Controller
     {
         private readonly FeedContext _context;
+        private readonly FeedHelper _feedHelper;
 
-        public FeedsController(FeedContext context)
+        public FeedsController(FeedContext context, FeedHelper feedHelper)
         {
             _context = context;
+            _feedHelper = feedHelper;
         }
 
         // GET: api/Feeds
         [HttpGet]
-        public IEnumerable<Feed> GetFeeds()
+        public IEnumerable<Models.FeedService.Feed> GetFeeds()
         {
-            return _context.Feeds;
+            return _context.Feeds?.Select(c => _feedHelper.Converter(c)).ToList();
         }
 
         // GET: api/Feeds/5
@@ -44,12 +46,12 @@ namespace ResearchTree.Controllers
                 return NotFound();
             }
 
-            return Ok(feed);
+            return Ok(_feedHelper.Converter(feed));
         }
 
         // PUT: api/Feeds/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Feed feed)
+        public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Models.FeedService.Feed feed)
         {
             if (!ModelState.IsValid)
             {
@@ -64,7 +66,7 @@ namespace ResearchTree.Controllers
             feed.Id = id;
             feed.ModifyTime = DateTime.Now;
 
-            _context.Entry(feed).State = EntityState.Modified;
+            _context.Entry(_feedHelper.Converter(feed)).State = EntityState.Modified;
 
             try
             {
@@ -87,7 +89,7 @@ namespace ResearchTree.Controllers
 
         // POST: api/Feeds
         [HttpPost]
-        public async Task<IActionResult> PostFeed([FromBody] Feed feed)
+        public async Task<IActionResult> PostFeed([FromBody] Models.FeedService.Feed feed)
         {
             if (!ModelState.IsValid)
             {
@@ -95,9 +97,12 @@ namespace ResearchTree.Controllers
             }
 
             feed.ModifyTime = DateTime.Now;
+            var feedData = _feedHelper.Converter(feed);
 
-            _context.Feeds.Add(feed);
+            _context.Feeds.Add(feedData);
             await _context.SaveChangesAsync();
+
+            feed = _feedHelper.Converter(feedData);
 
             return CreatedAtAction("GetFeed", new { id = feed.Id }, feed);
         }
@@ -120,7 +125,7 @@ namespace ResearchTree.Controllers
             _context.Feeds.Remove(feed);
             await _context.SaveChangesAsync();
 
-            return Ok(feed);
+            return Ok(_feedHelper.Converter(feed));
         }
 
         private bool FeedExists(string id)

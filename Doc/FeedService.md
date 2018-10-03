@@ -89,7 +89,7 @@ Response Body
 }
 ```
 
-## `DELETE` `api/Feeds/5`
+## `DELETE` `api/Feeds/{id}`
 ```
 {
     "id": "ed9b1a6b-9a26-4ac2-a4b1-c8e2e023b1c5",
