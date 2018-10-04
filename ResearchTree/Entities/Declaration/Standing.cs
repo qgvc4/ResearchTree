@@ -1,4 +1,4 @@
-﻿namespace ResearchTree.Models.Declaration
+﻿namespace ResearchTree.Entities.Declaration
 {
     public enum Standing
     {

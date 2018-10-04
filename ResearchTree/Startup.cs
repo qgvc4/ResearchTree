@@ -10,8 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using ResearchTree.Context;
-using ResearchTree.Models.FeedService;
-using ResearchTree.Models.JobService;
+using ResearchTree.Service.FeedService;
+using ResearchTree.Service.JobService;
 
 namespace ResearchTree
 {

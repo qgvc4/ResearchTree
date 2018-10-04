@@ -5,13 +5,13 @@ using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ResearchTree.Models.Declaration;
+using ResearchTree.Entities.Declaration;
 
-namespace ResearchTree.Models.JobService
+namespace ResearchTree.Service.JobService
 {
     public class JobHelper
     {
-        public Job Converter(DALs.Job job)
+        public Job Converter(Entities.DALs.Job job)
         {
             return new Job
             {
@@ -27,9 +27,9 @@ namespace ResearchTree.Models.JobService
             };
         }
 
-        public DALs.Job Converter(Job job)
+        public Entities.DALs.Job Converter(Job job)
         {
-            return new DALs.Job
+            return new Entities.DALs.Job
             {
                 Id = job.Id,
                 PeopleId = job.PeopleId,

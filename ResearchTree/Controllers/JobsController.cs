@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Models.JobService;
-using Job = ResearchTree.Models.DALs.Job;
+using ResearchTree.Service.JobService;
+using Job = ResearchTree.Entities.DALs.Job;
 
 namespace ResearchTree.Controllers
 {
@@ -26,7 +26,7 @@ namespace ResearchTree.Controllers
 
         // GET: api/Jobs
         [HttpGet]
-        public IEnumerable<Models.JobService.Job> GetJobs()
+        public IEnumerable<Service.JobService.Job> GetJobs()
         {
             return _context.Jobs.Select(c => _jobHelper.Converter(c)).ToList();
         }
@@ -52,7 +52,7 @@ namespace ResearchTree.Controllers
 
         // PUT: api/Jobs/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutJob([FromRoute] string id, [FromBody] Models.JobService.Job job)
+        public async Task<IActionResult> PutJob([FromRoute] string id, [FromBody] Service.JobService.Job job)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace ResearchTree.Controllers
 
         // POST: api/Jobs
         [HttpPost]
-        public async Task<IActionResult> PostJob([FromBody] Models.JobService.Job job)
+        public async Task<IActionResult> PostJob([FromBody] Service.JobService.Job job)
         {
             if (!ModelState.IsValid)
             {

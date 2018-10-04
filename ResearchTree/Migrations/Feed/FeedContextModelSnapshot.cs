@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using ResearchTree.Context;
 using System;
 
-namespace ResearchTree.Migrations
+namespace ResearchTree.Migrations.Feed
 {
     [DbContext(typeof(FeedContext))]
     partial class FeedContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace ResearchTree.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ResearchTree.Models.Feed", b =>
+            modelBuilder.Entity("ResearchTree.Entities.DALs.Feed", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();

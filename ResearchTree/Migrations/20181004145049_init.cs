@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ResearchTree.Migrations.Job
+namespace ResearchTree.Migrations
 {
     public partial class init : Migration
     {
@@ -16,6 +16,7 @@ namespace ResearchTree.Migrations.Job
                     Description = table.Column<string>(nullable: false),
                     Location = table.Column<string>(nullable: false),
                     Majors = table.Column<string>(nullable: false),
+                    ModifyTime = table.Column<DateTime>(nullable: false),
                     Payment = table.Column<bool>(nullable: false),
                     PeopleId = table.Column<string>(nullable: false),
                     Standing = table.Column<int>(nullable: false),

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ResearchTree.Entities;
 
-namespace ResearchTree.Models.FeedService
+namespace ResearchTree.Service.FeedService
 {
     public class FeedHelper
     {
-        public Feed Converter(DALs.Feed feed)
+        public Feed Converter(Entities.DALs.Feed feed)
         {
             return new Feed
             {
@@ -20,9 +21,9 @@ namespace ResearchTree.Models.FeedService
             };
         }
 
-        public DALs.Feed Converter(Feed feed)
+        public Entities.DALs.Feed Converter(Feed feed)
         {
-            return new DALs.Feed
+            return new Entities.DALs.Feed
             {
                 Id = feed.Id,
                 PeopleId = feed.PeopleId,
