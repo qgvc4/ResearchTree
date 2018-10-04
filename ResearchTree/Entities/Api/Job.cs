@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ResearchTree.Entities.Declaration;
 
-namespace ResearchTree.Service.JobService
+namespace ResearchTree.Entities.Api
 {
     public class Job
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
 using ResearchTree.Service.FeedService;
-using Feed = ResearchTree.Entities.DALs.Feed;
+using Feed = ResearchTree.Entities.Api.Feed;
 
 namespace ResearchTree.Controllers
 {
@@ -25,7 +25,7 @@ namespace ResearchTree.Controllers
 
         // GET: api/Feeds
         [HttpGet]
-        public IEnumerable<Service.FeedService.Feed> GetFeeds()
+        public IEnumerable<Feed> GetFeeds()
         {
             return _context.Feeds?.Select(c => _feedHelper.Converter(c)).ToList();
         }
@@ -51,7 +51,7 @@ namespace ResearchTree.Controllers
 
         // PUT: api/Feeds/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Service.FeedService.Feed feed)
+        public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Feed feed)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ResearchTree.Controllers
 
         // POST: api/Feeds
         [HttpPost]
-        public async Task<IActionResult> PostFeed([FromBody] Service.FeedService.Feed feed)
+        public async Task<IActionResult> PostFeed([FromBody] Feed feed)
         {
             if (!ModelState.IsValid)
             {

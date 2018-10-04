@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ResearchTree.Service.FeedService
+namespace ResearchTree.Entities.Api
 {
     public class Feed
     {
