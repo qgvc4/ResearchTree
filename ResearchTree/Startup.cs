@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using ResearchTree.Models;
+using ResearchTree.Context;
+using ResearchTree.Service.FeedService;
+using ResearchTree.Service.JobService;
 
 namespace ResearchTree
 {
@@ -34,9 +35,13 @@ namespace ResearchTree
             });
 
             // database connection
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<ResearchTreeContext>
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=ResearchTreeLocalDb;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<FeedContext>
                 (options => options.UseSqlServer(connection));
+            services.AddDbContext<JobContext>
+                (options => options.UseSqlServer(connection));
+            services.AddScoped<FeedHelper>();
+            services.AddScoped<JobHelper>();
 
             services.AddMvc();
         }
