@@ -35,7 +35,7 @@ namespace ResearchTree
             });
 
             // database connection
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=ResearchTreeLocalDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=tcp:researchtree.database.windows.net,1433;Initial Catalog=ResearchTree;Persist Security Info=False;User ID=researchtree;Password=Mizzou@2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<FeedContext>
                 (options => options.UseSqlServer(connection));
             services.AddDbContext<JobContext>
