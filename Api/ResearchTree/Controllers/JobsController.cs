@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ namespace ResearchTree.Controllers
 {
     [Produces("application/json")]
     [Route("api/Jobs")]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class JobsController : Controller
     {
         private readonly JobContext _context;
