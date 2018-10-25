@@ -44,6 +44,11 @@ namespace ResearchTree
             services.AddScoped<JobHelper>();
 
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:3000"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,8 @@ namespace ResearchTree
             }
 
             app.UseMvc();
+            app.UseCors("AllowSpecificOrigin");
+
         }
     }
 }

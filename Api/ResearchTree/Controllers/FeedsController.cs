@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
@@ -12,6 +13,8 @@ namespace ResearchTree.Controllers
 {
     [Produces("application/json")]
     [Route("api/Feeds")]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class FeedsController : Controller
     {
         private readonly FeedContext _context;
