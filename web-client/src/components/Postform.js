@@ -25,7 +25,7 @@ class PostForm extends Component {
           PeopleId: "tester"
       }
 
-      fetch('http://localhost:51805/api/Feeds', {
+      fetch('https://researchtreeapis.azurewebsites.net/api/feeds', {
           method: "POST",
           headers: {
               "content-type": "application/json"
