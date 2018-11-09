@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Service.FeedService;
+using ResearchTree.Service;
 using Feed = ResearchTree.Entities.Api.Feed;
 
 namespace ResearchTree.Controllers
@@ -27,6 +28,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Feeds
+        [Authorize]
         [HttpGet]
         public IEnumerable<Feed> GetFeeds()
         {
