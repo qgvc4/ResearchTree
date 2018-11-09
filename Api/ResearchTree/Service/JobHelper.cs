@@ -3,7 +3,7 @@ using System.Linq;
 using ResearchTree.Entities.Api;
 using ResearchTree.Entities.Declaration;
 
-namespace ResearchTree.Service.JobService
+namespace ResearchTree.Service
 {
     public class JobHelper
     {

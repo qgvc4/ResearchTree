@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Service.FeedService;
+using ResearchTree.Service;
 using Feed = ResearchTree.Entities.Api.Feed;
 
 namespace ResearchTree.Controllers
 {
     [Produces("application/json")]
     [Route("api/Feeds")]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class FeedsController : Controller
     {
         private readonly FeedContext _context;
@@ -24,6 +28,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Feeds
+        [Authorize]
         [HttpGet]
         public IEnumerable<Feed> GetFeeds()
         {
@@ -31,6 +36,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Feeds/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFeed([FromRoute] string id)
         {
@@ -50,6 +56,7 @@ namespace ResearchTree.Controllers
         }
 
         // PUT: api/Feeds/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Feed feed)
         {
@@ -88,6 +95,7 @@ namespace ResearchTree.Controllers
         }
 
         // POST: api/Feeds
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostFeed([FromBody] Feed feed)
         {
@@ -108,6 +116,7 @@ namespace ResearchTree.Controllers
         }
 
         // DELETE: api/Feeds/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFeed([FromRoute] string id)
         {

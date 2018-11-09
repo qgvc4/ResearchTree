@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Service.JobService;
+using ResearchTree.Service;
 using Job = ResearchTree.Entities.Api.Job;
 
 namespace ResearchTree.Controllers
 {
     [Produces("application/json")]
     [Route("api/Jobs")]
+    [EnableCors("AllowSpecificOrigin")]
+
     public class JobsController : Controller
     {
         private readonly JobContext _context;
@@ -25,6 +29,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Jobs
+        [Authorize]
         [HttpGet]
         public IEnumerable<Job> GetJobs()
         {
@@ -32,6 +37,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Jobs/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetJob([FromRoute] string id)
         {
@@ -51,6 +57,7 @@ namespace ResearchTree.Controllers
         }
 
         // PUT: api/Jobs/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJob([FromRoute] string id, [FromBody] Job job)
         {
@@ -89,6 +96,7 @@ namespace ResearchTree.Controllers
         }
 
         // POST: api/Jobs
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostJob([FromBody] Job job)
         {
@@ -109,6 +117,7 @@ namespace ResearchTree.Controllers
         }
 
         // DELETE: api/Jobs/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJob([FromRoute] string id)
         {

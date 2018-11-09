@@ -1,6 +1,6 @@
 ﻿using ResearchTree.Entities.Api;
 
-namespace ResearchTree.Service.FeedService
+namespace ResearchTree.Service
 {
     public class FeedHelper
     {
