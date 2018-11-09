@@ -8,7 +8,7 @@ class Posts extends Component {
     }
   }
   componentWillMount() {
-      fetch('http://localhost:51805/api/Feeds')
+      fetch('https://researchtreeapis.azurewebsites.net/api/feeds')
           .then(res => res.json())
           .then(data => this.setState({ posts: data }));
   }

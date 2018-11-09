@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ResearchTree.Context;
-using ResearchTree.Service.JobService;
+using ResearchTree.Service;
 using Job = ResearchTree.Entities.Api.Job;
 
 namespace ResearchTree.Controllers
