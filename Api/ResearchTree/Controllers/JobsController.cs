@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Jobs
+        [Authorize]
         [HttpGet]
         public IEnumerable<Job> GetJobs()
         {
@@ -35,6 +37,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Jobs/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetJob([FromRoute] string id)
         {
@@ -54,6 +57,7 @@ namespace ResearchTree.Controllers
         }
 
         // PUT: api/Jobs/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJob([FromRoute] string id, [FromBody] Job job)
         {
@@ -92,6 +96,7 @@ namespace ResearchTree.Controllers
         }
 
         // POST: api/Jobs
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostJob([FromBody] Job job)
         {
@@ -112,6 +117,7 @@ namespace ResearchTree.Controllers
         }
 
         // DELETE: api/Jobs/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJob([FromRoute] string id)
         {

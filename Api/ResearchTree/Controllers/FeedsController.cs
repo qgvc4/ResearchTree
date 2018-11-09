@@ -36,6 +36,7 @@ namespace ResearchTree.Controllers
         }
 
         // GET: api/Feeds/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFeed([FromRoute] string id)
         {
@@ -55,6 +56,7 @@ namespace ResearchTree.Controllers
         }
 
         // PUT: api/Feeds/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFeed([FromRoute] string id, [FromBody] Feed feed)
         {
@@ -93,6 +95,7 @@ namespace ResearchTree.Controllers
         }
 
         // POST: api/Feeds
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostFeed([FromBody] Feed feed)
         {
@@ -113,6 +116,7 @@ namespace ResearchTree.Controllers
         }
 
         // DELETE: api/Feeds/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFeed([FromRoute] string id)
         {
