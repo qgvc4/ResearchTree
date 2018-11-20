@@ -51,7 +51,7 @@ Response Body
 }
 ```
 
-## Login `Post` `api/Account`
+## Login `Post` `api/Account/Login`
 Request Body
 ```
 {
