@@ -15,7 +15,7 @@ namespace ResearchTree.Service
             {
                 Id = user.Id,
                 Email = user.Email,
-                FirstName = user.FirstName,
+                Firstname = user.Firstname,
                 Lastname = user.Lastname,
                 Description = user.Description,
                 Image = user.Image,
@@ -34,7 +34,7 @@ namespace ResearchTree.Service
                 Id = user.Id,
                 UserName = user.Email,
                 Email = user.Email,
-                FirstName = user.FirstName,
+                Firstname = user.Firstname,
                 Lastname = user.Lastname,
                 Description = user.Description,
                 Image = user.Image,

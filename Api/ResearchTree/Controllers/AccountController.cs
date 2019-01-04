@@ -86,8 +86,8 @@ namespace ResearchTree.Controllers
                 {
                     new Claim(ClaimTypes.Name, user.Id),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.GivenName, user.FirstName),
-                    new Claim(ClaimTypes.Name, user.FirstName+user.Lastname)
+                    new Claim(ClaimTypes.GivenName, user.Firstname),
+                    new Claim(ClaimTypes.Name, user.Firstname+user.Lastname)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
