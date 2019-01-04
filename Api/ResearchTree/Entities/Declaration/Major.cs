@@ -5,7 +5,7 @@
         ComputerEngineer,
         ComputerScience,
         ElectricalEngineer,
-        InfomationTechnology
+        InformationTechnology
         //need add all majors in alphabet order
     }
 }

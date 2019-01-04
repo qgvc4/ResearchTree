@@ -11,7 +11,7 @@ namespace ResearchTree.Entities.DALs
     public class User : IdentityUser
     {
         [Required]
-        public string FirstName { get; set; }
+        public string Firstname { get; set; }
 
         [Required]
         public string Lastname { get; set; }
