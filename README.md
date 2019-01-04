@@ -4,3 +4,5 @@
 [Feed Service](./Doc/FeedService.md)
 
 [Job Service](./Doc/JobService.md)
+
+[User Service](./Doc/UserService.md)
