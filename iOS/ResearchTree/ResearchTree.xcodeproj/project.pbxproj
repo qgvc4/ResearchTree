@@ -15,6 +15,14 @@
 		E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */; };
 		E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034D21C33A9500D4AE14 /* FeedViewController.swift */; };
 		E20F035021C33E3400D4AE14 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034F21C33E3400D4AE14 /* FeedDetailViewController.swift */; };
+		E23B512621D573FF00C87655 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512521D573FF00C87655 /* TabViewController.swift */; };
+		E23B512A21D57F6800C87655 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512921D57F6800C87655 /* SigninViewController.swift */; };
+		E23B512C21D5924000C87655 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512B21D5924000C87655 /* UserService.swift */; };
+		E23B512F21D5926F00C87655 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512E21D5926F00C87655 /* User.swift */; };
+		E23B513421D5935200C87655 /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513321D5935200C87655 /* Standing.swift */; };
+		E23B513621D593E600C87655 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513521D593E500C87655 /* Role.swift */; };
+		E23B513821D5941C00C87655 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513721D5941C00C87655 /* Major.swift */; };
+		E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513921D59A0F00C87655 /* ApiConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,14 @@
 		E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		E20F034D21C33A9500D4AE14 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		E20F034F21C33E3400D4AE14 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
+		E23B512521D573FF00C87655 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		E23B512921D57F6800C87655 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		E23B512B21D5924000C87655 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E23B512E21D5926F00C87655 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E23B513321D5935200C87655 /* Standing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
+		E23B513521D593E500C87655 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		E23B513721D5941C00C87655 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
+		E23B513921D59A0F00C87655 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 		E20F032D21C3019500D4AE14 /* ResearchTree */ = {
 			isa = PBXGroup;
 			children = (
+				E23B512D21D5925200C87655 /* Model */,
 				E20F034521C32C8C00D4AE14 /* Api */,
 				E20F034021C303EE00D4AE14 /* Controller */,
 				E20F032E21C3019500D4AE14 /* AppDelegate.swift */,
@@ -74,8 +91,9 @@
 		E20F034021C303EE00D4AE14 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E23B512821D577EC00C87655 /* Login */,
 				E20F034821C332C600D4AE14 /* Feed */,
-				E20F034321C3062600D4AE14 /* LoginViewController.swift */,
+				E23B512521D573FF00C87655 /* TabViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -83,6 +101,8 @@
 		E20F034521C32C8C00D4AE14 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				E23B512B21D5924000C87655 /* UserService.swift */,
+				E23B513921D59A0F00C87655 /* ApiConstant.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -95,6 +115,34 @@
 				E20F034F21C33E3400D4AE14 /* FeedDetailViewController.swift */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		E23B512821D577EC00C87655 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E23B512921D57F6800C87655 /* SigninViewController.swift */,
+				E20F034321C3062600D4AE14 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E23B512D21D5925200C87655 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E23B513221D5933700C87655 /* Declaration */,
+				E23B512E21D5926F00C87655 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E23B513221D5933700C87655 /* Declaration */ = {
+			isa = PBXGroup;
+			children = (
+				E23B513321D5935200C87655 /* Standing.swift */,
+				E23B513521D593E500C87655 /* Role.swift */,
+				E23B513721D5941C00C87655 /* Major.swift */,
+			);
+			path = Declaration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +216,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23B512A21D57F6800C87655 /* SigninViewController.swift in Sources */,
+				E23B513621D593E600C87655 /* Role.swift in Sources */,
+				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,
+				E23B513421D5935200C87655 /* Standing.swift in Sources */,
 				E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */,
+				E23B512C21D5924000C87655 /* UserService.swift in Sources */,
+				E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */,
+				E23B513821D5941C00C87655 /* Major.swift in Sources */,
+				E23B512F21D5926F00C87655 /* User.swift in Sources */,
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,
 				E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */,
 				E20F035021C33E3400D4AE14 /* FeedDetailViewController.swift in Sources */,
