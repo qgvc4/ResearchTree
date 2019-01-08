@@ -23,6 +23,14 @@ class LoginViewController: UIViewController {
         signupButton.layer.cornerRadius = 10
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+        if (isUserLoggedIn) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func loginTapped(_ sender: Any) {
         
         let email = emailTextField.text

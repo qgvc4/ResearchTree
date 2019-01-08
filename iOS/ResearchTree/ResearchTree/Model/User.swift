@@ -19,12 +19,12 @@ struct UserSignUpRequest: Codable {
     var firstName: String
     var lastName: String
     var majors: [Int]
-    var image: Data?
+    var image: String?
     var role: Int
-    var standing: Int?
+    var standing: Int
     var location: String
     var description: String?
-    var resume: Data?
+    var resume: String?
 }
 
 struct User: Codable {
@@ -35,10 +35,15 @@ struct User: Codable {
     var firstname: String
     var lastname: String
     var majors: [Int]
-    var image: Data?
+    var image: String?
     var role: Int
     var standing: Int
     var location: String?
     var description: String?
-    var resume: Data?
+    var resume: String?
+}
+
+struct SignUpError: Codable {
+    var code: String
+    var description: String
 }
