@@ -9,6 +9,6 @@
 import Foundation
 
 enum Role: Int {
-    case Professor = 0
+    case Professor
     case Student
 }

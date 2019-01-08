@@ -19,8 +19,12 @@ struct UserSignUpRequest: Codable {
     var firstName: String
     var lastName: String
     var majors: [Int]
+    var image: Data?
     var role: Int
+    var standing: Int?
     var location: String
+    var description: String?
+    var resume: Data?
 }
 
 struct User: Codable {
