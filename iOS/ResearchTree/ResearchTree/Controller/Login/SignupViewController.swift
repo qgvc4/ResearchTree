@@ -12,6 +12,9 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var backToLoginButton: UIButton!
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,6 +26,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var major1TextField: UITextField!
     @IBOutlet weak var major2TextField: UITextField!
     @IBOutlet weak var major3TextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     let standingPicker = UIPickerView()
     let major1Picker = UIPickerView()
@@ -43,6 +47,13 @@ class SignupViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         scrollView.keyboardDismissMode = .onDrag
+        
+        signupButton.layer.cornerRadius = 10
+        backToLoginButton.layer.cornerRadius = 10
+        
+        descriptionTextView.layer.borderWidth = 1
+        descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        descriptionTextView.layer.cornerRadius = 5
         
         Standing.allCases.forEach {
             totalStandings.append(StandingMap.getString(standing: $0))
@@ -75,6 +86,7 @@ class SignupViewController: UIViewController {
         let standingString = standingTextField.text
         let location = locationTextField.text
         let major1String = major1TextField.text
+        let description = descriptionTextView.text
 
         let profileImage = profileImageView.image
 
@@ -128,7 +140,7 @@ class SignupViewController: UIViewController {
             return
         }
         
-        var signupUser = UserSignUpRequest.init(email: email!, password: password!, firstName: firstName!, lastName: lastName!, majors: [], image: nil, role: -1, standing: nil, location: location!, description: nil, resume: nil)
+        var signupUser = UserSignUpRequest.init(email: email!, password: password!, firstName: firstName!, lastName: lastName!, majors: [], image: nil, role: -1, standing: nil, location: location!, description: description, resume: nil)
   
         // major
         if let major1 = major1 {
