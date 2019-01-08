@@ -8,8 +8,21 @@
 
 import Foundation
 
-enum Standing: Int {
+enum Standing: Int, CaseIterable {
     case Undergraduate = 0
     case Graduate
     case Professor
+}
+
+struct StandingMap {
+    static func getString(standing: Standing) -> String {
+        switch standing {
+        case .Professor:
+            return "Professor"
+        case .Undergraduate:
+            return "Undergraduate"
+        case .Graduate:
+            return "Graduate"
+        }
+    }
 }
