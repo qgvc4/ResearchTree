@@ -21,6 +21,16 @@ class TabViewController: UITabBarController {
         
         if (!isUserLoggedIn) {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
+        } else {
+            let userData = UserDefaults.standard.data(forKey: "userData")
+            let decoder = JSONDecoder()
+            do {
+                let user = try decoder.decode(User.self, from: userData!)
+                print(user.token)
+            } catch {
+                print("decode error")
+                
+            }
         }
     }
 

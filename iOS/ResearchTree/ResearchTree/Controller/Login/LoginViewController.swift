@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +22,32 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         loginButton.layer.cornerRadius = 10
         signupButton.layer.cornerRadius = 10
+        activityIndicator.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+        if (isUserLoggedIn) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
         
+        self.loading()
         let email = emailTextField.text
         let password = passwordTextField.text
         
         if (email == nil || password == nil ) {
             displayAlert(message: "email or password cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if (email!.isEmpty || password!.isEmpty) {
             displayAlert(message: "email or password cannot be empty")
+            self.loadingComplete()
             return
         }
         
@@ -43,6 +56,7 @@ class LoginViewController: UIViewController {
             (user, errorString) in
             if errorString != nil {
                 self.displayAlert(message: errorString!)
+                self.loadingComplete()
             } else {
                 let encoder = JSONEncoder()
                 do {
@@ -54,6 +68,7 @@ class LoginViewController: UIViewController {
                 } catch {
                     print("save user data error")
                     self.displayAlert(message: "Something went wrong")
+                    self.loadingComplete()
                 }
             }
         }
@@ -71,6 +86,20 @@ class LoginViewController: UIViewController {
         alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func loading() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        loginButton.isEnabled = false
+        signupButton.isEnabled = false
+    }
+    
+    func loadingComplete() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        loginButton.isEnabled = true
+        signupButton.isEnabled = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
