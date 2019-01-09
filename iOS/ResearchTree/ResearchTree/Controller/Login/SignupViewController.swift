@@ -14,6 +14,7 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var backToLoginButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -48,6 +49,8 @@ class SignupViewController: UIViewController {
         // Do any additional setup after loading the view.
         scrollView.keyboardDismissMode = .onDrag
         
+        activityIndicator.isHidden = true
+        
         signupButton.layer.cornerRadius = 10
         backToLoginButton.layer.cornerRadius = 10
         
@@ -78,6 +81,8 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signUpTapped(_ sender: Any) {
+        self.loading()
+        
         let email = emailTextField.text
         let password = passwordTextField.text
         let confirmedPassword = confirmedPasswordTextField.text
@@ -92,51 +97,61 @@ class SignupViewController: UIViewController {
 
         if email == nil || email!.isEmpty {
             displayAlert(message: "Email Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if password == nil || password!.isEmpty {
             displayAlert(message: "Password Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if confirmedPassword == nil || confirmedPassword!.isEmpty {
             displayAlert(message: "Confirmed Password Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if firstName == nil || firstName!.isEmpty {
             displayAlert(message: "FirstName Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if lastName == nil || lastName!.isEmpty {
             displayAlert(message: "LastName Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if standingString == nil || standingString!.isEmpty {
             displayAlert(message: "Standing Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if location == nil || location!.isEmpty {
             displayAlert(message: "Location Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if major1String == nil || major1String!.isEmpty {
             displayAlert(message: "Major1 Cannot be empty")
+            self.loadingComplete()
             return
         }
         
         if password != confirmedPassword {
             displayAlert(message: "Password and Confirmed Password are not matched")
+            self.loadingComplete()
             return
         }
         
         if !isValidPassword(password: password!) {
             displayAlert(message: "Password must be more than 6 characters, with at least one capital, numeric or special character")
+            self.loadingComplete()
             return
         }
         
@@ -177,6 +192,7 @@ class SignupViewController: UIViewController {
             (user, errorString) in
             if errorString != nil {
                 self.displayAlert(message: errorString!)
+                self.loadingComplete()
             } else {
                 let encoder = JSONEncoder()
                 print(user?.id)
@@ -189,6 +205,7 @@ class SignupViewController: UIViewController {
                 } catch {
                     print("save user data error")
                     self.displayAlert(message: "Something went wrong")
+                    self.loadingComplete()
                 }
             }
         }
@@ -231,6 +248,21 @@ class SignupViewController: UIViewController {
         guard let imageData = image.jpegData(compressionQuality: 0) else { return nil }
         return imageData.base64EncodedString()
     }
+    
+    func loading() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        backToLoginButton.isEnabled = false
+        signupButton.isEnabled = false
+    }
+    
+    func loadingComplete() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        backToLoginButton.isEnabled = true
+        signupButton.isEnabled = true
+    }
+
 }
 
 extension SignupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
