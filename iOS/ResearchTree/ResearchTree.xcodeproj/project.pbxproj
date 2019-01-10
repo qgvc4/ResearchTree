@@ -25,6 +25,7 @@
 		E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513921D59A0F00C87655 /* ApiConstant.swift */; };
 		E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58521E6C48600AB97F9 /* Feed.swift */; };
 		E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58721E6C5D100AB97F9 /* FeedService.swift */; };
+		E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		E23B513921D59A0F00C87655 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
 		E2D4E58521E6C48600AB97F9 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		E2D4E58721E6C5D100AB97F9 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
+		E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */,
 				E20F034D21C33A9500D4AE14 /* FeedViewController.swift */,
 				E20F034F21C33E3400D4AE14 /* FeedDetailViewController.swift */,
+				E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */,
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
+				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
 				E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
