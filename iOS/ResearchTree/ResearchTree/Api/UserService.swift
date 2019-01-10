@@ -12,7 +12,7 @@ class UserService {
     static let signUpUrlString = ApiConstant.baseUrl + "Account"
     static let loginUrlString = ApiConstant.baseUrl + "Account/Login"
     
-    class func SignUp(userSignupRequest: UserSignUpRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (User?, String?) -> Void) {
+    class func signUp(userSignupRequest: UserSignUpRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (User?, String?) -> Void) {
         var user: User? = nil
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -90,7 +90,7 @@ class UserService {
         task.resume()
     }
     
-    class func LogIn(userCredential: UserLoginRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (User?, String?) -> Void) {
+    class func logIn(userCredential: UserLoginRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (User?, String?) -> Void) {
         var user: User? = nil
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
