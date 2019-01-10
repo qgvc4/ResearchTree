@@ -23,6 +23,8 @@
 		E23B513621D593E600C87655 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513521D593E500C87655 /* Role.swift */; };
 		E23B513821D5941C00C87655 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513721D5941C00C87655 /* Major.swift */; };
 		E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513921D59A0F00C87655 /* ApiConstant.swift */; };
+		E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58521E6C48600AB97F9 /* Feed.swift */; };
+		E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58721E6C5D100AB97F9 /* FeedService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		E23B513521D593E500C87655 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		E23B513721D5941C00C87655 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		E23B513921D59A0F00C87655 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
+		E2D4E58521E6C48600AB97F9 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		E2D4E58721E6C5D100AB97F9 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 			children = (
 				E23B512B21D5924000C87655 /* UserService.swift */,
 				E23B513921D59A0F00C87655 /* ApiConstant.swift */,
+				E2D4E58721E6C5D100AB97F9 /* FeedService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			children = (
 				E23B513221D5933700C87655 /* Declaration */,
 				E23B512E21D5926F00C87655 /* User.swift */,
+				E2D4E58521E6C48600AB97F9 /* Feed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 				E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */,
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
+				E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
 				E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */,
@@ -229,6 +236,7 @@
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,
 				E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */,
 				E20F035021C33E3400D4AE14 /* FeedDetailViewController.swift in Sources */,
+				E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

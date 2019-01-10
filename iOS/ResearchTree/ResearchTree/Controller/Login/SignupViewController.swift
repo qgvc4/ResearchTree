@@ -188,7 +188,7 @@ class SignupViewController: UIViewController {
         }
         
         //print(signupUser)
-        UserService.SignUp(userSignupRequest: signupUser, dispatchQueueForHandler: DispatchQueue.main) {
+        UserService.signUp(userSignupRequest: signupUser, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
                 self.displayAlert(message: errorString!)

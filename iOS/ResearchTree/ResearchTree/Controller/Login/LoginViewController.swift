@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         }
         
         let user = UserLoginRequest.init(email: email!, password: password!)
-        UserService.LogIn(userCredential: user, dispatchQueueForHandler: DispatchQueue.main) {
+        UserService.logIn(userCredential: user, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
                 self.displayAlert(message: errorString!)
