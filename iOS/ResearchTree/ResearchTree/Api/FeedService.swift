@@ -73,4 +73,81 @@ class FeedService {
         }
         task.resume()
     }
+    
+    class func postFeed(userToken: String, postFeedRequest: postFeedRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (Feed?, String?) -> Void) {
+        var feed: Feed? = nil
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+
+        guard let url = URL(string: feedUrlString) else {
+            dispatchQueueForHandler.async(execute: {
+                completionHandler(nil, "the url is invalid")
+            })
+            return
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpMethod = "POST"
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            let data = try encoder.encode(postFeedRequest)
+            print(String(bytes: data, encoding: String.Encoding.utf8)!)
+            urlRequest.httpBody = data
+        } catch {
+            print("encode error")
+            let errorString = "Something went wrong"
+            dispatchQueueForHandler.async(execute: {
+                completionHandler(nil, errorString)
+            })
+        }
+
+        let task = session.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data, error == nil else {
+                var errorString = "data for post feed"
+                if let error = error {
+                    errorString = error.localizedDescription
+                }
+                dispatchQueueForHandler.async(execute: {
+                    completionHandler(nil, errorString)
+                })
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 401 {
+                let errorString = "401 unauthorization error"
+                dispatchQueueForHandler.async(execute: {
+                    completionHandler(nil, errorString)
+                })
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 500 {
+                let errorString = "Something went wrong"
+                dispatchQueueForHandler.async(execute: {
+                    completionHandler(nil, errorString)
+                })
+                return
+            }
+
+            let decoder = JSONDecoder()
+            do {
+                feed = try decoder.decode(Feed.self, from: data)
+                dispatchQueueForHandler.async(execute: {
+                    completionHandler(feed, nil)
+                })
+            } catch {
+                print("decode error")
+                let errorString = "Something went wrong"
+                dispatchQueueForHandler.async(execute: {
+                    completionHandler(nil, errorString)
+                })
+            }
+        }
+        task.resume()
+    }
 }

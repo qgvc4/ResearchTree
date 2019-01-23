@@ -16,12 +16,17 @@ class NewFeedViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     
-    let imagePicker = UIImagePickerController()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    let imagePicker = UIImagePickerController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.keyboardDismissMode = .onDrag
+        
+        activityIndicator.isHidden = true
         
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
@@ -44,7 +49,83 @@ class NewFeedViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        self.loading()
         
+        let title = titleTextField.text
+        let description = descriptionTextView.text
+        let feedImage = imageView.image
+        
+        if title == nil || title!.isEmpty {
+            displayAlert(message: "title cannot be empty")
+            self.loadingComplete()
+            return
+        }
+        
+        if description == nil || description!.isEmpty {
+            displayAlert(message: "description cannot be empty")
+            self.loadingComplete()
+            return
+        }
+        
+        // get current user
+        var user: User?
+        let userData = UserDefaults.standard.data(forKey: "userData")
+        let decoder = JSONDecoder()
+        if let userData = userData {
+            do {
+                user = try decoder.decode(User.self, from: userData)
+            } catch {
+                print("decode error")
+            }
+        }
+        
+        if let user = user {
+            var newFeed = postFeedRequest.init(title: title!, peopleId: user.id, description: description!, attachment: nil)
+            
+            if feedImage != nil {
+                newFeed.attachment = toBase64(image: feedImage!)
+            }
+            
+            FeedService.postFeed(userToken: user.token ,postFeedRequest: newFeed, dispatchQueueForHandler: DispatchQueue.main) {
+                (feed, errorString) in
+                if errorString != nil {
+                    self.displayAlert(message: errorString!)
+                    self.loadingComplete()
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
+        }
+        
+    }
+    
+    func displayAlert(message: String) {
+        let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func toBase64(image: UIImage) -> String? {
+        guard let imageData = image.jpegData(compressionQuality: 0) else { return nil }
+        return imageData.base64EncodedString()
+    }
+    
+    func loading() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        saveButton.isEnabled = false
+    }
+    
+    func loadingComplete() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        saveButton.isEnabled = true
     }
 }
 
