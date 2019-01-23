@@ -587,25 +587,33 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-fI-MID">
-                                                <rect key="frame" x="30" y="270" width="166" height="30"/>
+                                                <rect key="frame" x="30" y="330" width="166" height="30"/>
                                                 <state key="normal" title="Add a photo attachment"/>
                                                 <connections>
                                                     <action selector="addPhotoButtonTapped:" destination="hSd-dl-qUs" eventType="touchUpInside" id="mCu-rq-qpA"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZdA-Ti-oz3">
-                                                <rect key="frame" x="30" y="305" width="315" height="315"/>
+                                                <rect key="frame" x="30" y="365" width="315" height="315"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZdA-Ti-oz3" secondAttribute="height" multiplier="1:1" id="qLe-5J-bhY"/>
                                                 </constraints>
                                             </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-bz-ni9">
+                                                <rect key="frame" x="162.5" y="260" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="sR7-bz-ni9" secondAttribute="height" multiplier="1:1" id="7vm-NU-fBx"/>
+                                                    <constraint firstAttribute="width" constant="50" id="rms-S4-BEB"/>
+                                                </constraints>
+                                                <color key="color" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ZdA-Ti-oz3" firstAttribute="top" secondItem="Dws-fI-MID" secondAttribute="bottom" constant="5" id="7tk-0c-FJe"/>
                                             <constraint firstItem="ZdA-Ti-oz3" firstAttribute="leading" secondItem="YDx-73-GEG" secondAttribute="leading" id="E7X-SK-pMj"/>
                                             <constraint firstItem="RX1-fN-wf6" firstAttribute="top" secondItem="3R1-DI-wOH" secondAttribute="bottom" constant="20" id="Gq6-yM-Pbz"/>
-                                            <constraint firstItem="Dws-fI-MID" firstAttribute="top" secondItem="YDx-73-GEG" secondAttribute="bottom" constant="20" id="Gwk-wu-46B"/>
+                                            <constraint firstItem="Dws-fI-MID" firstAttribute="top" secondItem="sR7-bz-ni9" secondAttribute="bottom" constant="20" id="Gwk-wu-46B"/>
                                             <constraint firstAttribute="trailing" secondItem="3R1-DI-wOH" secondAttribute="trailing" constant="30" id="M1S-cR-szc"/>
                                             <constraint firstItem="YDx-73-GEG" firstAttribute="trailing" secondItem="3R1-DI-wOH" secondAttribute="trailing" id="TGe-IC-t6X"/>
                                             <constraint firstItem="3R1-DI-wOH" firstAttribute="leading" secondItem="fws-Oy-eyA" secondAttribute="leading" id="a1V-Xo-yb1"/>
@@ -613,10 +621,12 @@
                                             <constraint firstItem="YDx-73-GEG" firstAttribute="leading" secondItem="RX1-fN-wf6" secondAttribute="leading" id="bkZ-bu-pxF"/>
                                             <constraint firstAttribute="height" constant="1000" id="d2W-UH-m4t"/>
                                             <constraint firstItem="RX1-fN-wf6" firstAttribute="leading" secondItem="3R1-DI-wOH" secondAttribute="leading" id="f2B-iN-Ngr"/>
+                                            <constraint firstItem="sR7-bz-ni9" firstAttribute="top" secondItem="YDx-73-GEG" secondAttribute="bottom" constant="10" id="fD5-rk-V9z"/>
                                             <constraint firstItem="fws-Oy-eyA" firstAttribute="top" secondItem="cQg-xt-AyP" secondAttribute="top" constant="30" id="nvr-IB-qJR"/>
                                             <constraint firstItem="3R1-DI-wOH" firstAttribute="top" secondItem="fws-Oy-eyA" secondAttribute="bottom" constant="5" id="ohw-tl-OIc"/>
                                             <constraint firstItem="YDx-73-GEG" firstAttribute="top" secondItem="RX1-fN-wf6" secondAttribute="bottom" constant="5" id="qvg-ch-wLi"/>
                                             <constraint firstItem="ZdA-Ti-oz3" firstAttribute="trailing" secondItem="YDx-73-GEG" secondAttribute="trailing" id="sCc-Tg-pHd"/>
+                                            <constraint firstItem="sR7-bz-ni9" firstAttribute="centerX" secondItem="cQg-xt-AyP" secondAttribute="centerX" id="t9U-1f-BrU"/>
                                             <constraint firstItem="fws-Oy-eyA" firstAttribute="leading" secondItem="cQg-xt-AyP" secondAttribute="leading" constant="30" id="z2y-Zl-0ld"/>
                                         </constraints>
                                     </view>
@@ -647,8 +657,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="sR7-bz-ni9" id="Ujh-VM-qaZ"/>
                         <outlet property="descriptionTextView" destination="YDx-73-GEG" id="mj7-jO-rvw"/>
                         <outlet property="imageView" destination="ZdA-Ti-oz3" id="SGP-BF-dLz"/>
+                        <outlet property="saveButton" destination="eP8-dj-MtU" id="NFs-dj-A21"/>
                         <outlet property="scrollView" destination="VTj-Z5-9XT" id="gc7-6N-toj"/>
                         <outlet property="titleTextField" destination="3R1-DI-wOH" id="Zwn-Ls-u3y"/>
                     </connections>
