@@ -31,7 +31,7 @@ struct User: Codable {
     var id: String
     var email: String
     var password: String?
-    var token: String
+    var token: String?
     var firstname: String
     var lastname: String
     var majors: [Int]
