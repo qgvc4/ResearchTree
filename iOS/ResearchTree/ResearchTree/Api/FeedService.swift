@@ -11,8 +11,8 @@ import Foundation
 class FeedService {
     static let feedUrlString = ApiConstant.baseUrl + "Feeds"
     
-    class func getFeeds(userToken: String, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping ([Feed]?, String?) -> Void) {
-        var feeds: [Feed]? = nil
+    class func getFeeds(userToken: String, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping ([RawFeed]?, String?) -> Void) {
+        var feeds: [RawFeed]? = nil
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
@@ -59,7 +59,7 @@ class FeedService {
             
             let decoder = JSONDecoder()
             do {
-                feeds = try decoder.decode([Feed].self, from: data)
+                feeds = try decoder.decode([RawFeed].self, from: data)
                 dispatchQueueForHandler.async(execute: {
                     completionHandler(feeds, nil)
                 })
@@ -74,8 +74,8 @@ class FeedService {
         task.resume()
     }
     
-    class func postFeed(userToken: String, postFeedRequest: postFeedRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (Feed?, String?) -> Void) {
-        var feed: Feed? = nil
+    class func postFeed(userToken: String, postFeedRequest: postFeedRequest, dispatchQueueForHandler: DispatchQueue, completionHandler: @escaping (RawFeed?, String?) -> Void) {
+        var feed: RawFeed? = nil
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
 
@@ -136,7 +136,7 @@ class FeedService {
 
             let decoder = JSONDecoder()
             do {
-                feed = try decoder.decode(Feed.self, from: data)
+                feed = try decoder.decode(RawFeed.self, from: data)
                 dispatchQueueForHandler.async(execute: {
                     completionHandler(feed, nil)
                 })

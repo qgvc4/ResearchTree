@@ -86,7 +86,7 @@ class NewFeedViewController: UIViewController {
                 newFeed.attachment = toBase64(image: feedImage!)
             }
             
-            FeedService.postFeed(userToken: user.token ,postFeedRequest: newFeed, dispatchQueueForHandler: DispatchQueue.main) {
+            FeedService.postFeed(userToken: user.token! ,postFeedRequest: newFeed, dispatchQueueForHandler: DispatchQueue.main) {
                 (feed, errorString) in
                 if errorString != nil {
                     self.displayAlert(message: errorString!)
