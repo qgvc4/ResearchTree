@@ -12,6 +12,15 @@ class FeedViewController: UIViewController {
 
     var feeds: [Feed] = []
     var userToken: String?
+    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(requestFeeds), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
     @IBOutlet weak var feedsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +28,7 @@ class FeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
         self.feedsTableView.rowHeight = 150
+        self.feedsTableView.refreshControl = refresher
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,21 +45,28 @@ class FeedViewController: UIViewController {
                 return
             }
             
-            FeedService.getFeeds(userToken: self.userToken!, dispatchQueueForHandler: DispatchQueue.main) {
-                (feeds, errorString) in
-                if errorString != nil {
-                    self.displayAlert(message: errorString!)
-                } else {
-                    if let feeds = feeds {
-                        self.feeds.removeAll()
-                        for feed in feeds {
-                            self.feeds.append(feed.mapToFeed(rawFeed: feed))
-                        }
-                        self.feeds.sort(by: {
-                            $0.modifyTime > $1.modifyTime
-                        })
-                        self.feedsTableView.reloadData()
+            refresher.beginRefreshing()
+            requestFeeds()
+        }
+    }
+    
+    @objc
+    func requestFeeds() {
+        FeedService.getFeeds(userToken: self.userToken!, dispatchQueueForHandler: DispatchQueue.main) {
+            (feeds, errorString) in
+            if errorString != nil {
+                self.displayAlert(message: errorString!)
+            } else {
+                if let feeds = feeds {
+                    self.feeds.removeAll()
+                    for feed in feeds {
+                        self.feeds.append(feed.mapToFeed(rawFeed: feed))
                     }
+                    self.feeds.sort(by: {
+                        $0.modifyTime > $1.modifyTime
+                    })
+                    self.feedsTableView.reloadData()
+                    self.refresher.endRefreshing()
                 }
             }
         }
