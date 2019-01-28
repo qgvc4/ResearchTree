@@ -16,23 +16,16 @@ class TabViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.selectedIndex = 0
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
         if (!isUserLoggedIn) {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         }
-//        } else {
-//            let userData = UserDefaults.standard.data(forKey: "userData")
-//            let decoder = JSONDecoder()
-//            do {
-//                let user = try decoder.decode(User.self, from: userData!)
-//                print(user.token)
-//            } catch {
-//                print("decode error")
-//
-//            }
-//        }
     }
 
     /*

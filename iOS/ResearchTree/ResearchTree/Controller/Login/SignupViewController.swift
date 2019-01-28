@@ -187,7 +187,6 @@ class SignupViewController: UIViewController {
             signupUser.description = description!
         }
         
-        //print(signupUser)
         UserService.signUp(userSignupRequest: signupUser, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
@@ -195,7 +194,6 @@ class SignupViewController: UIViewController {
                 self.loadingComplete()
             } else {
                 let encoder = JSONEncoder()
-                print(user?.id)
                 do {
                     let data = try encoder.encode(user)
                     UserDefaults.standard.set(data, forKey: "userData")
