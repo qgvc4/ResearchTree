@@ -93,10 +93,8 @@ class FeedService {
         urlRequest.httpMethod = "POST"
 
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
         do {
             let data = try encoder.encode(postFeedRequest)
-            print(String(bytes: data, encoding: String.Encoding.utf8)!)
             urlRequest.httpBody = data
         } catch {
             print("encode error")

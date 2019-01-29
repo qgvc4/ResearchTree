@@ -52,6 +52,10 @@ class FeedViewController: UIViewController {
     
     @objc
     func requestFeeds() {
+        if (self.userToken == nil) {
+            return
+        }
+        
         FeedService.getFeeds(userToken: self.userToken!, dispatchQueueForHandler: DispatchQueue.main) {
             (feeds, errorString) in
             if errorString != nil {
