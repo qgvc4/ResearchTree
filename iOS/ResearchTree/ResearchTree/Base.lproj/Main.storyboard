@@ -438,13 +438,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3e-8k-xNQ">
-                                <rect key="frame" x="20" y="104" width="345" height="14"/>
+                                <rect key="frame" x="20" y="104" width="345" height="52.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KJj-1H-wIo">
-                                <rect key="frame" x="0.0" y="118" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="156.5" width="375" height="461.5"/>
                                 <color key="backgroundColor" red="0.81732636690139771" green="0.97988396883010864" blue="0.62342381477355957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZyA-w6-5k5">
                                     <size key="itemSize" width="50" height="50"/>
@@ -473,7 +473,6 @@
                             <constraint firstItem="I3e-8k-xNQ" firstAttribute="leading" secondItem="3dg-u1-cUM" secondAttribute="leading" constant="20" id="O8U-mx-aoM"/>
                             <constraint firstItem="I3e-8k-xNQ" firstAttribute="top" secondItem="3dg-u1-cUM" secondAttribute="top" constant="40" id="hI1-C7-e41"/>
                             <constraint firstItem="3dg-u1-cUM" firstAttribute="bottom" secondItem="KJj-1H-wIo" secondAttribute="bottom" id="wVb-JH-iZw"/>
-                            <constraint firstItem="3dg-u1-cUM" firstAttribute="bottom" secondItem="I3e-8k-xNQ" secondAttribute="bottom" constant="500" id="zXA-ol-cE5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3dg-u1-cUM"/>
                     </view>
@@ -492,13 +491,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udj-YB-rMQ">
-                                <rect key="frame" x="20" y="104" width="345" height="14"/>
+                                <rect key="frame" x="20" y="104" width="345" height="52.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="18I-xl-hCV">
-                                <rect key="frame" x="0.0" y="118" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="156.5" width="375" height="461.5"/>
                                 <color key="backgroundColor" red="0.81980785970000003" green="0.97934761309999996" blue="0.62357544850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="150" id="cla-b6-bz4" customClass="FeedTableViewCell" customModule="ResearchTree" customModuleProvider="target">
@@ -576,7 +575,6 @@
                             <constraint firstItem="Udj-YB-rMQ" firstAttribute="top" secondItem="blj-YH-Lgt" secondAttribute="top" constant="40" id="Iry-0F-TdP"/>
                             <constraint firstItem="18I-xl-hCV" firstAttribute="top" secondItem="Udj-YB-rMQ" secondAttribute="bottom" id="Pjv-ZH-Jl0"/>
                             <constraint firstItem="Udj-YB-rMQ" firstAttribute="leading" secondItem="blj-YH-Lgt" secondAttribute="leading" constant="20" id="ZSx-J0-cPr"/>
-                            <constraint firstItem="blj-YH-Lgt" firstAttribute="bottom" secondItem="Udj-YB-rMQ" secondAttribute="bottom" constant="500" id="zQy-zL-YP0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="blj-YH-Lgt"/>
                     </view>
@@ -860,13 +858,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYx-SY-yzD">
-                                <rect key="frame" x="20" y="104" width="345" height="14"/>
+                                <rect key="frame" x="20" y="104" width="345" height="52.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5I-Yp-THt">
-                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="156.5" width="375" height="510.5"/>
                                 <color key="backgroundColor" red="0.81732636690000005" green="0.97988396879999995" blue="0.62342381479999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Nyh-IQ-PXo">
@@ -888,7 +886,6 @@
                             <constraint firstItem="Lcc-8w-sdN" firstAttribute="trailing" secondItem="l5I-Yp-THt" secondAttribute="trailing" id="Epw-fO-ADn"/>
                             <constraint firstItem="l5I-Yp-THt" firstAttribute="leading" secondItem="Lcc-8w-sdN" secondAttribute="leading" id="GZl-qD-hYZ"/>
                             <constraint firstItem="CYx-SY-yzD" firstAttribute="leading" secondItem="Lcc-8w-sdN" secondAttribute="leading" constant="20" id="X8Z-RG-UeA"/>
-                            <constraint firstItem="Lcc-8w-sdN" firstAttribute="bottom" secondItem="CYx-SY-yzD" secondAttribute="bottom" constant="500" id="hfk-pP-6Ck"/>
                             <constraint firstItem="Lcc-8w-sdN" firstAttribute="trailing" secondItem="CYx-SY-yzD" secondAttribute="trailing" constant="10" id="lkh-Oe-dj5"/>
                             <constraint firstAttribute="bottom" secondItem="l5I-Yp-THt" secondAttribute="bottom" id="yUg-tb-0cJ"/>
                         </constraints>
