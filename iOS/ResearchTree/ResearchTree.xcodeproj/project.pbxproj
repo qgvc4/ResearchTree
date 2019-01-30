@@ -27,6 +27,8 @@
 		E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */; };
 		E2ECE9AA21FA24EA001A9E91 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9A921FA24EA001A9E91 /* FeedDetailViewController.swift */; };
 		E2ECE9AD21FF7362001A9E91 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9AC21FF7362001A9E91 /* SettingViewController.swift */; };
+		E2ECE9B22200EB1D001A9E91 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */; };
+		E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
 		E2ECE9A921FA24EA001A9E91 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		E2ECE9AC21FF7362001A9E91 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		E20F034021C303EE00D4AE14 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E2ECE9B02200E6F9001A9E91 /* User */,
 				E2ECE9AB21FF7338001A9E91 /* Setting */,
 				E23B512821D577EC00C87655 /* Login */,
 				E20F034821C332C600D4AE14 /* Feed */,
@@ -120,8 +125,8 @@
 		E20F034821C332C600D4AE14 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */,
 				E20F034D21C33A9500D4AE14 /* FeedViewController.swift */,
+				E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */,
 				E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */,
 				E2ECE9A921FA24EA001A9E91 /* FeedDetailViewController.swift */,
 			);
@@ -163,6 +168,15 @@
 				E2ECE9AC21FF7362001A9E91 /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		E2ECE9B02200E6F9001A9E91 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */,
+				E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */,
+				E2ECE9B22200EB1D001A9E91 /* UserViewController.swift in Sources */,
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
 				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
@@ -248,6 +263,7 @@
 				E23B512C21D5924000C87655 /* UserService.swift in Sources */,
 				E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */,
 				E23B513821D5941C00C87655 /* Major.swift in Sources */,
+				E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */,
 				E23B512F21D5926F00C87655 /* User.swift in Sources */,
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,
 				E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */,
