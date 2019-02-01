@@ -10,9 +10,13 @@ import UIKit
 
 class UserPostOrJobViewController: UIViewController {
 
+    var userToken: String?
+    var pageFlag: String?
+    
+    @IBOutlet weak var flag: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        flag.text = pageFlag
         // Do any additional setup after loading the view.
     }
     
