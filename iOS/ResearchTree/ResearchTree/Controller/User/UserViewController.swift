@@ -168,4 +168,15 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: self.usersCollectionView.frame.width * 0.48, height: 280)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetailSegue" {
+            let destination = segue.destination as! UserDetailViewController
+            let cell = sender as! UserCollectionViewCell
+            let indexPaths = usersCollectionView.indexPath(for: cell)
+            destination.userToken = self.userToken
+            destination.user = users[indexPaths!.row]
+            //feedsTableView.deselectRow(at: feedsTableView.indexPathForSelectedRow!, animated: true)
+        }
+    }
+    
 }
