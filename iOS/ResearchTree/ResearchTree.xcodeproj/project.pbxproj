@@ -22,6 +22,9 @@
 		E23B513621D593E600C87655 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513521D593E500C87655 /* Role.swift */; };
 		E23B513821D5941C00C87655 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513721D5941C00C87655 /* Major.swift */; };
 		E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513921D59A0F00C87655 /* ApiConstant.swift */; };
+		E2A5D572220A1F30008C0411 /* JobService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D571220A1F30008C0411 /* JobService.swift */; };
+		E2A5D574220A21BF008C0411 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D573220A21BF008C0411 /* Job.swift */; };
+		E2A5D577220A39BA008C0411 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D576220A39BA008C0411 /* JobViewController.swift */; };
 		E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58521E6C48600AB97F9 /* Feed.swift */; };
 		E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58721E6C5D100AB97F9 /* FeedService.swift */; };
 		E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */; };
@@ -50,6 +53,9 @@
 		E23B513521D593E500C87655 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		E23B513721D5941C00C87655 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		E23B513921D59A0F00C87655 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
+		E2A5D571220A1F30008C0411 /* JobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobService.swift; sourceTree = "<group>"; };
+		E2A5D573220A21BF008C0411 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		E2A5D576220A39BA008C0411 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
 		E2D4E58521E6C48600AB97F9 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		E2D4E58721E6C5D100AB97F9 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		E2D4E58921E6EC6D00AB97F9 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 		E20F034021C303EE00D4AE14 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E2A5D575220A3977008C0411 /* Job */,
 				E2ECE9B02200E6F9001A9E91 /* User */,
 				E2ECE9AB21FF7338001A9E91 /* Setting */,
 				E23B512821D577EC00C87655 /* Login */,
@@ -120,6 +127,7 @@
 				E23B512B21D5924000C87655 /* UserService.swift */,
 				E23B513921D59A0F00C87655 /* ApiConstant.swift */,
 				E2D4E58721E6C5D100AB97F9 /* FeedService.swift */,
+				E2A5D571220A1F30008C0411 /* JobService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 				E23B513221D5933700C87655 /* Declaration */,
 				E23B512E21D5926F00C87655 /* User.swift */,
 				E2D4E58521E6C48600AB97F9 /* Feed.swift */,
+				E2A5D573220A21BF008C0411 /* Job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +171,14 @@
 				E23B513721D5941C00C87655 /* Major.swift */,
 			);
 			path = Declaration;
+			sourceTree = "<group>";
+		};
+		E2A5D575220A3977008C0411 /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5D576220A39BA008C0411 /* JobViewController.swift */,
+			);
+			path = Job;
 			sourceTree = "<group>";
 		};
 		E2ECE9AB21FF7338001A9E91 /* Setting */ = {
@@ -258,8 +275,11 @@
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
 				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
+				E2A5D577220A39BA008C0411 /* JobViewController.swift in Sources */,
 				E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */,
 				E2ECE9B622025214001A9E91 /* UserDetailViewController.swift in Sources */,
+				E2A5D574220A21BF008C0411 /* Job.swift in Sources */,
+				E2A5D572220A1F30008C0411 /* JobService.swift in Sources */,
 				E2ECE9AD21FF7362001A9E91 /* SettingViewController.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
