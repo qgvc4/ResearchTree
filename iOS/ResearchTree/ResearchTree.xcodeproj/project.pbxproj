@@ -30,7 +30,6 @@
 		E2ECE9B22200EB1D001A9E91 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */; };
 		E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */; };
 		E2ECE9B622025214001A9E91 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B522025214001A9E91 /* UserDetailViewController.swift */; };
-		E2ECE9B822026643001A9E91 /* UserPostOrJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE9B722026643001A9E91 /* UserPostOrJobViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +58,6 @@
 		E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2ECE9B522025214001A9E91 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		E2ECE9B722026643001A9E91 /* UserPostOrJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostOrJobViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +178,6 @@
 				E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */,
 				E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */,
 				E2ECE9B522025214001A9E91 /* UserDetailViewController.swift */,
-				E2ECE9B722026643001A9E91 /* UserPostOrJobViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
 				E2D4E58621E6C48600AB97F9 /* Feed.swift in Sources */,
 				E2ECE9B622025214001A9E91 /* UserDetailViewController.swift in Sources */,
-				E2ECE9B822026643001A9E91 /* UserPostOrJobViewController.swift in Sources */,
 				E2ECE9AD21FF7362001A9E91 /* SettingViewController.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
