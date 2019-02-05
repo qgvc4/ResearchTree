@@ -20,9 +20,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var majors: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-    
-    @IBOutlet weak var postOrJobTableView: UITableView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +38,6 @@ class UserDetailViewController: UIViewController {
             userImageView.image = base64ToImage(base64: user.image)
         }
         
-        postOrJobTableView.separatorColor = UIColor.darkGray
     }
 
     func base64ToImage(base64: String?) -> UIImage {
@@ -57,29 +54,4 @@ class UserDetailViewController: UIViewController {
         
         return UIImage(named: "DefaultProfile")!
     }
-}
-
-extension UserDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewString.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailCell", for: indexPath)
-        
-        cell.textLabel?.text = tableViewString[indexPath.row]
-        
-        return cell
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PostOrJobSegue",
-            let destination = segue.destination as? UserPostOrJobViewController,
-            let row = postOrJobTableView.indexPathForSelectedRow?.row {
-            destination.userToken = self.userToken
-            destination.pageFlag = tableViewString[row]
-            postOrJobTableView.deselectRow(at: postOrJobTableView.indexPathForSelectedRow!, animated: true)
-        }
-    }
-    
 }
