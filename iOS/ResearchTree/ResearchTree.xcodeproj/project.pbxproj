@@ -14,6 +14,8 @@
 		E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034321C3062600D4AE14 /* LoginViewController.swift */; };
 		E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */; };
 		E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F034D21C33A9500D4AE14 /* FeedViewController.swift */; };
+		E222285A220B9B5C00053364 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2222859220B9B5C00053364 /* JobTableViewCell.swift */; };
+		E222285C220CCA6F00053364 /* NewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E222285B220CCA6F00053364 /* NewJobViewController.swift */; };
 		E23B512621D573FF00C87655 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512521D573FF00C87655 /* TabViewController.swift */; };
 		E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512921D57F6800C87655 /* SignupViewController.swift */; };
 		E23B512C21D5924000C87655 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B512B21D5924000C87655 /* UserService.swift */; };
@@ -45,6 +47,8 @@
 		E20F034321C3062600D4AE14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E20F034B21C33A7700D4AE14 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		E20F034D21C33A9500D4AE14 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		E2222859220B9B5C00053364 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		E222285B220CCA6F00053364 /* NewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobViewController.swift; sourceTree = "<group>"; };
 		E23B512521D573FF00C87655 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		E23B512921D57F6800C87655 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E23B512B21D5924000C87655 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				E2A5D576220A39BA008C0411 /* JobViewController.swift */,
+				E2222859220B9B5C00053364 /* JobTableViewCell.swift */,
+				E222285B220CCA6F00053364 /* NewJobViewController.swift */,
 			);
 			path = Job;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
 				E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */,
 				E23B512C21D5924000C87655 /* UserService.swift in Sources */,
+				E222285A220B9B5C00053364 /* JobTableViewCell.swift in Sources */,
 				E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */,
 				E23B513821D5941C00C87655 /* Major.swift in Sources */,
+				E222285C220CCA6F00053364 /* NewJobViewController.swift in Sources */,
 				E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */,
 				E23B512F21D5926F00C87655 /* User.swift in Sources */,
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,

@@ -13,10 +13,25 @@ class JobViewController: UIViewController {
     var jobs: [Job] = []
     var userToken: String?
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(requestJobs), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
+    @IBOutlet weak var jobsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = false
+        self.jobsTableView.rowHeight = 150
+        self.jobsTableView.refreshControl = refresher
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,16 +43,18 @@ class JobViewController: UIViewController {
             do {
                 let user = try decoder.decode(User.self, from: userData!)
                 self.userToken = user.token
+                if user.role == Role.Professor.rawValue {
+                    addButton.isEnabled = true
+                } else {
+                    addButton.isEnabled = false
+                }
             } catch {
                 print("decode error")
                 return
             }
             
-           // refresher.beginRefreshing()
+            refresher.beginRefreshing()
             requestJobs()
-            for job in jobs {
-                print(job.title)
-            }
         }
     }
     
@@ -60,8 +77,8 @@ class JobViewController: UIViewController {
                     self.jobs.sort(by: {
                         $0.modifyTime > $1.modifyTime
                     })
-//                    self.feedsTableView.reloadData()
-//                    self.refresher.endRefreshing()
+                    self.jobsTableView.reloadData()
+                    self.refresher.endRefreshing()
                 }
             }
         }
@@ -76,5 +93,69 @@ class JobViewController: UIViewController {
         alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func base64ToImage(base64: String?) -> UIImage {
+        if base64 == nil {
+            return UIImage(named: "DefaultProfile")!
+        }
+        let data = Data(base64Encoded: base64!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+        
+        if let data = data {
+            if let imageTemp = UIImage(data: data) {
+                return imageTemp
+            }
+        }
+        
+        return UIImage(named: "DefaultProfile")!
+    }
+}
+
+extension JobViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return jobs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        dateFormatter.timeZone = TimeZone(identifier: "CST")
+        
+        
+        UserService.getUser(userToken: self.userToken!, userId: jobs[indexPath.row].peopleId, dispatchQueueForHandler: DispatchQueue.main) {
+            (user, errorString) in
+            if errorString != nil {
+                self.displayAlert(message: errorString!)
+            } else {
+                if let user = user, let cell = cell as? JobTableViewCell {
+                    let curJob = self.jobs[indexPath.row]
+                    cell.userImageView.image = self.base64ToImage(base64: user.image)
+                    cell.contactEmail.text = user.email
+                    cell.title.text = curJob.title
+                    cell.jorDescription.text = curJob.description
+                    if curJob.payment {
+                        cell.paymentImageView.image = UIImage(named: "money")!
+                    } else {
+                        cell.paymentImageView.image = nil
+                    }
+                    
+                    cell.time.text = dateFormatter.string(from: curJob.modifyTime)
+                    
+                    //standing
+                    cell.standing.text = StandingMap.getString(standing: curJob.standing)
+                    
+                    //major
+                    var majorString = ""
+                    for major in curJob.majors {
+                        majorString += MajorMap.getString(major: major)
+                        majorString += "\n"
+                    }
+                    cell.majors.text = majorString
+                }
+            }
+        }
+        return cell
     }
 }

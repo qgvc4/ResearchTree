@@ -53,5 +53,7 @@ struct postJobRequest: Codable {
     var peopleId: String
     var description: String
     var majors: [Int]
+    var standing: Int
+    var payment: Bool
     var location: String
 }
