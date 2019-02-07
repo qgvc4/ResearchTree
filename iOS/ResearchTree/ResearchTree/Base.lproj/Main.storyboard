@@ -1071,10 +1071,10 @@
             </objects>
             <point key="canvasLocation" x="-719" y="92"/>
         </scene>
-        <!--View Controller-->
+        <!--Job View Controller-->
         <scene sceneID="qbd-dy-9Jl">
             <objects>
-                <viewController id="ijd-Uj-RTQ" sceneMemberID="viewController">
+                <viewController id="ijd-Uj-RTQ" customClass="JobViewController" customModule="ResearchTree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CRn-dH-tas">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
