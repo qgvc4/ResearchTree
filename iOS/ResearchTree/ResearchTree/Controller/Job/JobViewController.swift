@@ -137,7 +137,10 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.jorDescription.text = curJob.description
                     if curJob.payment {
                         cell.paymentImageView.image = UIImage(named: "money")!
+                    } else {
+                        cell.paymentImageView.image = nil
                     }
+                    
                     cell.time.text = dateFormatter.string(from: curJob.modifyTime)
                     
                     //standing
