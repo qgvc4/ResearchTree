@@ -13,6 +13,7 @@ class JobViewController: UIViewController {
     var jobs: [Job] = []
     var userToken: String?
     
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     lazy var refresher: UIRefreshControl = {

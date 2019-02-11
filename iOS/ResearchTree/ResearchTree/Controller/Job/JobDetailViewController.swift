@@ -10,9 +10,9 @@ import UIKit
 
 class JobDetailViewController: UIViewController {
 
+    @IBOutlet weak var paymentImageView: UIImageView!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var paidLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -22,6 +22,7 @@ class JobDetailViewController: UIViewController {
     
     var job: Job?
     var userToken: String?
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +31,14 @@ class JobDetailViewController: UIViewController {
             return
             
         }
-        
-        
-        func requestJobs() {
-            if (self.userToken == nil) {
-                return
-            }
-            
+    
         jobLabel.text = job!.title
         descriptionLabel.text = job!.description
         levelLabel.text = StandingMap.getString(standing: job!.standing)
         if job!.payment {
-            paidLabel.text = "Paid"
-            paidLabel.backgroundColor = UIColor.blue
-
+            paymentImageView.image = UIImage(named: "money")!
         } else {
-            paidLabel.text = "Unpaid"
-            paidLabel.backgroundColor = UIColor.red
+            paymentImageView.image = nil
         }
         
         let dateFormatter = DateFormatter()
@@ -60,28 +52,18 @@ class JobDetailViewController: UIViewController {
         }
         majorLabel.text = majorString
         
-        
-        
-            
-    /*    UserService.getUser(userToken: self.userToken!, userId: job!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
+        UserService.getUser(userToken: self.userToken!, userId: job!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
-              //  self.displayAlert(message: errorString!)
+                self.displayAlert(message: errorString!)
             } else {
                 if let user = user {
-              //      userName.text = "\(user.firstname) \(user.lastname)"
-                //    userImage.image = base64ToImage(base64: user.image)
-                    
+                    self.userName.text = "\(user.firstname) \(user.lastname)"
+                    self.emailLabel.text = "\(user.email)"
+                    self.userImage.image = self.base64ToImage(base64: user.image)
                 }
-                
             }
-            
-        }*/
-            
-            
-            
-            // Do any additional setup after loading the view.
-        
+        }
     }
         
         
@@ -123,4 +105,5 @@ class JobDetailViewController: UIViewController {
         
     }
 
-}
+
+
