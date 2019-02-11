@@ -31,6 +31,7 @@ class JobDetailViewController: UIViewController {
             
         }
         
+        
         func requestJobs() {
             if (self.userToken == nil) {
                 return
@@ -62,20 +63,22 @@ class JobDetailViewController: UIViewController {
         
         
             
-        UserService.getUser(userToken: self.userToken!, userId: job!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
+    /*    UserService.getUser(userToken: self.userToken!, userId: job!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
-                self.displayAlert(message: errorString!)
+              //  self.displayAlert(message: errorString!)
             } else {
                 if let user = user {
-                    self.userName.text = "\(user.firstname) \(user.lastname)"
-                    self.userImage.image = self.base64ToImage(base64: user.image)
+              //      userName.text = "\(user.firstname) \(user.lastname)"
+                //    userImage.image = base64ToImage(base64: user.image)
                     
                 }
                 
             }
             
-        }
+        }*/
+            
+            
             
             // Do any additional setup after loading the view.
         
@@ -120,3 +123,4 @@ class JobDetailViewController: UIViewController {
         
     }
 
+}

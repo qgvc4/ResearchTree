@@ -1227,7 +1227,7 @@
                                             <outlet property="time" destination="Vx7-JP-R6Q" id="DyI-83-lNm"/>
                                             <outlet property="title" destination="hiQ-9i-wTh" id="Rxv-WN-MR6"/>
                                             <outlet property="userImageView" destination="NId-d5-2tw" id="q86-dR-Mxb"/>
-                                            <segue destination="k63-MQ-YDv" kind="show" identifier="jobSegue" id="eT7-uM-1x0"/>
+                                            <segue destination="k63-MQ-YDv" kind="show" identifier="jobDetailSegue" id="eT7-uM-1x0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
