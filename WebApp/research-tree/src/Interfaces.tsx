@@ -1,0 +1,15 @@
+export interface IUser{
+    id: string,
+    email: string,
+    password: string,
+    token: string,
+    firstName: string,
+    lastName: string,
+    majors: number[],
+    image: File,
+    role: number,
+    standing: number,
+    location: string,
+    description: string,
+    resume: File,
+}
