@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A14BE00D22116C940029577F /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BE00C22116C940029577F /* JobDetailViewController.swift */; };
 		E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F032E21C3019500D4AE14 /* AppDelegate.swift */; };
 		E20F033421C3019500D4AE14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20F033221C3019500D4AE14 /* Main.storyboard */; };
 		E20F033621C3019700D4AE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20F033521C3019700D4AE14 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A14BE00C22116C940029577F /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		E20F032B21C3019500D4AE14 /* ResearchTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResearchTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20F032E21C3019500D4AE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E20F033321C3019500D4AE14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E2A5D576220A39BA008C0411 /* JobViewController.swift */,
+				A14BE00C22116C940029577F /* JobDetailViewController.swift */,
 				E2222859220B9B5C00053364 /* JobTableViewCell.swift */,
 				E222285B220CCA6F00053364 /* NewJobViewController.swift */,
 			);
@@ -295,6 +298,7 @@
 				E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */,
 				E23B513821D5941C00C87655 /* Major.swift in Sources */,
 				E222285C220CCA6F00053364 /* NewJobViewController.swift in Sources */,
+				A14BE00D22116C940029577F /* JobDetailViewController.swift in Sources */,
 				E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */,
 				E23B512F21D5926F00C87655 /* User.swift in Sources */,
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,
