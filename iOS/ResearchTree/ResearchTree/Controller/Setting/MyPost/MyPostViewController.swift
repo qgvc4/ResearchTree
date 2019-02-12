@@ -137,6 +137,20 @@ extension MyPostViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            FeedService.deleteFeed(userToken: self.userToken!, feedId: myPosts[indexPath.row].id, dispatchQueueForHandler: DispatchQueue.main) {
+                (feed, errorString) in
+                if errorString != nil {
+                    self.displayAlert(message: errorString!)
+                } else {
+                    self.myPosts.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .bottom)
+                }
+            }
+        }
+    }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "feedDetailSegue",
 //            let destination = segue.destination as? FeedDetailViewController,
