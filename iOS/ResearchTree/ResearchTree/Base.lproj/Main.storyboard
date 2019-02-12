@@ -1406,6 +1406,14 @@
                         <viewLayoutGuide key="safeArea" id="7Fb-CE-mJh"/>
                     </view>
                     <navigationItem key="navigationItem" id="MAf-QA-Ocg"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="1s7-2n-YAL" id="ua7-6n-Ver"/>
+                        <outlet property="userDescription" destination="7ao-jf-J75" id="eEZ-YV-6Fs"/>
+                        <outlet property="userEmail" destination="9oP-Te-KUR" id="tof-5l-zz1"/>
+                        <outlet property="userLocation" destination="gpR-Bh-3jt" id="rx4-XX-b1N"/>
+                        <outlet property="userMajors" destination="LYD-zG-MSA" id="WAY-o3-8Ml"/>
+                        <outlet property="username" destination="UeI-E9-iHd" id="o41-ml-kzv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rm4-Kc-zC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
