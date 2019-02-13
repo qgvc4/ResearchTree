@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyPostViewController: UIViewController {
+class MyPostsViewController: UIViewController {
 
     var myPosts: [Feed] = []
     var userToken: String?
@@ -108,7 +108,7 @@ class MyPostViewController: UIViewController {
     }
 }
 
-extension MyPostViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myPosts.count
     }
@@ -151,12 +151,13 @@ extension MyPostViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "feedDetailSegue",
-//            let destination = segue.destination as? FeedDetailViewController,
-//            let row = feedsTableView.indexPathForSelectedRow?.row {
-//            destination.userToken = self.userToken
-//            destination.feed = feeds[row]
-//            feedsTableView.deselectRow(at: feedsTableView.indexPathForSelectedRow!, animated: true)
-//        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "myPostDetailSegue",
+            let destination = segue.destination as? MyPostDetailViewController,
+            let row = myPostsTableView.indexPathForSelectedRow?.row {
+            destination.userToken = self.userToken
+            destination.myPost = myPosts[row]
+            myPostsTableView.deselectRow(at: myPostsTableView.indexPathForSelectedRow!, animated: true)
+        }
+    }
 }
