@@ -112,7 +112,7 @@ class NewJobViewController: UIViewController {
         }
         
         if let user = user {
-            var newJob = postJobRequest.init(title: title!, peopleId: user.id, description: description!, majors: [], standing: 0, payment: false, location: location!)
+            var newJob = PostPutJobRequest.init(title: title!, peopleId: user.id, description: description!, majors: [], standing: 0, payment: false, location: location!)
             
             // major
             if let major1 = major1 {
@@ -133,7 +133,7 @@ class NewJobViewController: UIViewController {
             // payment
             newJob.payment = paymentSwitch.isOn
             
-            JobService.postJob(userToken: user.token! ,postJobRequest: newJob, dispatchQueueForHandler: DispatchQueue.main) {
+            JobService.postJob(userToken: user.token!, postJobRequest: newJob, dispatchQueueForHandler: DispatchQueue.main) {
                 (job, errorString) in
                 if errorString != nil {
                     self.displayAlert(message: errorString!)

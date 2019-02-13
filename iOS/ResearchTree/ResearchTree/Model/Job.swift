@@ -48,7 +48,7 @@ struct Job {
     var location: String
 }
 
-struct postJobRequest: Codable {
+struct PostPutJobRequest: Codable {
     var title: String
     var peopleId: String
     var description: String
