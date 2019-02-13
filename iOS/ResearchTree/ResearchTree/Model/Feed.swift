@@ -41,7 +41,7 @@ struct Feed {
     var attachment: Data?
 }
 
-struct postFeedRequest: Codable {
+struct PostPutFeedRequest: Codable {
     var title: String
     var peopleId: String
     var description: String

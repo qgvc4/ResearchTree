@@ -22,6 +22,33 @@ class MyPostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        showPostDetail()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FeedService.getFeed(userToken: self.userToken!, feedId: myPost!.id, dispatchQueueForHandler: DispatchQueue.main) {
+            (feed, errorString) in
+            if errorString != nil {
+                self.displayAlert(message: errorString!)
+            } else {
+                if let feed = feed {
+                    self.myPost = feed.mapToFeed(rawFeed: feed)
+                    self.showPostDetail()
+                }
+            }
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editPostSegue",
+            let destination = segue.destination as? EditMyPostViewController {
+            destination.userToken = self.userToken
+            destination.myPost = self.myPost
+        }
+    }
+    
+    func showPostDetail() {
         if myPost == nil {
             return
         }

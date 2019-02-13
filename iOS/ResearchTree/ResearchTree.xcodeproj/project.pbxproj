@@ -27,6 +27,7 @@
 		E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B513921D59A0F00C87655 /* ApiConstant.swift */; };
 		E24F5037221373DE005BC370 /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F5036221373DE005BC370 /* MyPostsViewController.swift */; };
 		E24F50392213C36C005BC370 /* MyPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F50382213C36C005BC370 /* MyPostDetailViewController.swift */; };
+		E24F503B2213C9BD005BC370 /* EditMyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F503A2213C9BD005BC370 /* EditMyPostViewController.swift */; };
 		E2A5D572220A1F30008C0411 /* JobService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D571220A1F30008C0411 /* JobService.swift */; };
 		E2A5D574220A21BF008C0411 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D573220A21BF008C0411 /* Job.swift */; };
 		E2A5D577220A39BA008C0411 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D576220A39BA008C0411 /* JobViewController.swift */; };
@@ -63,6 +64,7 @@
 		E23B513921D59A0F00C87655 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
 		E24F5036221373DE005BC370 /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		E24F50382213C36C005BC370 /* MyPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDetailViewController.swift; sourceTree = "<group>"; };
+		E24F503A2213C9BD005BC370 /* EditMyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPostViewController.swift; sourceTree = "<group>"; };
 		E2A5D571220A1F30008C0411 /* JobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobService.swift; sourceTree = "<group>"; };
 		E2A5D573220A21BF008C0411 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		E2A5D576220A39BA008C0411 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				E24F5036221373DE005BC370 /* MyPostsViewController.swift */,
 				E24F50382213C36C005BC370 /* MyPostDetailViewController.swift */,
+				E24F503A2213C9BD005BC370 /* EditMyPostViewController.swift */,
 			);
 			path = MyPost;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				E2ECE9B622025214001A9E91 /* UserDetailViewController.swift in Sources */,
 				E2A5D574220A21BF008C0411 /* Job.swift in Sources */,
 				E2A5D572220A1F30008C0411 /* JobService.swift in Sources */,
+				E24F503B2213C9BD005BC370 /* EditMyPostViewController.swift in Sources */,
 				E24F50392213C36C005BC370 /* MyPostDetailViewController.swift in Sources */,
 				E2ECE9AD21FF7362001A9E91 /* SettingViewController.swift in Sources */,
 				E20F034421C3062600D4AE14 /* LoginViewController.swift in Sources */,

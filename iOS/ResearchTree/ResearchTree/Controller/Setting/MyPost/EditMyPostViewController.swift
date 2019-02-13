@@ -1,29 +1,30 @@
 //
-//  NewFeedViewController.swift
+//  EditMyPostViewController.swift
 //  ResearchTree
 //
-//  Created by Qiwen Guo on 1/9/19.
+//  Created by Qiwen Guo on 2/12/19.
 //  Copyright © 2019 Qiwen Guo. All rights reserved.
 //
 
 import UIKit
 
-class NewFeedViewController: UIViewController {
+class EditMyPostViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var myPost: Feed?
+    var userToken: String?
     
     let imagePicker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         scrollView.keyboardDismissMode = .onDrag
         
         activityIndicator.isHidden = true
@@ -31,11 +32,19 @@ class NewFeedViewController: UIViewController {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextView.layer.cornerRadius = 5
+
+        if let myPost = myPost {
+            titleTextField.text = myPost.title
+            descriptionTextView.text = myPost.description
+            if let data = myPost.attachment, let image = UIImage(data: data) {
+                postImageView.image = image
+            }
+        }
         
         imagePicker.delegate = self
     }
     
-    @IBAction func addPhotoButtonTapped(_ sender: Any) {
+    @IBAction func updatePhotoTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Add a picture", message: "How do you want to upload the picture?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { action in
@@ -48,12 +57,12 @@ class NewFeedViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction func saveTapped(_ sender: Any) {
         self.loading()
         
         let title = titleTextField.text
         let description = descriptionTextView.text
-        let feedImage = imageView.image
+        let postImage = postImageView.image
         
         if title == nil || title!.isEmpty {
             displayAlert(message: "title cannot be empty")
@@ -79,14 +88,14 @@ class NewFeedViewController: UIViewController {
             }
         }
         
-        if let user = user {
-            var newFeed = PostPutFeedRequest.init(title: title!, peopleId: user.id, description: description!, attachment: nil)
+        if let user = user, let myPost = myPost {
+            var updatedPost = PostPutFeedRequest.init(title: title!, peopleId: user.id, description: description!, attachment: nil)
             
-            if feedImage != nil {
-                newFeed.attachment = toBase64(image: feedImage!)
+            if postImage != nil {
+                updatedPost.attachment = toBase64(image: postImage!)
             }
             
-            FeedService.postFeed(userToken: user.token! ,postFeedRequest: newFeed, dispatchQueueForHandler: DispatchQueue.main) {
+            FeedService.updateFeed(userToken: user.token!, feedId: myPost.id, putFeedRequest: updatedPost, dispatchQueueForHandler: DispatchQueue.main) {
                 (feed, errorString) in
                 if errorString != nil {
                     self.displayAlert(message: errorString!)
@@ -97,7 +106,6 @@ class NewFeedViewController: UIViewController {
             }
             
         }
-        
     }
     
     func displayAlert(message: String) {
@@ -129,7 +137,7 @@ class NewFeedViewController: UIViewController {
     }
 }
 
-extension NewFeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditMyPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func takePhotoWithCamera() {
         if (!UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             let alertController = UIAlertController(title: "No Camera", message: "The device has no camera.", preferredStyle: .alert)
@@ -156,9 +164,9 @@ extension NewFeedViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            imageView.image = image
+            postImageView.image = image
         }
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
