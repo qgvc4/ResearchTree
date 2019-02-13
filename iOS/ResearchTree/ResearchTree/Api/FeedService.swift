@@ -31,7 +31,7 @@ class FeedService {
         
         let task = session.dataTask(with: urlRequest) { data, response, error in
             guard let data = data, error == nil else {
-                var errorString = "data not available for get feeds"
+                var errorString = "data not available for get feed"
                 if let error = error {
                     errorString = error.localizedDescription
                 }
