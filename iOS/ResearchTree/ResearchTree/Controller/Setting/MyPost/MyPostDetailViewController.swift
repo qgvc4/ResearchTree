@@ -1,40 +1,38 @@
 //
-//  FeedDetailViewController.swift
+//  MyPostDetailViewController.swift
 //  ResearchTree
 //
-//  Created by Qiwen Guo on 1/24/19.
+//  Created by Qiwen Guo on 2/12/19.
 //  Copyright © 2019 Qiwen Guo. All rights reserved.
 //
 
 import UIKit
 
-class FeedDetailViewController: UIViewController {
+class MyPostDetailViewController: UIViewController {
 
-
+    @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var postDescription: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
     
-    @IBOutlet weak var feedTitle: UILabel!
-    @IBOutlet weak var feedDescription: UILabel!
-    @IBOutlet weak var feedImage: UIImageView!
-    
-    var feed: Feed?
+    var myPost: Feed?
     var userToken: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if feed == nil {
+
+        if myPost == nil {
             return
         }
         
-        feedTitle.text = feed!.title
-        feedDescription.text = feed!.description
-        if let data = feed!.attachment, let image = UIImage(data: data) {
-            feedImage.image = image
+        postTitle.text = myPost!.title
+        postDescription.text = myPost!.description
+        if let data = myPost!.attachment, let image = UIImage(data: data) {
+            postImageView.image = image
         }
         
-        UserService.getUser(userToken: self.userToken!, userId: feed!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
+        UserService.getUser(userToken: self.userToken!, userId: myPost!.peopleId, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
             if errorString != nil {
                 self.displayAlert(message: errorString!)
@@ -45,10 +43,7 @@ class FeedDetailViewController: UIViewController {
                 }
             }
         }
-        
-        // Do any additional setup after loading the view.
     }
-    
     
     func displayAlert(message: String) {
         let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
