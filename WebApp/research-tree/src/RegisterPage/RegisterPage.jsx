@@ -1,8 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+//antd import
+import { Upload, Button, Icon } from 'antd';
+
 
 import { userActions } from '../_actions';
+
+
+//upload antd class
+class MyUpload extends React.Component {
+  state = {
+    fileList: [{
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'done',
+      url: 'http://www.baidu.com/xxx.png',
+    }],
+  }
+
+handleChange = (info) => {
+    let fileList = info.fileList;
+
+    // 1. Limit the number of uploaded files
+    // Only to show two recent uploaded files, and old ones will be replaced by the new
+    fileList = fileList.slice(-2);
+
+    // 2. Read from response and show file link
+    fileList = fileList.map((file) => {
+      if (file.response) {
+        // Component will show file.url as link
+        file.url = file.response.url;
+      }
+      return file;
+    });
+    
+     // 3. Filter successfully uploaded files according to response from server
+    fileList = fileList.filter((file) => {
+      if (file.response) {
+        return file.response.status === 'success';
+      }
+      return false;
+    });
+
+    this.setState({ fileList });
+  }
+render() {
+    const props = {
+      action: '//jsonplaceholder.typicode.com/posts/',
+      onChange: this.handleChange,
+      multiple: true,
+    };
+    return (
+      <Upload {...props} fileList={this.state.fileList}>
+        <Button>
+          <Icon type="upload" /> Upload
+        </Button>
+      </Upload>
+    );
+  }
+}
+//end of antd
+
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -13,7 +72,9 @@ class RegisterPage extends React.Component {
                 firstName: '',
                 lastName: '',
                 username: '',
-                password: ''
+                password: '',
+                eMail: '',
+                majorDegree: ''
             },
             submitted: false
         };
@@ -65,6 +126,28 @@ class RegisterPage extends React.Component {
                             <div className="help-block">Last Name is required</div>
                         }
                     </div>
+                    <div className={'form-group' + (submitted && !user.eMail ? ' has-error' : '')}>
+                        <label htmlFor="eMail">Email</label>
+                        <input type="text" className="form-control" name="eMail" value={user.eMail} onChange={this.handleChange} />
+                        {submitted && !user.eMail &&
+                            <div className="help-block">Email is required</div>
+                        }
+                    </div>
+                    <div className={'form-group' + (submitted && !user.majorDegree ? ' has-error' : '')}>
+                        <label htmlFor="majorDegree">Major</label>
+                        <input type="text" className="form-control" name="majorDegree" value={user.majorDegree} onChange={this.handleChange} />
+                        {submitted && !user.majorDegree &&
+                            <div className="help-block">Major is required</div>
+                        }
+                    </div>
+                    
+                    <div className={'form-group' + (submitted && !user.standing ? ' has-error' : '')}>
+                        <label htmlFor="standing">Standing</label>
+                        
+                    </div>
+                    
+                    <div className="form-group">
+                        
                     <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
                         <label htmlFor="username">Username</label>
                         <input type="text" className="form-control" name="username" value={user.username} onChange={this.handleChange} />
@@ -79,7 +162,12 @@ class RegisterPage extends React.Component {
                             <div className="help-block">Password is required</div>
                         }
                     </div>
-                    <div className="form-group">
+                    <div className={'form-group' + (submitted && !user.profilePicture ? ' has-error' : '')}>
+                        <label htmlFor="profilePicture">Profile picture</label>
+                        <MyUpload />
+
+                    </div>
+    
                         <button className="btn btn-primary">Register</button>
                         {registering && 
                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
@@ -91,6 +179,7 @@ class RegisterPage extends React.Component {
         );
     }
 }
+
 
 function mapStateToProps(state) {
     const { registering } = state.registration;
