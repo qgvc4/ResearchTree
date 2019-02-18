@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 //antd import
-import { Upload, Button, Icon } from 'antd';
+import { Upload, Button, Icon, Menu, Dropdown, Select } from 'antd';
+//import '..\..\node_modules\antd\dist\antd.css';
 
 
 import { userActions } from '../_actions';
@@ -13,7 +15,7 @@ class MyUpload extends React.Component {
   state = {
     fileList: [{
       uid: '-1',
-      name: 'xxx.png',
+      name: 'TestPlaceHolder.png',
       status: 'done',
       url: 'http://www.baidu.com/xxx.png',
     }],
@@ -60,6 +62,36 @@ render() {
     );
   }
 }
+//end of upload antd
+
+//dropdown buttons antd
+function handleMenuStandingClick(e) {
+  message.info('Click on left button.');
+  console.log('click left button', e);
+}
+
+function handleMenuRoleClick(e) {
+  message.info('Click on menu item.');
+  console.log('click', e);
+}
+
+const menuRole = (
+  <Menu onClick={handleMenuRoleClick}>
+    <Menu.Item key="1">Undergraduate</Menu.Item>
+    <Menu.Item key="2">Graduate</Menu.Item>
+    <Menu.Item key="3">Professor</Menu.Item>
+  </Menu>
+);
+
+const menuStanding = (
+  <Menu onClick={handleMenuStandingClick}>
+    <Menu.Item key="1">Senior</Menu.Item>
+    <Menu.Item key="2">Junior</Menu.Item>
+    <Menu.Item key="3">Sophmore</Menu.Item>
+    <Menu.Item key="4">Freshmen</Menu.Item>
+  </Menu>
+);
+
 //end of antd
 
 
@@ -74,7 +106,9 @@ class RegisterPage extends React.Component {
                 username: '',
                 password: '',
                 eMail: '',
-                majorDegree: ''
+                majorDegree: '',
+                standing: '',
+                role: ''
             },
             submitted: false
         };
@@ -143,9 +177,25 @@ class RegisterPage extends React.Component {
                     
                     <div className={'form-group' + (submitted && !user.standing ? ' has-error' : '')}>
                         <label htmlFor="standing">Standing</label>
-                        
+                          <div>
+                            <Dropdown overlay={menuStanding}>
+                              <Button>
+                                Standing <Icon type="down" />
+                              </Button>
+                            </Dropdown>
+                          </div>
                     </div>
                     
+                    <div className={'form-group' + (submitted && !user.role ? ' has-error' : '')}>
+                        <label htmlFor="role">Role</label>
+                          <div>
+                            <Dropdown overlay={menuRole}>
+                              <Button>
+                                Role <Icon type="down" />
+                              </Button>
+                            </Dropdown>
+                          </div>
+                    </div>
                     <div className="form-group">
                         
                     <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
@@ -162,6 +212,7 @@ class RegisterPage extends React.Component {
                             <div className="help-block">Password is required</div>
                         }
                     </div>
+                        
                     <div className={'form-group' + (submitted && !user.profilePicture ? ' has-error' : '')}>
                         <label htmlFor="profilePicture">Profile picture</label>
                         <MyUpload />
