@@ -29,6 +29,7 @@ class FeedViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.feedsTableView.rowHeight = 150
         self.feedsTableView.refreshControl = refresher
+       // self.feedsTableView.separatorColor = white
     }
     
     override func viewWillAppear(_ animated: Bool) {
