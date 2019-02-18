@@ -175,7 +175,6 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let indexPaths = usersCollectionView.indexPath(for: cell)
             destination.userToken = self.userToken
             destination.user = users[indexPaths!.row]
-            //feedsTableView.deselectRow(at: feedsTableView.indexPathForSelectedRow!, animated: true)
         }
     }
     

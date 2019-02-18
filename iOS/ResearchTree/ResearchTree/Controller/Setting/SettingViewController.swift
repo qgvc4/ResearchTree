@@ -16,8 +16,14 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userMajors: UILabel!
+    
+    @IBOutlet weak var myJobButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
         if (isUserLoggedIn) {
@@ -38,14 +44,20 @@ class SettingViewController: UIViewController {
                 }
                 userMajors.text = majorString
                 
+                if user.role == Role.Professor.rawValue {
+                    myJobButton.isEnabled = true
+                    myJobButton.isHidden = false
+                } else {
+                    myJobButton.isEnabled = false
+                    myJobButton.isHidden = true
+                }
+                
             } catch {
                 print("decode error")
                 return
             }
         }
     }
-    
-
     
     @IBAction func logoutTapped(_ sender: Any) {
         UserDefaults.standard.set(nil, forKey: "userData")
