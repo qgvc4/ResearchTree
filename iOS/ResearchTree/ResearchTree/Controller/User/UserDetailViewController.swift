@@ -21,6 +21,8 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var majors: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
         
+    @IBOutlet weak var jobsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,13 @@ class UserDetailViewController: UIViewController {
             }
             majors.text = majorString
             userImageView.image = base64ToImage(base64: user.image)
+            if user.role == Role.Professor.rawValue {
+                jobsButton.isEnabled = true
+                jobsButton.isHidden = false
+            } else {
+                jobsButton.isEnabled = false
+                jobsButton.isHidden = true
+            }
         }
         
     }
@@ -53,5 +62,17 @@ class UserDetailViewController: UIViewController {
         }
         
         return UIImage(named: "DefaultProfile")!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userPostsSegue" {
+            let destination = segue.destination as! UserPostsViewController
+            destination.userToken = self.userToken
+            destination.user = self.user
+        } else if segue.identifier == "userJobsSegue" {
+            let destination = segue.destination as! UserJobsViewController
+            destination.userToken = self.userToken
+            destination.user = self.user
+        }
     }
 }
