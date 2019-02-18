@@ -28,6 +28,9 @@
 		E24F5037221373DE005BC370 /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F5036221373DE005BC370 /* MyPostsViewController.swift */; };
 		E24F50392213C36C005BC370 /* MyPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F50382213C36C005BC370 /* MyPostDetailViewController.swift */; };
 		E24F503B2213C9BD005BC370 /* EditMyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F503A2213C9BD005BC370 /* EditMyPostViewController.swift */; };
+		E27B6EEB221B3B7500169272 /* MyJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27B6EEA221B3B7500169272 /* MyJobsViewController.swift */; };
+		E27B6EED221B430C00169272 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27B6EEC221B430C00169272 /* UserPostsViewController.swift */; };
+		E27B6EEF221B436500169272 /* UserJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27B6EEE221B436500169272 /* UserJobsViewController.swift */; };
 		E2A5D572220A1F30008C0411 /* JobService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D571220A1F30008C0411 /* JobService.swift */; };
 		E2A5D574220A21BF008C0411 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D573220A21BF008C0411 /* Job.swift */; };
 		E2A5D577220A39BA008C0411 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5D576220A39BA008C0411 /* JobViewController.swift */; };
@@ -65,6 +68,9 @@
 		E24F5036221373DE005BC370 /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		E24F50382213C36C005BC370 /* MyPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDetailViewController.swift; sourceTree = "<group>"; };
 		E24F503A2213C9BD005BC370 /* EditMyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPostViewController.swift; sourceTree = "<group>"; };
+		E27B6EEA221B3B7500169272 /* MyJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobsViewController.swift; sourceTree = "<group>"; };
+		E27B6EEC221B430C00169272 /* UserPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
+		E27B6EEE221B436500169272 /* UserJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJobsViewController.swift; sourceTree = "<group>"; };
 		E2A5D571220A1F30008C0411 /* JobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobService.swift; sourceTree = "<group>"; };
 		E2A5D573220A21BF008C0411 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		E2A5D576220A39BA008C0411 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +201,14 @@
 			path = MyPost;
 			sourceTree = "<group>";
 		};
+		E27B6EE9221B3B5800169272 /* MyJob */ = {
+			isa = PBXGroup;
+			children = (
+				E27B6EEA221B3B7500169272 /* MyJobsViewController.swift */,
+			);
+			path = MyJob;
+			sourceTree = "<group>";
+		};
 		E2A5D575220A3977008C0411 /* Job */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +223,7 @@
 		E2ECE9AB21FF7338001A9E91 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E27B6EE9221B3B5800169272 /* MyJob */,
 				E24F5035221373B3005BC370 /* MyPost */,
 				E2ECE9AC21FF7362001A9E91 /* SettingViewController.swift */,
 			);
@@ -221,6 +236,8 @@
 				E2ECE9B12200EB1D001A9E91 /* UserViewController.swift */,
 				E2ECE9B32200EB8A001A9E91 /* UserCollectionViewCell.swift */,
 				E2ECE9B522025214001A9E91 /* UserDetailViewController.swift */,
+				E27B6EEC221B430C00169272 /* UserPostsViewController.swift */,
+				E27B6EEE221B436500169272 /* UserJobsViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -299,6 +316,7 @@
 				E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */,
 				E2ECE9B22200EB1D001A9E91 /* UserViewController.swift in Sources */,
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
+				E27B6EEF221B436500169272 /* UserJobsViewController.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
 				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
 				E2A5D577220A39BA008C0411 /* JobViewController.swift in Sources */,
@@ -322,8 +340,10 @@
 				E2ECE9B42200EB8A001A9E91 /* UserCollectionViewCell.swift in Sources */,
 				E23B512F21D5926F00C87655 /* User.swift in Sources */,
 				E20F034E21C33A9500D4AE14 /* FeedViewController.swift in Sources */,
+				E27B6EED221B430C00169272 /* UserPostsViewController.swift in Sources */,
 				E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */,
 				E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */,
+				E27B6EEB221B3B7500169272 /* MyJobsViewController.swift in Sources */,
 				E2ECE9AA21FA24EA001A9E91 /* FeedDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
