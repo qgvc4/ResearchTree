@@ -22,15 +22,15 @@ class UserPostsViewController: UIViewController {
         return refreshControl
     }()
     
-    @IBOutlet weak var myPostsTableView: UITableView!
+    @IBOutlet weak var userPostsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
-        self.myPostsTableView.rowHeight = 150
-        self.myPostsTableView.refreshControl = refresher
+        self.userPostsTableView.rowHeight = 150
+        self.userPostsTableView.refreshControl = refresher
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +59,13 @@ class UserPostsViewController: UIViewController {
                             self.userPosts.append(feed.mapToFeed(rawFeed: feed))
                         }
                     }
+                    for post in self.userPosts {
+                        print(post.title)
+                    }
                     self.userPosts.sort(by: {
                         $0.modifyTime > $1.modifyTime
                     })
-                    self.myPostsTableView.reloadData()
+                    self.userPostsTableView.reloadData()
                     self.refresher.endRefreshing()
                 }
             }
@@ -124,28 +127,4 @@ extension UserPostsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            FeedService.deleteFeed(userToken: self.userToken!, feedId: userPosts[indexPath.row].id, dispatchQueueForHandler: DispatchQueue.main) {
-                (feed, errorString) in
-                if errorString != nil {
-                    self.displayAlert(message: errorString!)
-                } else {
-                    self.userPosts.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .bottom)
-                }
-            }
-        }
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "myPostDetailSegue",
-//            let destination = segue.destination as? MyPostDetailViewController,
-//            let row = myPostsTableView.indexPathForSelectedRow?.row {
-//            destination.userToken = self.userToken
-//            destination.myPost = userPosts[row]
-//            myPostsTableView.deselectRow(at: myPostsTableView.indexPathForSelectedRow!, animated: true)
-//        }
-//    }
 }

@@ -14,6 +14,8 @@ class TabViewController: UITabBarController {
         super.viewDidLoad()
 
         self.selectedIndex = 0
+        
+
         // Do any additional setup after loading the view.
     }
     
@@ -23,7 +25,11 @@ class TabViewController: UITabBarController {
         if (!isUserLoggedIn) {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         }
+        
+   
     }
+    
+    
 
     /*
     // MARK: - Navigation

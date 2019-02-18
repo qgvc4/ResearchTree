@@ -14,4 +14,15 @@ class UserCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var role: UILabel!
     @IBOutlet weak var majors: UILabel!
     
-}
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        userImageView.layer.borderWidth = 1
+        userImageView.layer.masksToBounds = false
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.height/2
+        userImageView.clipsToBounds = true
+        
+    
+    }}
