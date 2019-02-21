@@ -11,7 +11,10 @@ import UIKit
 class JobViewController: UIViewController {
 
     var jobs: [Job] = []
+    var filteredJobs: [Job] = []
     var userToken: String?
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -33,6 +36,11 @@ class JobViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.jobsTableView.rowHeight = 150
         self.jobsTableView.refreshControl = refresher
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        jobsTableView.tableHeaderView = searchController.searchBar
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,10 +80,15 @@ class JobViewController: UIViewController {
             } else {
                 if let jobs = jobs {
                     self.jobs.removeAll()
+                    self.filteredJobs.removeAll()
                     for job in jobs {
                         self.jobs.append(job.mapToJob(rawJob: job))
+                        self.filteredJobs.append(job.mapToJob(rawJob: job))
                     }
                     self.jobs.sort(by: {
+                        $0.modifyTime > $1.modifyTime
+                    })
+                    self.filteredJobs.sort(by: {
                         $0.modifyTime > $1.modifyTime
                     })
                     self.jobsTableView.reloadData()
@@ -114,7 +127,7 @@ class JobViewController: UIViewController {
 
 extension JobViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobs.count
+        return filteredJobs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,13 +138,16 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
         dateFormatter.timeZone = TimeZone(identifier: "CST")
         
         
-        UserService.getUser(userToken: self.userToken!, userId: jobs[indexPath.row].peopleId, dispatchQueueForHandler: DispatchQueue.main) {
+        UserService.getUser(userToken: self.userToken!, userId: filteredJobs[indexPath.row].peopleId, dispatchQueueForHandler: DispatchQueue.main) {
             (user, errorString) in
+            if indexPath.row > self.filteredJobs.count - 1 {
+                return
+            }
             if errorString != nil {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user, let cell = cell as? JobTableViewCell {
-                    let curJob = self.jobs[indexPath.row]
+                    let curJob = self.filteredJobs[indexPath.row]
                     cell.userImageView.image = self.base64ToImage(base64: user.image)
                     cell.contactEmail.text = user.email
                     cell.title.text = curJob.title
@@ -165,8 +181,36 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
             let destination = segue.destination as? JobDetailViewController,
             let row = jobsTableView.indexPathForSelectedRow?.row {
             destination.userToken = self.userToken
-            destination.job = jobs[row]
+            destination.job = filteredJobs[row]
             jobsTableView.deselectRow(at: jobsTableView.indexPathForSelectedRow!, animated: true)
         }
+    }
+}
+
+extension JobViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text! == "" {
+            filteredJobs = jobs
+        } else {
+            filteredJobs = jobs.filter {
+                if $0.title.lowercased().contains(searchController.searchBar.text!.lowercased())
+                    || $0.description.lowercased().contains(searchController.searchBar.text!.lowercased())
+                    || $0.location.lowercased().contains(searchController.searchBar.text!.lowercased())
+                    || self.toMajorsString(majors: $0.majors).lowercased().contains(searchController.searchBar.text!.lowercased()) {
+                    return true
+                }
+                return false
+            }
+        }
+        
+        self.jobsTableView.reloadData()
+    }
+    
+    func toMajorsString(majors: [Major]) -> String {
+        var majorsString = ""
+        for major in majors {
+            majorsString += MajorMap.getString(major: major)
+        }
+        return majorsString
     }
 }
