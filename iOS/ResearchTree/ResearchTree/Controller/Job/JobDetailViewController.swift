@@ -27,6 +27,12 @@ class JobDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userImage.layer.borderWidth = 1
+        userImage.layer.masksToBounds = false
+        userImage.layer.borderColor = UIColor.white.cgColor
+        userImage.layer.cornerRadius = userImage.frame.height/2
+        userImage.clipsToBounds = true
+        
         if job == nil {
             return
             
@@ -66,7 +72,8 @@ class JobDetailViewController: UIViewController {
         }
     }
         
-        
+
+    
     func displayAlert(message: String) {
         let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
             
@@ -91,6 +98,13 @@ class JobDetailViewController: UIViewController {
         }
         
         return UIImage(named: "DefaultProfile")!
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetailSegue2" {
+            let destination = segue.destination as! UserDetailViewController
+            destination.userToken = self.userToken
+            destination.user = self.user
+        }
     }
     
         /*
