@@ -24,6 +24,12 @@ class FeedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userImageView.layer.borderWidth = 1
+        userImageView.layer.masksToBounds = false
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.height/2
+        userImageView.clipsToBounds = true
+        
         if feed == nil {
             return
         }
