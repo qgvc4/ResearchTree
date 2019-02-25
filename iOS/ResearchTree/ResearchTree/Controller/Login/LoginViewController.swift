@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         loginButton.layer.shadowRadius = 0.0
         loginButton.layer.masksToBounds = false
         
-        cardView.layer.cornerRadius = cardView.frame.height/2
+        cardView.layer.cornerRadius = loginButton.frame.height/2
         cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         cardView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         cardView.layer.shadowOpacity = 1.0
