@@ -23,8 +23,8 @@ class UserDetailViewController: UIViewController {
         
     @IBOutlet weak var jobsButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
         if let user = user {
             username.text = "\(user.firstname) \(user.lastname)"

@@ -64,6 +64,7 @@ class JobDetailViewController: UIViewController {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user {
+                    self.user = user
                     self.userName.text = "\(user.firstname) \(user.lastname)"
                     self.emailLabel.text = "\(user.email)"
                     self.userImage.image = self.base64ToImage(base64: user.image)
