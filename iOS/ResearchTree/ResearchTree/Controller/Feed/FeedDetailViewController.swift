@@ -21,6 +21,7 @@ class FeedDetailViewController: UIViewController {
     
     var feed: Feed?
     var userToken: String?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,7 @@ class FeedDetailViewController: UIViewController {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user {
+                    self.user = user
                     self.username.text = "\(user.firstname) \(user.lastname)"
                     self.userImageView.image = self.base64ToImage(base64: user.image)
                 }
@@ -95,6 +97,7 @@ class FeedDetailViewController: UIViewController {
         if segue.identifier == "userDetailSegue3",
             let destination = segue.destination as? UserDetailViewController {
             destination.userToken = userToken
+            destination.user = user
         }
     }
 }
