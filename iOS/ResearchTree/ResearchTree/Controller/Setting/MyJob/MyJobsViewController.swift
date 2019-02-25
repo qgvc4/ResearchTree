@@ -169,4 +169,14 @@ extension MyJobsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "myJobsDetailSegue",
+            let destination = segue.destination as? MyJobsDetailViewController,
+            let row = jobsTableView.indexPathForSelectedRow?.row {
+            destination.userToken = self.userToken
+            destination.job = myJobs[row]
+            jobsTableView.deselectRow(at: jobsTableView.indexPathForSelectedRow!, animated: true)
+        }
+    }
 }

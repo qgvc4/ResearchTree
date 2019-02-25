@@ -21,6 +21,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var myJobButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

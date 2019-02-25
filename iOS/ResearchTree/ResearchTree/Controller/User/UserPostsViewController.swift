@@ -118,6 +118,7 @@ extension UserPostsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user, let cell = cell as? FeedTableViewCell {
+                    self.user = user
                     cell.user.text = "\(user.firstname) \(user.lastname)"
                     cell.userImage.image = self.base64ToImage(base64: user.image)
                     cell.title.text = self.userPosts[indexPath.row].title
@@ -126,5 +127,15 @@ extension UserPostsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedDetailSegue2",
+            let destination = segue.destination as? FeedDetailViewController,
+            let row = userPostsTableView.indexPathForSelectedRow?.row {
+            destination.userToken = self.userToken
+            destination.feed = userPosts[row]
+            userPostsTableView.deselectRow(at: userPostsTableView.indexPathForSelectedRow!, animated: true)
+        }
     }
 }
