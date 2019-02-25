@@ -31,6 +31,8 @@ class MyPostsViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.myPostsTableView.rowHeight = 150
         self.myPostsTableView.refreshControl = refresher
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -23,8 +23,8 @@ class UserDetailViewController: UIViewController {
         
     @IBOutlet weak var jobsButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
         if let user = user {
             username.text = "\(user.firstname) \(user.lastname)"
@@ -37,6 +37,11 @@ class UserDetailViewController: UIViewController {
                 majorString += "\n"
             }
             majors.text = majorString
+            userImageView.layer.borderWidth = 1
+            userImageView.layer.masksToBounds = false
+            userImageView.layer.borderColor = UIColor.white.cgColor
+            userImageView.layer.cornerRadius = userImageView.frame.height/2
+            userImageView.clipsToBounds = true
             userImageView.image = base64ToImage(base64: user.image)
             if user.role == Role.Professor.rawValue {
                 jobsButton.isEnabled = true

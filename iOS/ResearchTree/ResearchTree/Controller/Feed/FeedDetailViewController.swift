@@ -10,7 +10,8 @@ import UIKit
 
 class FeedDetailViewController: UIViewController {
 
-
+    @IBOutlet weak var cardView: UIView!
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var username: UILabel!
     
@@ -20,9 +21,24 @@ class FeedDetailViewController: UIViewController {
     
     var feed: Feed?
     var userToken: String?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userImageView.layer.borderWidth = 1
+        userImageView.layer.masksToBounds = false
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.height/2
+        userImageView.clipsToBounds = true
+        
+        cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        cardView.layer.shadowOpacity = 1.0
+        cardView.layer.shadowRadius = 0.0
+        cardView.layer.masksToBounds = false
+        
+        
         
         if feed == nil {
             return
@@ -40,6 +56,7 @@ class FeedDetailViewController: UIViewController {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user {
+                    self.user = user
                     self.username.text = "\(user.firstname) \(user.lastname)"
                     self.userImageView.image = self.base64ToImage(base64: user.image)
                 }
@@ -74,5 +91,13 @@ class FeedDetailViewController: UIViewController {
         }
         
         return UIImage(named: "DefaultProfile")!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetailSegue3",
+            let destination = segue.destination as? UserDetailViewController {
+            destination.userToken = userToken
+            destination.user = user
+        }
     }
 }

@@ -115,6 +115,7 @@ extension UserJobsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.displayAlert(message: errorString!)
             } else {
                 if let user = user, let cell = cell as? JobTableViewCell {
+                    self.user = user 
                     let curJob = self.userJobs[indexPath.row]
                     cell.userImageView.image = self.base64ToImage(base64: user.image)
                     cell.contactEmail.text = user.email
@@ -142,6 +143,17 @@ extension UserJobsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "jobDetailSegue2",
+            let destination = segue.destination as? JobDetailViewController,
+            let row = jobsTableView.indexPathForSelectedRow?.row {
+            destination.userToken = self.userToken
+            destination.job = userJobs[row]
+            jobsTableView.deselectRow(at: jobsTableView.indexPathForSelectedRow!, animated: true)
+        }
+        
     }
 }
 

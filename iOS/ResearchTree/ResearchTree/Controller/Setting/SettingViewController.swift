@@ -17,7 +17,11 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userMajors: UILabel!
     
+    @IBOutlet weak var postsButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var myJobButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,29 @@ class SettingViewController: UIViewController {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
         if (isUserLoggedIn) {
+            
+            profileImageView.layer.borderWidth = 5
+            profileImageView.layer.masksToBounds = true
+            profileImageView.layer.borderColor = UIColor.white.cgColor
+            profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+            profileImageView.clipsToBounds = true
+
+            
+            logoutButton.layer.cornerRadius = logoutButton.frame.height/2
+            logoutButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+            logoutButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            logoutButton.layer.shadowOpacity = 1.0
+            logoutButton.layer.shadowRadius = 0.0
+            logoutButton.layer.masksToBounds = false
+          
+            postsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+            postsButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            postsButton.layer.shadowOpacity = 1.0
+            postsButton.layer.shadowRadius = 0.0
+            postsButton.layer.masksToBounds = false
+            postsButton.layer.cornerRadius = 4.0
+ 
+            
             let userData = UserDefaults.standard.data(forKey: "userData")
             let decoder = JSONDecoder()
             do {
@@ -80,4 +107,6 @@ class SettingViewController: UIViewController {
         
         return UIImage(named: "DefaultProfile")!
     }
+    
+    
 }

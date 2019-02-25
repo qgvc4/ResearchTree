@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -20,8 +21,29 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        loginButton.layer.cornerRadius = 10
         signupButton.layer.cornerRadius = 10
+        signupButton.layer.cornerRadius = loginButton.frame.height/2
+        signupButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        signupButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        signupButton.layer.shadowOpacity = 1.0
+        signupButton.layer.shadowRadius = 0.0
+        signupButton.layer.masksToBounds = false
+        
+        loginButton.layer.cornerRadius = loginButton.frame.height/2
+        loginButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        loginButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        loginButton.layer.shadowOpacity = 1.0
+        loginButton.layer.shadowRadius = 0.0
+        loginButton.layer.masksToBounds = false
+        
+        cardView.layer.cornerRadius = loginButton.frame.height/2
+        cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        cardView.layer.shadowOpacity = 1.0
+        cardView.layer.shadowRadius = 0.0
+        cardView.layer.masksToBounds = false
+        
+        
         activityIndicator.isHidden = true
     }
     
