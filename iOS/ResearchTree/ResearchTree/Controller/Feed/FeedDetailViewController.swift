@@ -10,7 +10,8 @@ import UIKit
 
 class FeedDetailViewController: UIViewController {
 
-
+    @IBOutlet weak var cardView: UIView!
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var username: UILabel!
     
@@ -29,6 +30,14 @@ class FeedDetailViewController: UIViewController {
         userImageView.layer.borderColor = UIColor.white.cgColor
         userImageView.layer.cornerRadius = userImageView.frame.height/2
         userImageView.clipsToBounds = true
+        
+        cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        cardView.layer.shadowOpacity = 1.0
+        cardView.layer.shadowRadius = 0.0
+        cardView.layer.masksToBounds = false
+        
+        
         
         if feed == nil {
             return
