@@ -99,13 +99,7 @@ class JobDetailViewController: UIViewController {
         
         return UIImage(named: "DefaultProfile")!
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "userDetailSegue2" {
-            let destination = segue.destination as! UserDetailViewController
-            destination.userToken = self.userToken
-            destination.user = self.user
-        }
-    }
+
     
         /*
          // MARK: - Navigation
@@ -116,6 +110,14 @@ class JobDetailViewController: UIViewController {
          // Pass the selected object to the new view controller.
          }
          */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetailSegue2",
+            let destination = segue.destination as? UserDetailViewController {
+            destination.userToken = userToken
+            destination.user = user
+        }
+    }
         
     }
 

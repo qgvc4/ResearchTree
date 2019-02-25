@@ -90,4 +90,11 @@ class FeedDetailViewController: UIViewController {
         
         return UIImage(named: "DefaultProfile")!
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetailSegue3",
+            let destination = segue.destination as? UserDetailViewController {
+            destination.userToken = userToken
+        }
+    }
 }
