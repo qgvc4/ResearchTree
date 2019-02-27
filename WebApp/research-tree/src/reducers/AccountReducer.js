@@ -1,7 +1,8 @@
-import { LOG_IN, SIGN_UP } from '../actions/types';
+import { LOG_IN, SIGN_UP, ERROR } from '../actions/types';
 
 const initialState = {
-    user: {}
+    user: {},
+    error: null
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 user: action.payload
+            };
+        case ERROR:
+            return {
+                ...state,
+                error: action.payload
             };
         default:
             return state;

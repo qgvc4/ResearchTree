@@ -1,4 +1,4 @@
-import { LOG_IN, SIGN_UP } from './types';
+import { LOG_IN, SIGN_UP, ERROR } from './types';
 
 export const login = (userCredential) => dispatch => {
     fetch('https://researchtreeapis.azurewebsites.net/api/Account/login', {
@@ -13,5 +13,8 @@ export const login = (userCredential) => dispatch => {
         type:LOG_IN,
         payload: user
     }))
-    .catch(error => console.error('Error: ', error));
+    .catch(error => dispatch({
+        type: ERROR,
+        payload: "Email or Password is not matched"
+    }));
 };
