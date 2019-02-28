@@ -1,4 +1,4 @@
-import { LOG_IN, SIGN_UP, ERROR } from '../actions/types';
+import { LOG_IN, SIGN_UP, ACCOUNT_ERROR, CLEAR_ACCOUNT_ERROR } from '../actions/types';
 
 const initialState = {
     user: {},
@@ -12,7 +12,17 @@ export default function(state = initialState, action) {
                 ...state,
                 user: action.payload
             };
-        case ERROR:
+        case SIGN_UP:
+            return {
+                ...state,
+                user: action.payload
+            }
+        case CLEAR_ACCOUNT_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case ACCOUNT_ERROR:
             return {
                 ...state,
                 error: action.payload

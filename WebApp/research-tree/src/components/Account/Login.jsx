@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button, Alert } from 'antd'
-import '../style/login.css'
+import '../../style/Account/login.css'
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { login } from '../actions/AccountAction';
+import { login, clearError } from '../../actions/AccountAction';
 
 
 class Login extends Component {
@@ -12,15 +12,17 @@ class Login extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        this.props.clearError();
         this.props.login(values);
-        if (this.props.error != null) {
-          this.props.history.push('/Feed');
-        }
       }
     });
   }
 
   render() {
+    if (this.props.error == null && this.props.user.token != null) {
+      console.log(this.props.user)
+      this.props.history.push('/Feed');
+    }
     const { getFieldDecorator } = this.props.form;
 
     let error;
@@ -29,7 +31,7 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <div className="login-form">
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('Email', {
@@ -70,4 +72,4 @@ const mapStateToProps = state => ({
 
 const LoginForm = Form.create({ name: 'normal_login' })(Login);
 
-export default connect(mapStateToProps, { login })(LoginForm);
+export default connect(mapStateToProps, { login, clearError })(LoginForm);

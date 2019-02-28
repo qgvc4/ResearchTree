@@ -4,9 +4,9 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom';
 
-import LoginForm from './components/Login';
-import Feed from './components/Feed';
-import Signup from './components/Signup';
+import LoginForm from './components/Account/Login';
+import Feed from './components/Feed/Feed';
+import Signup from './components/Account/Signup';
 
 import store from './store';
 
