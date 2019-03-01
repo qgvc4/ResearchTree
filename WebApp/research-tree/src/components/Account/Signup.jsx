@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import {
   Form,
   Input,
-  Upload,
   Button,
   Select,
-  Icon
 } from 'antd';
+import ImageUploader from 'react-images-upload';
 
 import {Majors} from '../../declaration/major';
 import {Standings} from '../../declaration/standing';
@@ -19,7 +18,8 @@ const { Option } = Select;
 
 class Signup extends Component {
   state = {
-    confirmDirty: false
+    confirmDirty: false,
+    image: null
   };
 
   handleSubmit = (e) => {
@@ -29,6 +29,16 @@ class Signup extends Component {
         console.log('Received values of form: ', values);
         values["Role"] = values && values.Standing !== 2 ? 0 : 1;
         delete values["confirm"];
+        if (values["image"]) {
+          var reader  = new FileReader();
+          reader.addEventListener("load", function(){
+            var data = reader.result;
+            var res = data.split(",");
+            values["image"] = res[1];
+          }, false);
+          reader.readAsDataURL(values["image"]);
+        }
+        console.log('modified values of form: ', values);
         this.props.clearError();
         this.props.signup(values);
       }
@@ -79,9 +89,15 @@ class Signup extends Component {
     }
   }
 
+  normFile = (e) => {
+    if (Array.isArray(e) && e.length > 0) {
+      return e[0];
+    }
+    return null;
+  }
+
   render() {
     if (this.props.error == null && this.props.user.token != null) {
-      console.log(this.props.user)
       this.props.history.push('/Feed');
     }
 
@@ -111,127 +127,135 @@ class Signup extends Component {
     };
 
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Item
-          {...formItemLayout}
-          label="Email"
-        >
-          {getFieldDecorator('Email', {
-            rules: [{
-              type: 'email', message: 'The input is not valid E-mail!',
-            }, {
-              required: true, message: 'Please input your E-mail!',
-            }],
-          })(
-            <Input />
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Password"
-        >
-          {getFieldDecorator('Password', {
-            rules: [{
-              required: true, message: 'Please input your password!',
-            }, {
-              validator: this.validateToNextPassword,
-            }],
-          })(
-            <Input type="password" />
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Confirm Password"
-        >
-          {getFieldDecorator('confirm', {
-            rules: [{
-              required: true, message: 'Please confirm your password!',
-            }, {
-              validator: this.compareToFirstPassword,
-            }],
-          })(
-            <Input type="password" onBlur={this.handleConfirmBlur} />
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="FirstName"
-        >
-          {getFieldDecorator('FirstName', {
-            rules: [{ required: true, message: 'Please input your firstname!', whitespace: true }],
-          })(
-            <Input />
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="LastName"
-        >
-          {getFieldDecorator('LastName', {
-            rules: [{ required: true, message: 'Please input your lastname!', whitespace: true }],
-          })(
-            <Input />
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Standing"
-          hasFeedback
-        >
-          {getFieldDecorator('Standing', {
-            rules: [
-              { required: true, message: 'Please select your standing!' },
-            ],
-          })(
-            standingOptions()
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Majors"
-        >
-          {getFieldDecorator('Majors', {
-            rules: [
-              { required: true, message: 'Please select your majors!', type: 'array' },
-              { validator: this.validateMajorsMaxLimit }
-            ],
-          })(
-            majorOptions()
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Location"
-        >
-          {getFieldDecorator('Location', {
-            rules: [
-              { required: true, message: 'Please input your location!', whitespace: true },
-              { validator: this.validateLocationZipCode }
-            ],
-          })(
-            <Input placeholder="ZipCode"/>
-          )}
-        </Form.Item>
-        <Form.Item
-          {...formItemLayout}
-          label="Profile Image"
-        >
-          {getFieldDecorator('image', {
-            valuePropName: 'fileList',
-            getValueFromEvent: this.normFile,
-          })(
-            <Upload name="profile" listType="picture-card">
-              <Button>
-                <Icon type="upload" /> Click to upload
-              </Button>
-            </Upload>
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Sign Up</Button>
-        </Form.Item>
-      </Form>
+      <div>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Item
+            {...formItemLayout}
+            label="Email"
+          >
+            {getFieldDecorator('Email', {
+              rules: [{
+                type: 'email', message: 'The input is not valid E-mail!',
+              }, {
+                required: true, message: 'Please input your E-mail!',
+              }],
+            })(
+              <Input />
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Password"
+          >
+            {getFieldDecorator('Password', {
+              rules: [{
+                required: true, message: 'Please input your password!',
+              }, {
+                validator: this.validateToNextPassword,
+              }],
+            })(
+              <Input type="password" />
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Confirm Password"
+          >
+            {getFieldDecorator('confirm', {
+              rules: [{
+                required: true, message: 'Please confirm your password!',
+              }, {
+                validator: this.compareToFirstPassword,
+              }],
+            })(
+              <Input type="password" onBlur={this.handleConfirmBlur} />
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="FirstName"
+          >
+            {getFieldDecorator('FirstName', {
+              rules: [{ required: true, message: 'Please input your firstname!', whitespace: true }],
+            })(
+              <Input />
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="LastName"
+          >
+            {getFieldDecorator('LastName', {
+              rules: [{ required: true, message: 'Please input your lastname!', whitespace: true }],
+            })(
+              <Input />
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Standing"
+            hasFeedback
+          >
+            {getFieldDecorator('Standing', {
+              rules: [
+                { required: true, message: 'Please select your standing!' },
+              ],
+            })(
+              standingOptions()
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Majors"
+          >
+            {getFieldDecorator('Majors', {
+              rules: [
+                { required: true, message: 'Please select your majors!', type: 'array' },
+                { validator: this.validateMajorsMaxLimit }
+              ],
+            })(
+              majorOptions()
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Location"
+          >
+            {getFieldDecorator('Location', {
+              rules: [
+                { required: true, message: 'Please input your location!', whitespace: true },
+                { validator: this.validateLocationZipCode }
+              ],
+            })(
+              <Input placeholder="ZipCode"/>
+            )}
+          </Form.Item>
+          <Form.Item
+            {...formItemLayout}
+            label="Profile"
+          >
+            {getFieldDecorator('image', {
+              valuePropName: 'fileList',
+              getValueFromEvent: this.normFile,
+            })(
+              <ImageUploader
+                withIcon={true}
+                withLabel={true}
+                label='JPG|Size<1MB'
+                buttonText='Upload Profile'
+                onChange={this.onDrop}
+                imgExtension={['.jpg']}
+                maxFileSize={1048576}
+                withPreview={true}
+            />
+            )}
+          </Form.Item>
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">Sign Up</Button>
+          </Form.Item>
+        </Form>
+      </div>
+      
     );
   }
 }

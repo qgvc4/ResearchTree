@@ -4,7 +4,8 @@ export const login = (userCredential) => dispatch => {
     fetch('https://researchtreeapis.azurewebsites.net/api/Account/login', {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'Accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(userCredential)
     })
@@ -20,10 +21,13 @@ export const login = (userCredential) => dispatch => {
 };
 
 export const signup = (user) => dispatch => {
+    // console.log(user)
+    // console.log(JSON.stringify(user))
+    delete user["image"];
     fetch('https://researchtreeapis.azurewebsites.net/api/Account', {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(user)
     })
