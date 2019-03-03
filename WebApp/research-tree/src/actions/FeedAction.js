@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, POST_ERROR, CLEAR_POST_ERROR } from './types';
+import { FETCH_POSTS, NEW_POST, POST_ERROR, CLEAR_POST_ERROR, POST_START, POST_COMPLETE } from './types';
 import { API_BASE } from './ApiConstant';
 
 export const fetchPosts = (token) => dispatch => {
@@ -22,6 +22,7 @@ export const fetchPosts = (token) => dispatch => {
 };
 
 export const newPost = (token, post) => dispatch => {
+    postStart()
     fetch(`${API_BASE}/Feeds`, {
         method: 'POST',
         headers: {
@@ -36,6 +37,7 @@ export const newPost = (token, post) => dispatch => {
         type: NEW_POST,
         payload: newPost
     }))
+    .then(postComplete)
     .catch(error => dispatch({
         type: POST_ERROR,
         payload: "Error in posting new feed"
@@ -48,3 +50,19 @@ export const clearError = () => dispatch => {
         payload: null
     });
 }
+
+export const postStart = () => dispatch => {
+    dispatch({
+        type: POST_START,
+        payload: true
+    });
+}
+
+export const postComplete = () => dispatch => {
+    dispatch({
+        type: POST_COMPLETE,
+        payload: false
+    });
+}
+
+

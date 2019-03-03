@@ -4,25 +4,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {fetchPosts} from '../../actions/FeedAction'
+import FeedCard from './FeedCard';
 
 class FeedList extends Component {
     componentWillMount() {
         this.props.fetchPosts(this.props.token);
     }
-  render() {
-      const feedItems = this.props.feeds.map(feed => (
-        <div key={feed.id}>
-            <h3>{feed.title}</h3>
-            <p>{feed.description}</p>
+
+    render() {
+        this.props.feeds.sort(function(feed1,feed2){
+            return new Date(feed2.modifyTime) - new Date(feed1.modifyTime);
+        });
+        const feedItems = this.props.feeds.map(feed => (
+            <div key={feed.id}>
+                <FeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
+            </div>
+        ));
+        return (
+        <div>
+            <h1>Feeds</h1>
+            {feedItems}
         </div>
-      ));
-    return (
-      <div>
-        <h1>Feeds</h1>
-        {feedItems}
-      </div>
-    )
-  }
+        )
+    }
 }
 
 FeedList.propTypes = {
