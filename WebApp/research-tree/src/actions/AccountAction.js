@@ -1,7 +1,8 @@
 import { LOG_IN, SIGN_UP, ACCOUNT_ERROR, CLEAR_ACCOUNT_ERROR } from './types';
+import { API_BASE } from './ApiConstant';
 
 export const login = (userCredential) => dispatch => {
-    fetch('https://researchtreeapis.azurewebsites.net/api/Account/login', {
+    fetch(`${API_BASE}/Account/login`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -24,7 +25,7 @@ export const signup = (user) => dispatch => {
     // console.log(user)
     // console.log(JSON.stringify(user))
     delete user["image"];
-    fetch('https://researchtreeapis.azurewebsites.net/api/Account', {
+    fetch(`${API_BASE}/Account`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+import FeedList from './FeedList'
+import NewFeedForm from './NewFeedForm';
+
 class Feed extends Component {
     render() {
         return (
@@ -18,7 +21,10 @@ class Feed extends Component {
 
 function renderFeed() {
     return(
-        <div>Feed</div>
+        <div>
+            <NewFeedForm />
+            <FeedList />
+        </div>
     );
 }
 
