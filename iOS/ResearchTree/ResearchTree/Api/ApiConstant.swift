@@ -9,5 +9,5 @@
 import Foundation
 
 class ApiConstant {
-    static let baseUrl = "https://researchtreeapis.azurewebsites.net/api/"
+    static let baseUrl = "https://researchtreeapi2.azurewebsites.net/api/"
 }
