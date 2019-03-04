@@ -34,16 +34,16 @@ class PostFeed extends Component {
           <Form onSubmit={this.handleSubmit} className="post-feed">
             <Form.Item>
               {getFieldDecorator('Title', {
-                rules: [{ required: true, message: 'Please input your username!' }],
+                rules: [{ required: true, message: 'Please input a title!' }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                <Input prefix={<Icon type="team" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Title" />
               )}
             </Form.Item>
             <Form.Item>
               {getFieldDecorator('Description', {
                 rules: [{ required: true, message: 'Please input your Description!' }],
               })(
-                <TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 6 }} />
+                <TextArea placeholder="Description" autosize={{ minRows: 2, maxRows: 6 }} />
                 )}
             </Form.Item>
             <Form.Item>
