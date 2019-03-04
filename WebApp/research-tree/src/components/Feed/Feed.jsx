@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import FeedList from './FeedList'
 import PostFeed from './PostFeed';
+import NavbarFeed from './Navbar';
 
 class Feed extends Component {
     render() {
@@ -21,7 +22,9 @@ class Feed extends Component {
 
 function renderFeed() {
     return(
+        //try layout
         <div>
+            <NavbarFeed />
             <PostFeed />
             <FeedList />
         </div>
