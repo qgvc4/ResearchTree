@@ -9,7 +9,7 @@ import PostFeed from './PostFeed';
 import NavbarFeed from './Navbar';
 
 const {
-    Content, Sider,
+    Content, Sider, Header,
   } = Layout;
 
 class Feed extends Component {
@@ -31,13 +31,16 @@ function renderFeed() {
         //try layout
         <div>
             <Layout>
-                <Sider>
-                    <NavbarFeed />
-                </Sider>
-                <Content>
-                    <PostFeed />
-                    <FeedList />
-                </Content>
+            <Header style={{background:'#c1e791'}}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
+                <Layout>
+                    <Sider>
+                        <NavbarFeed />
+                    </Sider>
+                    <Content>
+                        <PostFeed />
+                        <FeedList />
+                    </Content>
+                </Layout>
             </Layout>
         </div>
     );

@@ -18,14 +18,12 @@ class NavbarFeed extends Component {
             <Layout>
                 <Sider style={{
                   overflow: 'auto', height: '100%', position: 'fixed', left: 0,
-                      background: '#c1e791'
+                      background: '#74997a'
                 }}
                 >
                   <div className="logo" />
                     
-                    <h2>ResearchTree</h2>
-                    
-                  <Menu theme="" mode="inline" defaultSelectedKeys={['1']} style={{ background: '#c1e791' }}>
+                  <Menu theme="" mode="inline" defaultSelectedKeys={['1']} style={{ background: '#74997a', color: 'white' }}>
                     <Menu.Item key="1">
                       <Icon type="user" />
                       <span className="nav-text">Feed</span>
