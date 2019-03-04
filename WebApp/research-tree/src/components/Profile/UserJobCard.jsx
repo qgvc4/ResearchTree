@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Card } from 'antd';
-
+import { Card, Button, Modal } from 'antd';
+import EditJob from './EditJob';
 
 export default class UserJobCard extends Component {
 
@@ -11,6 +11,9 @@ export default class UserJobCard extends Component {
     }
 
     render() {
+        const style = {
+            float: 'right'
+        };
         return (
         <div>
             <Card
@@ -19,14 +22,14 @@ export default class UserJobCard extends Component {
             >
                 {this.props.description}
 
-                <Button onClick={this.editJobOnClick}>Edit Job</Button>
+                <Button style={style} onClick={this.editJobOnClick}>Edit Job</Button>
                     <Modal
                         title="Edit Job"
                         visible={this.state.editJobModalVisible}
                         onOk={this.handleOk}
                         onCancel={this.handleJobCancel}
                         > 
-                        Edit Job Modal
+                        <EditJob />
                     </Modal>
             </Card>
         </div>

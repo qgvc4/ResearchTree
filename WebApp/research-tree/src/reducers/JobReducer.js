@@ -1,7 +1,7 @@
 import { FETCH_JOBS, NEW_JOB, JOB_ERROR, CLEAR_JOB_ERROR, JOB_START, JOB_COMPLETE } from '../actions/types';
 
 const initialState = {
-    feeds: [],
+    jobs: [],
     newJob: {},
     isLoading: false,
     error: null
@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
         case FETCH_JOBS:
             return {
                 ...state,
-                feeds: action.payload
+                jobs: action.payload
             };
         case NEW_JOB:
             return {

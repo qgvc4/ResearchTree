@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {fetchJobs} from '../../actions/JobAction'
-import UserJobCard from './UserFeedCard';
+import {fetchJobs} from '../../actions/JobAction';
+import UserJobCard from './UserJobCard';
 
 class UserJobList extends Component {
     componentWillMount() {
@@ -12,6 +12,7 @@ class UserJobList extends Component {
     }
 
     render() {
+        console.log(this.props.jobs);
         if( this.props.jobs !== undefined){
 
         this.props.jobs.sort(function(job1,job2){
@@ -19,7 +20,7 @@ class UserJobList extends Component {
         });
 
         let jobs = this.props.jobs.filter( job => job.peopleId === this.props.id);
-        
+
         const jobItems = jobs.map(job => (
             <div key={job.id}>
                 <UserJobCard title={job.title} description={job.description} date={job.modifyTime}/>
@@ -32,7 +33,7 @@ class UserJobList extends Component {
         </div>
         );
         }
-        return(<div><h1>Jobs</h1></div>);
+        return(<div><h1>Error fetching Jobs</h1></div>);
     }
 }
 

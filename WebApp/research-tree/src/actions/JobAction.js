@@ -44,6 +44,29 @@ export const newJob = (token, job) => dispatch => {
     }));
 };
 
+export const editJob = (token, id, job) => dispatch => {
+    jobStart()
+    fetch(`${API_BASE}/Jobs/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(job)
+    })
+    .then(res => res.json())
+    .then(editJob => dispatch({
+        type: EDIT_JOB,
+        payload: editJob
+    }))
+    .then(jobComplete)
+    .catch(error => dispatch({
+        type: JOB_ERROR,
+        payload: "Error in editing job"
+    }));
+}
+
 export const clearError = () => dispatch => {
     dispatch({
         type: CLEAR_JOB_ERROR,

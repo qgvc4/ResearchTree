@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Card, Button, Modal } from 'antd';
+import EditPost from './EditPost';
 
 
 export default class UserFeedCard extends Component {
@@ -9,14 +10,11 @@ export default class UserFeedCard extends Component {
         super();
         this.state = {editPostModalVisible: false};
     }
-
-
-
+    
     render() {
         const style = {
             float: 'right'
         };
-
 
         return (
         <div>
@@ -32,7 +30,7 @@ export default class UserFeedCard extends Component {
                         onOk={this.handleOk}
                         onCancel={this.handlePostCancel}
                         > 
-                        Edit post Modal
+                        <EditPost />
                     </Modal>
             </Card>
         </div>

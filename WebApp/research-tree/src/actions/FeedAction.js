@@ -44,6 +44,29 @@ export const newPost = (token, post) => dispatch => {
     }));
 };
 
+export const editPost = (token, id ,post) => dispatch => {
+    postStart()
+    fetch(`${API_BASE}/Feeds/${id}` , {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(post)
+    })
+    .then(res => res.json())
+    .then(editPost => dispatch({
+        type: EDIT_POST,
+        payload: editPost
+    }))
+    .then(postComplete)
+    .catch(error => dispatch({
+        type: POST_ERROR,
+        payload: "Error in editing feed"
+    }));
+}
+
 export const clearError = () => dispatch => {
     dispatch({
         type: CLEAR_POST_ERROR,
