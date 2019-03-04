@@ -31,12 +31,12 @@ function renderFeed() {
         //try layout
         <div>
             <Layout>
-            <Header style={{background:'#c1e791'}}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
+            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 1, width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
                 <Layout>
-                    <Sider>
+                    <Sider style={{marginTop: '5%'}}>
                         <NavbarFeed />
                     </Sider>
-                    <Content>
+                    <Content style={{marginTop: '6%'}}>
                         <PostFeed />
                         <FeedList />
                     </Content>
