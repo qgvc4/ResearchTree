@@ -32,10 +32,10 @@ class Login extends Component {
     }
 
     return (
-      <Layout className="layout">
+      <Layout className="layout" style={{background: '#fff'}}>
         <Content style={{ padding: '0 25%' }}>
           <div className="login-container" style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
-            <h2>ResearchTree</h2>
+            <h1 style={{color: '#c1e791'}}>ResearchTree</h1>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
                 {getFieldDecorator('Email', {
