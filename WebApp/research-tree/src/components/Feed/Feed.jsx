@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+import { Layout } from 'antd';
+
 import FeedList from './FeedList'
 import PostFeed from './PostFeed';
 import NavbarFeed from './Navbar';
+
+const {
+    Content, Sider,
+  } = Layout;
 
 class Feed extends Component {
     render() {
@@ -24,9 +30,15 @@ function renderFeed() {
     return(
         //try layout
         <div>
-            <NavbarFeed />
-            <PostFeed />
-            <FeedList />
+            <Layout>
+                <Sider>
+                    <NavbarFeed />
+                </Sider>
+                <Content>
+                    <PostFeed />
+                    <FeedList />
+                </Content>
+            </Layout>
         </div>
     );
 }
