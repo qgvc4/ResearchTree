@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Alert } from 'antd'
+import { Layout, Form, Icon, Input, Button, Alert } from 'antd'
 import '../../style/Account/login.css'
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login, clearError } from '../../actions/AccountAction';
 
+const { Content } = Layout;
 
 class Login extends Component {
   handleSubmit = (e) => {
@@ -31,32 +32,37 @@ class Login extends Component {
     }
 
     return (
-      <div className="login-form">
-        <Form onSubmit={this.handleSubmit} className="login-form">
-          <Form.Item>
-            {getFieldDecorator('Email', {
-              rules: [{ required: true, message: 'Please input your email!' }],
-            })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator('Password', {
-              rules: [{ required: true, message: 'Please input your Password!' }],
-            })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-            )}
-          </Form.Item>
-          <Form.Item>          
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
-            </Button>
-            <br/>
-            Or <a href="/Signup">Sign Up now!</a>
-          </Form.Item>
-        </Form>
-        {error}
-      </div>
+      <Layout className="layout" style={{background: '#fff'}}>
+        <Content style={{ padding: '0 25%' }}>
+          <div className="login-container" style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
+            <h1 style={{color: '#c1e791'}}>ResearchTree</h1>
+            <Form onSubmit={this.handleSubmit} className="login-form">
+              <Form.Item>
+                {getFieldDecorator('Email', {
+                  rules: [{ required: true, message: 'Please input your email!' }],
+                })(
+                  <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('Password', {
+                  rules: [{ required: true, message: 'Please input your Password!' }],
+                })(
+                  <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                )}
+              </Form.Item>
+              <Form.Item>          
+                <Button type="primary" htmlType="submit" className="login-form-button">
+                  Log in
+                </Button>
+                <br/>
+                Or <a href="/Signup">Sign Up now!</a>
+              </Form.Item>
+            </Form>
+            {error}
+          </div>
+        </Content>
+      </Layout>
     );
   }
 }
