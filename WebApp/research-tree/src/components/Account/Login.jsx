@@ -21,7 +21,7 @@ class Login extends Component {
   render() {
     if (this.props.error == null && this.props.user.token != null) {
       console.log(this.props.user)
-      this.props.history.push('/Feed');
+      this.props.history.push('/Profile');
     }
     const { getFieldDecorator } = this.props.form;
 

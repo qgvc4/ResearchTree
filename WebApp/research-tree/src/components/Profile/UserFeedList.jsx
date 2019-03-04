@@ -4,41 +4,51 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {fetchPosts} from '../../actions/FeedAction'
-import FeedCard from './FeedCard';
+import UserFeedCard from './UserFeedCard';
 
-class FeedList extends Component {
+class UserFeedList extends Component {
     componentWillMount() {
         this.props.fetchPosts(this.props.token);
     }
 
     render() {
+        if( this.props.feeds !== undefined){
+
         this.props.feeds.sort(function(feed1,feed2){
             return new Date(feed2.modifyTime) - new Date(feed1.modifyTime);
         });
-        console.log(this.props.feeds);
+
+        let feeds = this.props.feeds.filter( feed => feed.peopleId === this.props.id);
         
-        const feedItems = this.props.feeds.map(feed => (
+        const feedItems = feeds.map(feed => (
             <div key={feed.id}>
-                <FeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
+                <UserFeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
             </div>
         ));
         return (
         <div>
-            <h1>Feeds</h1>
+            <h1>My Posts</h1>
             {feedItems}
         </div>
-        )
+        );
+        }
+        return (
+            <div>
+                <h1>My Posts</h1>
+            </div>
+            );
     }
 }
 
-FeedList.propTypes = {
+UserFeedList.propTypes = {
     fetchPosts: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     token: state.user.user.token,
+    id: state.user.user.id,
     feeds: state.feed.feeds,
     error: state.feed.error
   })
 
-export default connect(mapStateToProps, { fetchPosts })(FeedList);
+export default connect(mapStateToProps, { fetchPosts })(UserFeedList);
