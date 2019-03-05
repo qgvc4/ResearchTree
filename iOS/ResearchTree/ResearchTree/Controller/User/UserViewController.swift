@@ -159,7 +159,7 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath)
         if let cell = cell as? UserCollectionViewCell {
-            let user = users[indexPath.row]
+            let user = filteredUser[indexPath.row]
             cell.userName.text = "\(user.firstname) \(user.lastname)"
             cell.userImageView.image = self.base64ToImage(base64: user.image)
             cell.role.text = StandingMap.getString(standing: Standing(rawValue: user.standing)!)
