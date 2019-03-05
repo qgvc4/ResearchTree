@@ -11,7 +11,11 @@ import UIKit
 class UserViewController: UIViewController {
 
     var userToken: String?
+    var filteredUser: [User] = []
     var users: [User] = []
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchActive : Bool = false
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,6 +32,21 @@ class UserViewController: UIViewController {
 
         self.usersCollectionView.refreshControl = refresher
         // Do any additional setup after loading the view.
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for Users"
+        searchController.searchBar.sizeToFit()
+        
+        searchController.searchBar.becomeFirstResponder()
+        
+        self.navigationItem.titleView = searchController.searchBar
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,8 +81,10 @@ class UserViewController: UIViewController {
             } else {
                 if let users = users {
                     self.users.removeAll()
+                    self.filteredUser.removeAll()
                     for user in users {
                         self.users.append(user)
+                        self.filteredUser.append(user)
                     }
                     
                     self.refresher.endRefreshing()
@@ -124,13 +145,21 @@ class UserViewController: UIViewController {
 
 extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        if searchActive{
+            
+            return filteredUser.count
+            
+        }
+        else{
+            return users.count
+
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath)
         if let cell = cell as? UserCollectionViewCell {
-            let user = users[indexPath.row]
+            let user = filteredUser[indexPath.row]
             cell.userName.text = "\(user.firstname) \(user.lastname)"
             cell.userImageView.image = self.base64ToImage(base64: user.image)
             cell.role.text = StandingMap.getString(standing: Standing(rawValue: user.standing)!)
@@ -175,7 +204,62 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let indexPaths = usersCollectionView.indexPath(for: cell)
             destination.userToken = self.userToken
             destination.user = users[indexPaths!.row]
+            destination.user = filteredUser[indexPaths!.row]
         }
     }
     
+}
+
+extension UserViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text! == "" {
+            filteredUser = users
+        } else {
+            filteredUser = users.filter {
+                if $0.firstname.lowercased().contains(searchController.searchBar.text!.lowercased())
+                 //   || $0.lastname.lowercased().contains(searchController.searchBar.text!.lowercased())
+                {
+                    return true
+                }
+                return false
+            }
+        }
+        
+        self.usersCollectionView.reloadData()
+    }
+    
+
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        self.usersCollectionView.reloadData()
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.usersCollectionView.reloadData()
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        if !searchActive {
+            searchActive = true
+            usersCollectionView.reloadData()
+        }
+        
+        self.searchController.searchBar.resignFirstResponder()
+    }
+    
+    func toMajorsString(majors: [Major]) -> String {
+        var majorsString = ""
+        for major in majors {
+            majorsString += MajorMap.getString(major: major)
+        }
+        return majorsString
+    }
 }
