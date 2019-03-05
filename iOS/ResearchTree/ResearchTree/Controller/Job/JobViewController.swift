@@ -42,6 +42,8 @@ class JobViewController: UIViewController {
         definesPresentationContext = true
         //jobsTableView.tableHeaderView = searchController.searchBar
         self.navigationItem.titleView = searchController.searchBar
+        searchController.searchBar.placeholder = "Search for Jobs"
+        searchController.searchBar.sizeToFit()
 
     }
 
