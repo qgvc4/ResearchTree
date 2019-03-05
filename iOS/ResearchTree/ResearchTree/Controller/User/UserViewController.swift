@@ -158,6 +158,9 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath)
+        if indexPath.row > self.filteredUser.count - 1 {
+            return cell
+        }
         if let cell = cell as? UserCollectionViewCell {
             let user = filteredUser[indexPath.row]
             cell.userName.text = "\(user.firstname) \(user.lastname)"
