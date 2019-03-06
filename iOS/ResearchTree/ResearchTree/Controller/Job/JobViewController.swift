@@ -40,7 +40,11 @@ class JobViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        jobsTableView.tableHeaderView = searchController.searchBar
+        //jobsTableView.tableHeaderView = searchController.searchBar
+        self.navigationItem.titleView = searchController.searchBar
+        searchController.searchBar.placeholder = "Search for Jobs"
+        searchController.searchBar.sizeToFit()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
