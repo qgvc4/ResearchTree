@@ -1,55 +1,68 @@
 import React, { Component } from 'react'
 
 import {
-    Form, Icon, Input, Button,
+    Form, Input, Button,
 } from 'antd';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {editJob} from '../../actions/JobAction'
+import {editPost, fetchPosts} from '../../actions/FeedAction';
 
 // change this
 import '../../style/Feed/postFeed.css';
 
 const { TextArea } = Input;
 
-class EditJob extends Component {
+class EditPost extends Component {
+
+    componentWillMount() {
+      this.props.fetchPosts(this.props.user.token);
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
                 values["PeopleId"] = `${this.props.user.id}`;
-                this.props.newPost(this.props.user.token, values);
+                this.props.editPost(this.props.user.token, this.props.postId, values);
             }
         });
     }
-    
+
     render() {
-        // if (!this.props.isLoading) {
-        //     this.props.fetchPosts(this.props.user.token)
-        // } 
         const { getFieldDecorator } = this.props.form;
+        const post = this.props.feeds.filter( post => post.id === this.props.postId);
+        const description = post[0].description;
+        const title = post[0].title;
+
+        console.log(post);
         return (
           <Form onSubmit={this.handleSubmit} className="post-feed">
-            <Form.Item>
+            <Form.Item
+            label="Title"
+            >
               {getFieldDecorator('Title', {
-                rules: [{ required: true, message: 'Please the title of your job!' }],
+                rules: [{ required: true, message: 'Please the title of your post!' }],
+                initialValue: title
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                <Input placeholder="Title"  />
               )}
             </Form.Item>
-            <Form.Item>
+            <Form.Item
+              label="Description"
+            >
               {getFieldDecorator('Description', {
                 rules: [{ required: true, message: 'Please input your Description!' }],
+                initialValue: description
               })(
-                <TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 6 }} />
+                <TextArea placeholder="" autosize={{ minRows: 2, maxRows: 6 }}  />
                 )}
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit" className="login-form-button">
-                Post
+                Submit
               </Button>
             </Form.Item>
           </Form>
@@ -57,16 +70,17 @@ class EditJob extends Component {
     }
 }
 
-EditJob.propTypes = {
-    editJob: PropTypes.func.isRequired,
-    // fetchPosts: PropTypes.func.isRequired
+EditPost.propTypes = {
+    editPost: PropTypes.func.isRequired,
+    fetchPosts: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     user: state.user.user,
-    error: state.job.error
+    error: state.feed.error,
+    feeds: state.feed.feeds
 })
     
-const EditJobForm = Form.create({ name: 'editjob_form' })(EditJob);
+const EditPostForm = Form.create({ name: 'editpost_form' })(EditPost);
 
-export default connect(mapStateToProps, { editJob })(EditJobForm);
+export default connect(mapStateToProps, { editPost, fetchPosts })(EditPostForm);

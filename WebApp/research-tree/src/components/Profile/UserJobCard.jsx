@@ -21,16 +21,19 @@ export default class UserJobCard extends Component {
                 extra={toFormattedDateString(this.props.date)}
             >
                 {this.props.description}
-
+                <Button style={style} onClick={this.editJobOnClick}>Delete Job</Button>
                 <Button style={style} onClick={this.editJobOnClick}>Edit Job</Button>
                     <Modal
                         title="Edit Job"
                         visible={this.state.editJobModalVisible}
-                        onOk={this.handleOk}
                         onCancel={this.handleJobCancel}
+                        footer={[
+                            null,
+                          ]}
                         > 
-                        <EditJob />
+                        <EditJob jobId={this.props.jobId}/>
                     </Modal>
+                    
             </Card>
         </div>
         )

@@ -23,7 +23,7 @@ class UserJobList extends Component {
 
         const jobItems = jobs.map(job => (
             <div key={job.id}>
-                <UserJobCard title={job.title} description={job.description} date={job.modifyTime}/>
+                <UserJobCard jobId={job.id} title={job.title} description={job.description} date={job.modifyTime}/>
             </div>
         ));
         return (

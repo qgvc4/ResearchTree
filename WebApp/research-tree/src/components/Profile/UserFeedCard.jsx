@@ -23,15 +23,19 @@ export default class UserFeedCard extends Component {
                 extra={toFormattedDateString(this.props.date)}
             >
                 {this.props.description}
+                <Button style={style} onClick={this.editPostOnClick}>Delete Post</Button>
                 <Button style={style} onClick={this.editPostOnClick}>Edit Post</Button>
                     <Modal
                         title="Edit Post"
                         visible={this.state.editPostModalVisible}
-                        onOk={this.handleOk}
                         onCancel={this.handlePostCancel}
+                        footer={[
+                            null,
+                          ]}
                         > 
-                        <EditPost />
+                        <EditPost postId={this.props.postId} />
                     </Modal>
+                
             </Card>
         </div>
         )

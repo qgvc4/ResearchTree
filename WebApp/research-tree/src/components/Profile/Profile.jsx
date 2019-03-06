@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 // import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-// import UserFeedList from './UserFeedList';
 import UserFeedList from './UserFeedList';
 import UserJobList from './UserJobList';
 import { Radio } from 'antd';
+import UserInfo from './UserInfo';
 
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -43,6 +43,7 @@ class Profile extends Component {
     renderProfile() {
         return(
             <div>
+                <UserInfo user={this.props.user}/>
                 <div>  
                     <RadioGroup className="btn-group btn-group-toggle" defaultValue="posts" onChange={this.radioOnChange} style={{marginBottom: "30px"}} >
                         <RadioButton className="btn btn-secondary" value="posts">Posts</RadioButton>

@@ -22,7 +22,7 @@ class UserFeedList extends Component {
         
         const feedItems = feeds.map(feed => (
             <div key={feed.id}>
-                <UserFeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
+                <UserFeedCard postId={feed.id} title={feed.title} description={feed.description} date={feed.modifyTime}/>
             </div>
         ));
         return (
