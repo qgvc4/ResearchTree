@@ -47,7 +47,7 @@ export const newPost = (token, post) => dispatch => {
 export const editPost = (token, id, post) => dispatch => {
     editPostStart()
     fetch(`${API_BASE}/Feeds/${id}` , {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Accept': 'application/json',
             'content-type': 'application/json; charset=utf-8',
