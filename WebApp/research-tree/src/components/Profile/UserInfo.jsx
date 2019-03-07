@@ -9,7 +9,7 @@ export default class UserInfo extends Component {
     render() {
         return (
             <div>
-                {this.props.user.image == null ? <Avatar size="large" icon="user"/> : <Avatar src={this.props.user.image}/>}
+                {this.props.user.image == null ? <Avatar size={100} icon="user"/> : <Avatar src={this.props.user.image}/>}
                 <h3>{this.props.user.firstname + " " + this.props.user.lastname}</h3>
                 {standingOptions(this.props.user.standing)}
                 {majorOptions(this.props.user.majors)}

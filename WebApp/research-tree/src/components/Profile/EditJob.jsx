@@ -26,9 +26,9 @@ class EditJob extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 values["PeopleId"] = `${this.props.user.id}`;
                 this.props.editJob(this.props.user.token, this.props.jobId, values);
+                this.props.closeModal();
             }
         });
     }

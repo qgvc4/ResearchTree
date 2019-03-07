@@ -7,12 +7,20 @@ import {fetchJobs} from '../../actions/JobAction';
 import UserJobCard from './UserJobCard';
 
 class UserJobList extends Component {
+    constructor(){
+        super();
+        this.state = {modifiedState: false};
+
+        this.modifyState = this.modifyState.bind(this);
+    }
+
+
     componentWillMount() {
         this.props.fetchJobs(this.props.token);
     }
 
     render() {
-        console.log(this.props.jobs);
+        // console.log(this.props.jobs);
         if( this.props.jobs !== undefined){
 
         this.props.jobs.sort(function(job1,job2){
@@ -23,17 +31,21 @@ class UserJobList extends Component {
 
         const jobItems = jobs.map(job => (
             <div key={job.id}>
-                <UserJobCard jobId={job.id} title={job.title} description={job.description} date={job.modifyTime}/>
+                <UserJobCard token={this.props.token} jobId={job.id} title={job.title} description={job.description} date={job.modifyTime} modifyState={this.modifyState}/>
             </div>
         ));
         return (
         <div>
-            <h1>Jobs</h1>
             {jobItems}
         </div>
         );
         }
-        return(<div><h1>Error fetching Jobs</h1></div>);
+        return(<div></div>);
+    }
+
+    modifyState(){
+        this.setState({modifiedState: !this.state.modifiedState});
+        this.props.fetchJobs(this.props.token);
     }
 }
 

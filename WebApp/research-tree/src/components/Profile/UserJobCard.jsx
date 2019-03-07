@@ -2,17 +2,25 @@ import React, { Component } from 'react'
 
 import { Card, Button, Modal } from 'antd';
 import EditJob from './EditJob';
+import {deleteJob} from '../../actions/JobAction';
+import { connect } from 'react-redux';
 
-export default class UserJobCard extends Component {
+
+const confirm = Modal.confirm;
+
+class UserJobCard extends Component {
 
     constructor(){
         super();
         this.state = {editJobModalVisible: false};
+
+        this.closeModal = this.closeModal.bind(this);
     }
 
     render() {
         const style = {
-            float: 'right'
+            float: 'right',
+            margin: "0 5px"
         };
         return (
         <div>
@@ -21,8 +29,8 @@ export default class UserJobCard extends Component {
                 extra={toFormattedDateString(this.props.date)}
             >
                 {this.props.description}
-                <Button style={style} onClick={this.editJobOnClick}>Delete Job</Button>
-                <Button style={style} onClick={this.editJobOnClick}>Edit Job</Button>
+                <Button style={style} onClick={this.showDeleteConfirm} icon="delete"/>
+                <Button style={style} onClick={this.editJobOnClick} icon="form"/>
                     <Modal
                         title="Edit Job"
                         visible={this.state.editJobModalVisible}
@@ -31,7 +39,7 @@ export default class UserJobCard extends Component {
                             null,
                           ]}
                         > 
-                        <EditJob jobId={this.props.jobId}/>
+                        <EditJob jobId={this.props.jobId} closeModal={this.closeModal}/>
                     </Modal>
                     
             </Card>
@@ -46,6 +54,33 @@ export default class UserJobCard extends Component {
     handleJobCancel = (e) => {
         this.setState({editJobModalVisible: false});
     }
+
+    closeModal(){
+        this.props.modifyState();
+        this.setState({editJobModalVisible: false});
+    }
+
+    showDeleteConfirm = () => {
+        var token = this.props.token;
+        var jobId = this.props.jobId;
+        var closeModal = this.props.modifyState;
+        var deleteJob = this.props.deleteJob;
+        confirm({
+          title: 'Are you sure delete this job?',
+          okText: 'Yes',
+          okType: 'danger',
+          cancelText: 'No',
+          onOk() {
+            deleteJob(token, jobId);
+            closeModal();
+            console.log(token);
+            console.log('Ok');
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
+      }
 }
 
 function toFormattedDateString(dateString) {
@@ -59,3 +94,9 @@ function toFormattedDateString(dateString) {
 
     return `${MM}/${dd}/${yyyy} ${hh}:${mm}:${ss}`
 }
+
+const mapStateToProps = state => ({
+   
+})
+
+export default connect(mapStateToProps, { deleteJob })(UserJobCard);

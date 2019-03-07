@@ -69,6 +69,7 @@ export const editPost = (token, id, post) => dispatch => {
 
 export const deletePost = (token, id) => dispatch => {
     deletePostStart()
+    console.log(`${API_BASE}/Feeds/${id}`);
     fetch(`${API_BASE}/Feeds/${id}` , {
         method: 'DELETE',
         headers: {

@@ -24,9 +24,9 @@ class EditPost extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 values["PeopleId"] = `${this.props.user.id}`;
                 this.props.editPost(this.props.user.token, this.props.postId, values);
+                this.props.closeModal();
             }
         });
     }

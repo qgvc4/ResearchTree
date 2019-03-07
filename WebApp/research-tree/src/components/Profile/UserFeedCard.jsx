@@ -2,18 +2,24 @@ import React, { Component } from 'react'
 
 import { Card, Button, Modal } from 'antd';
 import EditPost from './EditPost';
+import {deletePost} from '../../actions/FeedAction';
+import { connect } from 'react-redux';
 
+const confirm = Modal.confirm;
 
-export default class UserFeedCard extends Component {
+class UserFeedCard extends Component {
 
     constructor(){
         super();
         this.state = {editPostModalVisible: false};
+
+        this.closeModal = this.closeModal.bind(this);
     }
     
     render() {
         const style = {
-            float: 'right'
+            float: 'right',
+            margin: "0 5px"
         };
 
         return (
@@ -23,8 +29,8 @@ export default class UserFeedCard extends Component {
                 extra={toFormattedDateString(this.props.date)}
             >
                 {this.props.description}
-                <Button style={style} onClick={this.editPostOnClick}>Delete Post</Button>
-                <Button style={style} onClick={this.editPostOnClick}>Edit Post</Button>
+                <Button style={style} onClick={this.showDeleteConfirm} icon="delete"/>
+                <Button style={style} onClick={this.editPostOnClick} icon="form"/>
                     <Modal
                         title="Edit Post"
                         visible={this.state.editPostModalVisible}
@@ -33,7 +39,7 @@ export default class UserFeedCard extends Component {
                             null,
                           ]}
                         > 
-                        <EditPost postId={this.props.postId} />
+                        <EditPost postId={this.props.postId} closeModal={this.closeModal}/>
                     </Modal>
                 
             </Card>
@@ -48,6 +54,32 @@ export default class UserFeedCard extends Component {
     handlePostCancel = (e) => {
         this.setState({editPostModalVisible: false});
     }
+
+    closeModal(){
+        this.setState({editPostModalVisible: false});
+        this.props.modifyState();
+    }
+
+    showDeleteConfirm = () => {
+        var token = this.props.token;
+        var postId = this.props.postId;
+        var closeModal = this.props.modifyState;
+        var deletePost = this.props.deletePost;
+        confirm({
+          title: 'Are you sure delete this post?',
+          okText: 'Yes',
+          okType: 'danger',
+          cancelText: 'No',
+          onOk() {
+            deletePost(token, postId);
+            closeModal();
+            console.log('Ok');
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
+      }
 }
 
 function toFormattedDateString(dateString) {
@@ -61,3 +93,9 @@ function toFormattedDateString(dateString) {
 
     return `${MM}/${dd}/${yyyy} ${hh}:${mm}:${ss}`
 }
+
+const mapStateToProps = state => ({
+   
+  })
+
+export default connect(mapStateToProps, { deletePost })(UserFeedCard);

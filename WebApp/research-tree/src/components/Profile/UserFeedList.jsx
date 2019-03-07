@@ -7,6 +7,13 @@ import {fetchPosts} from '../../actions/FeedAction'
 import UserFeedCard from './UserFeedCard';
 
 class UserFeedList extends Component {
+    constructor(){
+        super();
+        this.state = {modifiedState: false};
+
+        this.modifyState = this.modifyState.bind(this);
+    }
+
     componentWillMount() {
         this.props.fetchPosts(this.props.token);
     }
@@ -14,29 +21,29 @@ class UserFeedList extends Component {
     render() {
         if( this.props.feeds !== undefined){
 
-        this.props.feeds.sort(function(feed1,feed2){
-            return new Date(feed2.modifyTime) - new Date(feed1.modifyTime);
-        });
+            this.props.feeds.sort(function(feed1,feed2){
+                return new Date(feed2.modifyTime) - new Date(feed1.modifyTime);
+            });
 
-        let feeds = this.props.feeds.filter( feed => feed.peopleId === this.props.id);
-        
-        const feedItems = feeds.map(feed => (
-            <div key={feed.id}>
-                <UserFeedCard postId={feed.id} title={feed.title} description={feed.description} date={feed.modifyTime}/>
-            </div>
-        ));
-        return (
-        <div>
-            <h1>My Posts</h1>
-            {feedItems}
-        </div>
-        );
+            let feeds = this.props.feeds.filter( feed => feed.peopleId === this.props.id);
+            
+            const feedItems = feeds.map(feed => (
+                <div key={feed.id}>
+                    <UserFeedCard token={this.props.token} postId={feed.id} title={feed.title} description={feed.description} date={feed.modifyTime} modifyState={this.modifyState}/>
+                </div>
+            ));
+            return (
+                <div>
+                    {feedItems}
+                </div>
+                );
         }
-        return (
-            <div>
-                <h1>My Posts</h1>
-            </div>
-            );
+        return (<div></div>);
+    }
+
+    modifyState(){
+        this.setState({modifiedState: !this.state.modifiedState}); 
+        this.props.fetchPosts(this.props.token);
     }
 }
 
