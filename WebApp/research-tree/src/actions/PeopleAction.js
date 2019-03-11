@@ -21,28 +21,28 @@ export const fetchPosts = (token) => dispatch => {
     }));
 };
 
-// export const newPost = (token, post) => dispatch => {
-//     postStart()
-//     fetch(`${API_BASE}/Users`, {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json',
-//             'content-type': 'application/json; charset=utf-8',
-//             'Authorization': `Bearer ${token}`
-//         },
-//         body: JSON.stringify(post)
-//     })
-//     .then(res => res.json())
-//     .then(newPost => dispatch({
-//         type: NEW_POST,
-//         payload: newPost
-//     }))
-//     .then(postComplete)
-//     .catch(error => dispatch({
-//         type: POST_ERROR,
-//         payload: "Error in posting new users"
-//     }));
-// };
+export const newPost = (token, post) => dispatch => {
+    postStart()
+    fetch(`${API_BASE}/Users`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(post)
+    })
+    .then(res => res.json())
+    .then(newPost => dispatch({
+        type: NEW_POST,
+        payload: newPost
+    }))
+    .then(postComplete)
+    .catch(error => dispatch({
+        type: POST_ERROR,
+        payload: "Error in posting new users"
+    }));
+};
 
 export const clearError = () => dispatch => {
     dispatch({

@@ -7,6 +7,7 @@ import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom';
 import LoginForm from './components/Account/Login';
 import Feed from './components/Feed/Feed';
 import Signup from './components/Account/Signup';
+import People from './components/People/People';
 
 import store from './store';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path='/Login' component={LoginForm}></Route>
                     <Route path='/Feed' component={Feed}></Route>
+                    <Route path='/People' component={People}></Route>
                     <Route path='/Signup' component={Signup}></Route>                  
                     <Redirect to='/Feed'></Redirect>
                 </Switch>

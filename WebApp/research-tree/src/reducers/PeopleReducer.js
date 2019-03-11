@@ -2,7 +2,7 @@ import { FETCH_POSTS, NEW_POST, POST_ERROR, CLEAR_POST_ERROR, POST_START, POST_C
 
 const initialState = {
     users: [],
-    // newPost: {},
+    newPost: {},
     isLoading: false,
     error: null
 };
@@ -14,11 +14,11 @@ export default function(state = initialState, action) {
                 ...state,
                 users: action.payload
             };
-        // case NEW_POST:
-        //     return {
-        //         ...state,
-        //         newPost: action.payload
-        //     };
+        case NEW_POST:
+            return {
+                ...state,
+                newPost: action.payload
+            };
         case POST_ERROR:
             return {
                 ...state,
