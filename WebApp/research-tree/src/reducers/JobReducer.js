@@ -1,96 +1,97 @@
-import { FETCH_POSTS, NEW_POST, POST_ERROR, CLEAR_POST_ERROR, POST_START, POST_COMPLETE, EDIT_POST, EDIT_POST_START, EDIT_POST_ERROR, CLEAR_EDIT_POST_ERROR, EDIT_POST_COMPLETE, DELETE_POST, DELETE_POST_START, DELETE_POST_ERROR, CLEAR_DELETE_POST_ERROR, DELETE_POST_COMPLETE } from '../actions/types';
+import { FETCH_JOBS, NEW_JOB, JOB_ERROR, CLEAR_JOB_ERROR, JOB_START, JOB_COMPLETE, EDIT_JOB_START, EDIT_JOB_ERROR, EDIT_JOB_COMPLETE, EDIT_JOB, CLEAR_EDIT_JOB_ERROR, DELETE_JOB, DELETE_JOB_START, DELETE_JOB_ERROR, CLEAR_DELETE_JOB_ERROR, DELETE_JOB_COMPLETE } from '../actions/types';
 
 const initialState = {
-    feeds: [],
-    newPost: {},
-    editPost: {},
-    deletePost: {},
+    jobs: [],
+    newJob: {},
+    editJob: {},
+    deleteJob: {},
     isLoading: false,
     error: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_POSTS:
+        case FETCH_JOBS:
             return {
                 ...state,
-                feeds: action.payload
+                jobs: action.payload
             };
-        case NEW_POST:
+        case NEW_JOB:
             return {
                 ...state,
-                newPost: action.payload
+                newJob: action.payload
             };
-        case POST_ERROR:
+        case JOB_ERROR:
             return {
                 ...state,
                 error: action.payload
             }
-        case CLEAR_POST_ERROR:
+        case CLEAR_JOB_ERROR:
             return {
                 ...state,
                 error: action.payload
             };
-        case POST_START:
+        case JOB_START:
             return {
                 ...state,
                 isLoading: action.payload
             };
-        case POST_COMPLETE:
+        case JOB_COMPLETE:
             return {
                 ...state,
                 isLoading: action.payload
             };
-        case EDIT_POST:
+        case EDIT_JOB:
             return {
                 ...state,
-                editPost: action.payload
+                editJob: action.payload
             };
-        case EDIT_POST_START:
+        case EDIT_JOB_START:
             return {
                 ...state,
                 isLoading: action.payload
             };
-        case EDIT_POST_ERROR:
-            return {
-                ...state,
-                error: action.payload
-            }
-        case CLEAR_EDIT_POST_ERROR:
-            return {
-                ...state,
-                error: action.payload
-            };
-        case EDIT_POST_COMPLETE:
-            return {
-                ...state,
-                isLoading: action.payload
-            };  
-        case DELETE_POST:
-            return {
-                ...state,
-                deletePost: action.payload
-            };
-        case DELETE_POST_START:
-            return {
-                ...state,
-                isLoading: action.payload
-            };
-        case DELETE_POST_ERROR:
+        case EDIT_JOB_ERROR:
             return {
                 ...state,
                 error: action.payload
             }
-        case CLEAR_DELETE_POST_ERROR:
+        case CLEAR_EDIT_JOB_ERROR:
             return {
                 ...state,
                 error: action.payload
             };
-        case DELETE_POST_COMPLETE:
+        case EDIT_JOB_COMPLETE:
             return {
                 ...state,
                 isLoading: action.payload
-            };     
+            };
+        case DELETE_JOB:
+            return {
+                ...state,
+                deleteJob: action.payload
+            };
+        case DELETE_JOB_START:
+            return {
+                ...state,
+                isLoading: action.payload
+            };
+        case DELETE_JOB_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            }
+        case CLEAR_DELETE_JOB_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case DELETE_JOB_COMPLETE:
+            return {
+                ...state,
+                isLoading: action.payload
+            };
+        
         default:
             return state;
     }
