@@ -7,6 +7,6 @@ import JobReducer from './JobReducer';
 export default combineReducers({
     user: AccountReducer,
     feed: FeedReducer,
-    people: PeopleReducer
+    people: PeopleReducer,
     job: JobReducer
 });

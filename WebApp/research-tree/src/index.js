@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 import {Provider} from 'react-redux';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 
 import LoginForm from './components/Account/Login';
 import Feed from './components/Feed/Feed';
