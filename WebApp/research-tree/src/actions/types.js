@@ -22,6 +22,11 @@ export const DELETE_POST_ERROR = 'DELETE_POST_ERROR';
 export const CLEAR_DELETE_POST_ERROR = 'CLEAR_DELETE_POST_ERROR';
 export const DELETE_POST_COMPLETE = 'DELETE_POST_COMPLETE';
 
+//User
+export const FETCH_USERS = 'FETCH_USERS';
+export const PEOPLE_ERROR = 'PEOPLE_ERROR';
+export const CLEAR_PEOPLE_ERROR = 'CLEAR_PEOPLE_ERROR';
+
 //Job
 export const FETCH_JOBS = 'FETCH_JOBS';
 export const NEW_JOB = 'NEW_JOBS';
