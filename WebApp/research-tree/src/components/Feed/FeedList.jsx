@@ -15,6 +15,8 @@ class FeedList extends Component {
         this.props.feeds.sort(function(feed1,feed2){
             return new Date(feed2.modifyTime) - new Date(feed1.modifyTime);
         });
+        console.log(this.props.feeds);
+        
         const feedItems = this.props.feeds.map(feed => (
             <div key={feed.id}>
                 <FeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
