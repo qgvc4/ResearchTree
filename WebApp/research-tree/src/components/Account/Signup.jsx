@@ -26,21 +26,28 @@ class Signup extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         values["Role"] = values && values.Standing !== 2 ? 0 : 1;
         delete values["confirm"];
+
         if (values["image"]) {
-          var reader  = new FileReader();
-          reader.addEventListener("load", function(){
-            var data = reader.result;
-            var res = data.split(",");
-            values["image"] = res[1];
-          }, false);
-          reader.readAsDataURL(values["image"]);
+          new Promise((resolve, reject) => {
+            var reader = new FileReader();
+            reader.addEventListener("load", () => {
+                var data = reader.result;
+                var res = data.split(",");
+                var imageData = res[1];
+                resolve(imageData);
+            });
+            reader.readAsDataURL(values["image"]);
+          }).then(imageData => {
+            values["image"] = imageData;
+            this.props.clearError();
+            this.props.signup(values);
+          });
+        } else {
+          this.props.clearError();
+          this.props.signup(values);
         }
-        console.log('modified values of form: ', values);
-        this.props.clearError();
-        this.props.signup(values);
       }
     });
   }
