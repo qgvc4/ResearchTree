@@ -22,8 +22,6 @@ export const login = (userCredential) => dispatch => {
 };
 
 export const signup = (user) => dispatch => {
-    console.log(user)
-    console.log(JSON.stringify(user))
     fetch(`${API_BASE}/Account`, {
         method: 'POST',
         headers: {
