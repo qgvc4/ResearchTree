@@ -31,7 +31,7 @@ class PostFeed extends Component {
         // } 
         const { getFieldDecorator } = this.props.form;
         return (
-          <Form onSubmit={this.handleSubmit} className="post-feed">
+          <Form onSubmit={this.handleSubmit} className="post-feed" style={{margin: '2%'}}>
             <Form.Item>
               {getFieldDecorator('Title', {
                 rules: [{ required: true, message: 'Please input a title!' }],

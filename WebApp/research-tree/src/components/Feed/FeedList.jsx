@@ -18,13 +18,13 @@ class FeedList extends Component {
         console.log(this.props.feeds);
         
         const feedItems = this.props.feeds.map(feed => (
-            <div key={feed.id}>
+            <div key={feed.id} style={{margin: '2%'}}>
                 <FeedCard title={feed.title} description={feed.description} date={feed.modifyTime}/>
             </div>
         ));
         return (
         <div>
-            <h1>Feeds</h1>
+            <h1 style={{ color: '#74997a', textAlign: 'center' }}>Feeds</h1>
             {feedItems}
         </div>
         )
