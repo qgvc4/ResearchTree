@@ -5,10 +5,11 @@ import {Provider} from 'react-redux';
 import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 
 import LoginForm from './components/Account/Login';
-import Feed from './components/Feed/Feed';
 import Signup from './components/Account/Signup';
-import People from './components/People/People';
-import Profile from './components/Profile/Profile';
+import FeedWithLayout from './components/Feed/FeedWithLayout';
+import PeopleWithLayout from './components/People/PeopleWithLayout';
+import ProfileWithLayout from './components/Profile/ProfileWithLayout';
+import JobWithLayout from './components/Job/JobWithLayout';
 
 import store from './store';
 
@@ -20,10 +21,11 @@ ReactDOM.render(
             <div>
                 <Switch>
                     <Route exact path='/Login' component={LoginForm}></Route>
-                    <Route path='/Feed' component={Feed}></Route>
-                    <Route path='/People' component={People}></Route>
-                    <Route path='/Signup' component={Signup}></Route>                  
-                    <Route path='/Profile' component={Profile}></Route>  
+                    <Route path='/Feed' component={FeedWithLayout}></Route>
+                    <Route path='/People' component={PeopleWithLayout}></Route>
+                    <Route path='/Signup' component={Signup}></Route>
+                    <Route path='/Job' component={JobWithLayout}></Route>                
+                    <Route path='/Profile' component={ProfileWithLayout}></Route>  
                     <Redirect to='/Feed'></Redirect>
                 </Switch>
             </div>

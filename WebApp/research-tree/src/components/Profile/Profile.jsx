@@ -21,11 +21,7 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                {
-                    (this.props.user.token) ? 
-                    this.renderProfile(): 
-                    false
-                }
+                { this.renderProfile() }
             </div>
         )
     }
@@ -65,8 +61,6 @@ class Profile extends Component {
 
     }
 }
-
-
 
 const mapStateToProps = state => ({
     user: state.user.user
