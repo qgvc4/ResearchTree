@@ -1,0 +1,20 @@
+.userInfoContainer{
+    width: 20%;
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.profileContainer{
+    background-color: white;
+}
+
+.profileContainer::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.post-jobs-button-group{
+    padding-top: 10px;
+}

@@ -4,11 +4,13 @@ import { Avatar } from 'antd';
 import {Majors} from '../../declaration/major';
 import {Standings} from '../../declaration/standing';
 
+import '../../style/Profile/userInfo.css';
+
 export default class UserInfo extends Component {
 
     render() {
         return (
-            <div>
+            <div className="userInfoContainer">
                 {this.props.user.image == null ? <Avatar size={100} icon="user"/> : <Avatar src={this.props.user.image}/>}
                 <h3>{this.props.user.firstname + " " + this.props.user.lastname}</h3>
                 {standingOptions(this.props.user.standing)}
