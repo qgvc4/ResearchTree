@@ -6,6 +6,8 @@ import { Layout } from 'antd';
 
 import Navbar from '../Navbar';
 
+import Job from './Job';
+
 const {
     Content, Sider, Header,
   } = Layout;
@@ -34,7 +36,7 @@ function renderJob() {
                         <Navbar pageNum={['3']} />
                     </Sider>
                     <Content style={{marginTop: '6%'}}>
-                        <p>replace with job entry</p>
+                        <Job />
                     </Content>
                 </Layout>
             </Layout>
