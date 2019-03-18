@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import { Card } from 'antd';
+import { Card, Avatar } from 'antd';
 
+const { Meta } = Card;
 
 export default class FeedCard extends Component {
 
@@ -9,9 +10,11 @@ export default class FeedCard extends Component {
         return (
         <div>
             <Card
+                
                 title={this.props.title}
                 extra={toFormattedDateString(this.props.date)}
             >
+            <Meta avatar={<Avatar src={this.props.image} />}/>
                 {this.props.description}
             </Card>
         </div>

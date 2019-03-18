@@ -21,7 +21,7 @@ class PeopleList extends Component {
         ));
         return (
         <div>
-            <h1>People</h1>
+            <h1 style={{ color: '#74997a', textAlign: 'center' }}>People</h1>
             {peopleItems}
         </div>
         )
