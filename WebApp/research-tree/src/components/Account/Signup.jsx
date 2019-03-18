@@ -135,7 +135,7 @@ class Signup extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} style={{width: "80%"}}>
           <Form.Item
             {...formItemLayout}
             label="Email"
