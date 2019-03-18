@@ -27,6 +27,7 @@ class UserFeedCard extends Component {
             <Card
                 title={this.props.title}
                 extra={toFormattedDateString(this.props.date)}
+                style={{marginBottom: "5px", marginRight: "10px"}}
             >
                 {this.props.description}
                 <Button style={style} onClick={this.showDeleteConfirm} icon="delete"/>

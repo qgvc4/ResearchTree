@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom';
 import { Layout, Form, Icon, Input, Button, Alert } from 'antd'
 import '../../style/Account/login.css'
 
@@ -21,8 +22,7 @@ class Login extends Component {
 
   render() {
     if (this.props.error == null && this.props.user.token != null) {
-      console.log(this.props.user)
-      this.props.history.push('/People');
+      return <Redirect to='/Feed'></Redirect>
     }
     const { getFieldDecorator } = this.props.form;
 
