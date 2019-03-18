@@ -23,7 +23,7 @@ class NavbarPeople extends Component {
                 >
                   <div className="logo" />
                     
-                  <Menu theme="" mode="inline" defaultSelectedKeys={['1']} style={{ background: '#74997a', color: 'white' }}>
+                  <Menu theme="" mode="inline" defaultSelectedKeys={['2']} style={{ background: '#74997a', color: 'white' }}>
                     <Menu.Item key="1">
                       <Icon type="user" />
                       <span className="nav-text">Feed</span>
