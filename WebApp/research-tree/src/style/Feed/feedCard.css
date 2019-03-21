@@ -1,0 +1,14 @@
+.profile-image {
+    display: inline-block;
+}
+
+.profile-name {
+    display: inline-block;
+    margin-left: 20px;
+    font-style: italic;
+}
+
+.attachement-image {
+    margin: 10px;
+    width: 60%;
+}
