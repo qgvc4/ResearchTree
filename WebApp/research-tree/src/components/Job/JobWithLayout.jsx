@@ -30,9 +30,9 @@ function renderJob() {
     return(
         <div>
             <Layout>
-            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 1, width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
+            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 10,height: '8%', width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
                 <Layout>
-                    <Sider style={{marginTop: '5%'}}>
+                    <Sider style={{marginTop: '3.8%'}}>
                         <Navbar pageNum={['3']} />
                     </Sider>
                     <Content style={{marginTop: '6%'}}>

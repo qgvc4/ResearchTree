@@ -16,7 +16,10 @@ export default class PeopleCard extends Component {
             <Card.Grid style={gridStyle}>
                 <Card
                     style={{ width: '100%' }}
-                    cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
+                    cover={
+                    <img alt="example"
+                     src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                      />}
                 >
                     <Meta
                     avatar={<Avatar src={this.props.image} />}
