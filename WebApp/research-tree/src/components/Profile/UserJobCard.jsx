@@ -4,7 +4,7 @@ import { Card, Button, Modal } from 'antd';
 import EditJob from './EditJob';
 import {deleteJob} from '../../actions/JobAction';
 import { connect } from 'react-redux';
-
+import {Majors} from '../../declaration/major';
 
 const confirm = Modal.confirm;
 
@@ -22,6 +22,9 @@ class UserJobCard extends Component {
             float: 'right',
             margin: "0 5px"
         };
+        const majorItems = this.props.majors.map( (value, index) => {
+            return <div>{Majors[value]}</div>;
+        });
         return (
         <div>
             <Card
@@ -30,8 +33,12 @@ class UserJobCard extends Component {
                 style={{marginBottom: "5px", marginRight: "10px"}}
             >
                 {this.props.description}
+                <br/>
+                <h5 style={{marginTop: "2em"}}>Majors:</h5>
+                {majorItems}
                 <Button style={style} onClick={this.showDeleteConfirm} icon="delete"/>
                 <Button style={style} onClick={this.editJobOnClick} icon="form"/>
+                
                     <Modal
                         title="Edit Job"
                         visible={this.state.editJobModalVisible}
@@ -80,6 +87,13 @@ class UserJobCard extends Component {
           onCancel() {
             console.log('Cancel');
           },
+        });
+      }
+
+      showMajors(){
+        console.log(this.props.majors);
+        this.props.majors.map( (value, index) => {
+            return <div>{Majors[value]}</div>;
         });
       }
 }
