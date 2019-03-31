@@ -23,9 +23,14 @@ export default class PeopleCard extends Component {
                 >
                     <Meta
                     avatar={<Avatar src={this.props.image} />}
-                    title={this.props.lastname}
+                    title={this.props.title}
                     description={this.props.description}
                     />
+                    <div>
+                        <p>
+                            {this.props.firstName}
+                        </p>
+                    </div>
                 </Card>
             </Card.Grid>
             {/* <Card
