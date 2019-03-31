@@ -22,8 +22,16 @@ class UserJobCard extends Component {
             float: 'right',
             margin: "0 5px"
         };
+
+        const divStyle = {
+            width: "25%",
+            marginBottom: "1%",
+            border: "1px solid lightgray",
+            borderRadius: "5px",
+            textAlign: "center"
+        };
         const majorItems = this.props.majors.map( (value, index) => {
-            return <div>{Majors[value]}</div>;
+            return <div style={divStyle} key={index}>{Majors[value]}</div>;
         });
         return (
         <div>
