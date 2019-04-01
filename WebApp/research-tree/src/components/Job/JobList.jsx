@@ -17,14 +17,14 @@ class JobList extends Component {
         if( this.props.jobs !== undefined){
 
         this.props.jobs.sort(function(job1,job2){
-            return new Date(job1.modifyTime) - new Date(job2.modifyTime);
+            return new Date(job2.modifyTime) - new Date(job1.modifyTime);
         });
         let jobs = this.props.jobs;
 
 
         const jobItems = jobs.map(job => (
             <div key={job.id}>
-                <JobCard title={job.title} description={job.description} date={job.modifyTime} major={job.major} />
+                <JobCard title={job.title} description={job.description} date={job.modifyTime} majors={job.majors} />
             </div>
         ));
         return (
