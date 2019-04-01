@@ -77,6 +77,7 @@ class PostFeed extends Component {
               getValueFromEvent: this.normFile,
             })(
               <ImageUploader
+              
                 withIcon={true}
                 withLabel={true}
                 label='JPG|Size<1MB'

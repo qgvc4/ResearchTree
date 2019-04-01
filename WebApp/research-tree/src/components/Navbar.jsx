@@ -19,7 +19,7 @@ class NavbarFeed extends Component {
     return (
       <Layout>
         <Sider style={{
-          overflow: 'auto', height: '100%', position: 'fixed', left: 0,
+          overflow: 'auto', height: '100%', position: 'fixed', left: 0, top:'8%',
           background: '#74997a'
         }}
         >
