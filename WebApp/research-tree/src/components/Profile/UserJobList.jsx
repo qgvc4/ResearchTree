@@ -24,14 +24,14 @@ class UserJobList extends Component {
         if( this.props.jobs !== undefined){
 
         this.props.jobs.sort(function(job1,job2){
-            return new Date(job1.modifyTime) - new Date(job2.modifyTime);
+            return new Date(job2.modifyTime) - new Date(job1.modifyTime);
         });
 
         let jobs = this.props.jobs.filter( job => job.peopleId === this.props.id);
 
         const jobItems = jobs.map(job => (
             <div key={job.id}>
-                <UserJobCard token={this.props.token} jobId={job.id} title={job.title} description={job.description} date={job.modifyTime} modifyState={this.modifyState}/>
+                <UserJobCard token={this.props.token} jobId={job.id} title={job.title} description={job.description} majors={job.majors} date={job.modifyTime} modifyState={this.modifyState}/>
             </div>
         ));
         return (

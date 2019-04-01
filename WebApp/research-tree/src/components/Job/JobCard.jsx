@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 
 import { Card } from 'antd';
-
+import {Majors} from '../../declaration/major';
 
 export default class JobCard extends Component {
 
     render() {
+        const style = {
+            width: "25%",
+            marginBottom: "1%",
+            border: "1px solid lightgray",
+            borderRadius: "5px",
+            textAlign: "center"
+        };
+        const majorItems = this.props.majors.map( (value, index) => {
+            return <div style={style} key={index}>{Majors[value]}</div>;
+        });
         return (
         <div>
             <Card
@@ -14,7 +24,9 @@ export default class JobCard extends Component {
                 style={{margin: "10px"}}
             >
                 {this.props.description}
-                {this.props.major}
+                <br/>
+                <h5 style={{marginTop: "2em"}}>Majors:</h5>
+                {majorItems}
             </Card>
         </div>
         )
