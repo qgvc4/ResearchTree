@@ -24,7 +24,9 @@ class PeopleList extends Component {
                         user.email + 
                         "\n  \n" + 
                         user.majors +
+                        "\n  \n" + 
                         user.email +
+                        "\n  \n" + 
                         user.role
                     } 
                     image={user.image}/>
