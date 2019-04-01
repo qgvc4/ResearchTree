@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Card } from 'antd';
-import Avatar from '@material-ui/core/Avatar';
+import { Card, Avatar } from 'antd';
+// import Avatar from '@material-ui/core/Avatar';
 
 import "../../style/Feed/feedCard.css";
 

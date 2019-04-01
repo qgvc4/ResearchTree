@@ -32,7 +32,7 @@ function renderFeed() {
             <Layout>
             <Header style={{background:'#c1e791', position: 'fixed', zIndex: 1, width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
                 <Layout>
-                    <Sider style={{marginTop: '5%'}}>
+                    <Sider >
                         <Navbar pageNum={['1']} />
                     </Sider>
                     <Content style={{marginTop: '6%'}}>
