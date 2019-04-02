@@ -26,6 +26,7 @@ export default class PeopleCard extends Component {
                     title={this.props.title}
                     description={this.props.description}
                     />
+                    <p>{this.props.email}</p>
                     
                 </Card>
             </Card.Grid>

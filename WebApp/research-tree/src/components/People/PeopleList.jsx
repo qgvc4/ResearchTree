@@ -21,13 +21,7 @@ class PeopleList extends Component {
                     user.firstname + " " + user.lastname} 
 
                 description= {
-                        user.email + 
-                        "\n  \n" + 
-                        user.majors +
-                        "\n  \n" + 
-                        user.email +
-                        "\n  \n" + 
-                        user.role
+                        user.email
                     } 
                     image={user.image}/>
             </div>
