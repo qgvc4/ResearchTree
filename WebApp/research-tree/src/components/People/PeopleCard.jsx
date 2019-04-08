@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import { Card, Avatar } from 'antd';
+import { Card } from 'antd';
+
+import "../../style/People/peopleCard.css";
 
 const { Meta } = Card;
 const gridStyle = {
@@ -14,19 +16,29 @@ export default class PeopleCard extends Component {
         return (
         <div>
             <Card.Grid style={gridStyle}>
-                <Card
+                <Card className="placeholder"
                     style={{ width: '100%' }}
                     cover={
-                    <img alt="example"
-                     src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    <img alt="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                     src={this.props.image}
                       />}
                 >
+                if({this.props.role}==1){
+                    // let className ='undergrad';
+                }
+                if({this.props.role}==2){
+                    // let className ='master';
+                }
+                if({this.props.role}==3){
+                    // style={background: rgb(148, 231, 148) }
+                }
+                
                     <Meta
-                    avatar={<Avatar src={this.props.image} />}
                     title={this.props.title}
                     description={this.props.description}
                     />
                     <p>{this.props.email}</p>
+                    <p>Plain string is working</p>
                     
                 </Card>
             </Card.Grid>
