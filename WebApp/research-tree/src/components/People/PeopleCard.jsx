@@ -30,7 +30,7 @@ export default class PeopleCard extends Component {
         <div>
             <Card.Grid style={gridStyle}>
                 <Card className="placeholder"
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', padding: '0' }}
                 >
 
                     <div className={style}/>
