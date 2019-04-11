@@ -16,20 +16,7 @@ class PeopleList extends Component {
         const peopleItems = this.props.users.map(user => (
             <div key={user.id}>
             
-                <PeopleCard 
-                title={
-                    user.firstname + " " + user.lastname} 
-
-                description= {
-                        user.email + 
-                        "\n  \n" + 
-                        user.majors +
-                        "\n  \n" + 
-                        user.email +
-                        "\n  \n" + 
-                        user.role
-                    } 
-                    image={user.image}/>
+                <PeopleCard people={user} />
             </div>
         ));
         return (

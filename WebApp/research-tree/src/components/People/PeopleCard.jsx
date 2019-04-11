@@ -2,30 +2,45 @@ import React, { Component } from 'react'
 
 import { Card, Avatar } from 'antd';
 
+import { Standings } from '../../declaration/standing';
+
+import "../../style/People/peopleCard.css";
+
 const { Meta } = Card;
 const gridStyle = {
     width: '25%',
+    height: '25%',
     textAlign: 'center',
-  };
+  };  
 
 export default class PeopleCard extends Component {
-
+    
     render() {
+        const { people } = this.props;
+        console.log(people)
+        var style = Standings[people.standing];
+        console.log(people)
+        const peopleProfile = `data:image/jpeg;base64,${people.image}`
+        const initial = `${people.firstname.charAt(0)}${people.lastname.charAt(0)}`
+        const avatar = people.image ? 
+            <Avatar alt="profile" src={peopleProfile} />
+            : <Avatar>{initial}</Avatar>
+
+        const fullname = `${people.firstname} ${people.lastname}`
         return (
-        <div>
+        <div >
             <Card.Grid style={gridStyle}>
-                <Card
-                    style={{ width: '100%' }}
-                    cover={
-                    <img alt="example"
-                     src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                      />}
+                <Card className="placeholder"
+                    style={{ width: '100%', height: '100%', padding:'0%' }}
                 >
+
+                    <div className={style}/>
+                    <div className="avatar">{ avatar }</div>
                     <Meta
-                    avatar={<Avatar src={this.props.image} />}
-                    title={this.props.title}
-                    description={this.props.description}
+                    title={fullname}
+                    description={people.description}
                     />
+                    <p>{people.email}</p>
                     
                 </Card>
             </Card.Grid>

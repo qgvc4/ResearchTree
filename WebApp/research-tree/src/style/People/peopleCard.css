@@ -1,0 +1,19 @@
+.Professor {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(148, 231, 148); 
+  }
+.Graduate {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(60, 62, 156); 
+  }
+.Undergraduate {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(44, 125, 172); 
+  }
+
+.avatar {
+    margin-top: -20px;
+}
