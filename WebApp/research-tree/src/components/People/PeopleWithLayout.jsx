@@ -31,7 +31,10 @@ function renderPeople() {
         //try layout
         <div>
             <Layout>
-            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 10,height: '8%', width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
+            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 10,height: '8%', width: '100%' }}>
+            <div className="logo"></div>
+            <h1 style={{color:'white'}}>ResearchTree</h1>
+            </Header>
                 <Layout>
                     <Sider>
                         <Navbar pageNum={['2']} />

@@ -2,7 +2,10 @@
     width: 100%
 }
 .login_tree{
-    content:url(./Family_Tree_Clipart_24741.jpg);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    content:url(./logo.jpg);
     height: 100px;
     width: 100px;
 }
