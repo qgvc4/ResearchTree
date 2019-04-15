@@ -5,3 +5,8 @@
 .job-input-field{
     margin: 10px;
 }
+.nav-bar-logo{
+    content:url(../Account/logo.jpg);
+    height: 25px;
+    width: 25px;
+}
