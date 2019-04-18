@@ -143,3 +143,12 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+extension FeedViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        
+        //  titleLabel.textColor = theme.textColor
+        // subtitleLabel.textColor = theme.textColor
+    }
+}

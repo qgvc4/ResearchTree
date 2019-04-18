@@ -17,6 +17,7 @@ class JobViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     lazy var refresher: UIRefreshControl = {
@@ -31,6 +32,8 @@ class JobViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTheming()
+
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
@@ -188,6 +191,13 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
             destination.job = filteredJobs[row]
             jobsTableView.deselectRow(at: jobsTableView.indexPathForSelectedRow!, animated: true)
         }
+    }
+}
+extension JobViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        //titleLabel.textColor = theme.textColor
+      //  subtitleLabel.textColor = theme.textColor
     }
 }
 

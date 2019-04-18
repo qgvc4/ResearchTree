@@ -22,9 +22,12 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var myJobButton: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTheming()
+
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +89,23 @@ class SettingViewController: UIViewController {
         }
     }
     
+
+    @IBOutlet weak var cardView2: UIView!
+    @IBOutlet weak var cardView: UIView!
+    
+    
+    @IBAction func themeTapped(_ sender: Any) {
+        
+        themeProvider.nextTheme()
+
+
+        
+       
+            
+        
+    }
+    
+    
     @IBAction func logoutTapped(_ sender: Any) {
         UserDefaults.standard.set(nil, forKey: "userData")
         UserDefaults.standard.set(false, forKey:"isUserLoggedIn")
@@ -109,4 +129,20 @@ class SettingViewController: UIViewController {
     }
     
     
+}
+
+extension SettingViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        cardView.backgroundColor = theme.cardview
+        cardView2.backgroundColor = theme.cardview2
+        userEmail.textColor = theme.textColor
+        userLocation.textColor = theme.textColor
+        userMajors.textColor = theme.textColor
+        postsButton.backgroundColor = theme.postsButton
+        myJobButton.backgroundColor = theme.myJobButton
+        logoutButton.backgroundColor = theme.logoutButton
+     //  titleLabel.textColor = theme.textColor
+       // subtitleLabel.textColor = theme.textColor
+    }
 }
