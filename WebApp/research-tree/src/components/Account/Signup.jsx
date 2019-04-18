@@ -26,7 +26,7 @@ class Signup extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        values["Role"] = values && values.Standing !== 2 ? 0 : 1;
+        values["Role"] = values && values.Standing === 2 ? 0 : 1;
         delete values["confirm"];
 
         if (values["image"]) {

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dW-h4-vqn">
-                                <rect key="frame" x="19.333333333333343" y="84" width="336.66666666666663" height="743"/>
+                                <rect key="frame" x="19.333333333333343" y="84" width="336.66666666666663" height="693"/>
                                 <color key="backgroundColor" red="0.66538433647239525" green="0.79487230329949243" blue="0.50611534297308736" alpha="0.57879387842465757" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLl-1K-K8V">
@@ -102,9 +102,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="I2b-Ft-9nK">
-                                <rect key="frame" x="87.666666666666686" y="617" width="200" height="200"/>
+                                <rect key="frame" x="112.66666666666669" y="617" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Zq0-EF-cEg"/>
+                                    <constraint firstAttribute="width" constant="150" id="Zq0-EF-cEg"/>
                                     <constraint firstAttribute="width" secondItem="I2b-Ft-9nK" secondAttribute="height" multiplier="1:1" id="s6M-B4-4cm"/>
                                 </constraints>
                             </imageView>
