@@ -9,9 +9,15 @@ import '../../style/Profile/userInfo.css';
 export default class UserInfo extends Component {
 
     render() {
+        const peopleProfile = `data:image/jpeg;base64,${this.props.user.image}`
+        const initial = `${this.props.user.firstname.charAt(0)}${this.props.user.lastname.charAt(0)}`
+        const avatar = this.props.user.image ? 
+            <Avatar alt="profile" src={peopleProfile} />
+            : <Avatar>{initial}</Avatar>
+
         return (
             <div className="userInfoContainer">
-                {this.props.user.image == null ? <Avatar size={100} icon="user"/> : <Avatar src={this.props.user.image}/>}
+                {avatar}
                 <h3>{this.props.user.firstname + " " + this.props.user.lastname}</h3>
                 {standingOptions(this.props.user.standing)}
                 {majorOptions(this.props.user.majors)}
