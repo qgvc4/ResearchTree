@@ -6,6 +6,7 @@ import { Layout } from 'antd';
 
 import Navbar from '../Navbar';
 import Feed from './Feed';
+import '../../style/Feed/postFeed.css';
 
 const {
     Content, Sider, Header,
@@ -30,7 +31,10 @@ function renderFeed() {
         //try layout
         <div>
             <Layout>
-            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 1, width: '100%' }}><h1 style={{color:'white'}}>ResearchTree</h1></Header>
+            <Header style={{background:'#c1e791', position: 'fixed', zIndex: 10, width: '100%' }}>
+            
+            <h1 style={{color:'white', float:'left'}}>ResearchTree</h1>
+            </Header>
                 <Layout>
                     <Sider >
                         <Navbar pageNum={['1']} />

@@ -36,6 +36,7 @@ class Login extends Component {
         <Content style={{ padding: '0 25%' }}>
           <div className="login-container" style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
             <h1 style={{color: '#c1e791'}}>ResearchTree</h1>
+            <div className="login_tree"></div>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
                 {getFieldDecorator('Email', {

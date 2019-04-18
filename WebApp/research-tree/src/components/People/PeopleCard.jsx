@@ -11,6 +11,7 @@ const gridStyle = {
     width: '25%',
     height: '25%',
     textAlign: 'center',
+    padding: '0%',
   };  
 
 export default class PeopleCard extends Component {
@@ -38,9 +39,10 @@ export default class PeopleCard extends Component {
                     <div className="avatar">{ avatar }</div>
                     <Meta
                     title={fullname}
-                    description={people.description}
+                    // description={people.description}
                     />
                     <p>{people.email}</p>
+                    {/* <p>{people.majors}</p> */}
                     
                 </Card>
             </Card.Grid>
