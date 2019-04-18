@@ -11,6 +11,7 @@ export default class FeedCard extends Component {
 
     render() {
         const { feed, author } = this.props;
+        console.log(author)
         const authorProfile = `data:image/jpeg;base64,${author.image}`
         const initial = `${author.firstname.charAt(0)}${author.lastname.charAt(0)}`
         const avatar = author.image ? 
