@@ -9,12 +9,13 @@
 import UIKit
 
 class JobViewController: UIViewController {
-
+    
     var jobs: [Job] = []
     var filteredJobs: [Job] = []
     var userToken: String?
     
     let searchController = UISearchController(searchResultsController: nil)
+    var searchActive : Bool = false
     
     
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -39,14 +40,22 @@ class JobViewController: UIViewController {
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         //jobsTableView.tableHeaderView = searchController.searchBar
         self.navigationItem.titleView = searchController.searchBar
         searchController.searchBar.placeholder = "Search for Jobs"
         searchController.searchBar.sizeToFit()
-
+        
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
@@ -191,7 +200,7 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension JobViewController: UISearchResultsUpdating {
+extension JobViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {
             filteredJobs = jobs
@@ -208,6 +217,32 @@ extension JobViewController: UISearchResultsUpdating {
         }
         
         self.jobsTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.dismiss(animated: true, completion: nil)
+        searchController.searchBar.text = ""
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        self.jobsTableView.reloadData()
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.jobsTableView.reloadData()
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        if !searchActive {
+            searchActive = true
+            self.jobsTableView.reloadData()
+        }
+        
+        self.searchController.searchBar.resignFirstResponder()
     }
     
     func toMajorsString(majors: [Major]) -> String {
