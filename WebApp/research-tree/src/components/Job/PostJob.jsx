@@ -45,9 +45,9 @@ class PostJob extends Component {
       }
     
     render() {
-        // if (!this.props.isLoading) {
-        //     this.props.fetchPosts(this.props.user.token)
-        // } 
+        if (this.props.user.role!==0) {
+          return <div></div>
+        } 
         const { getFieldDecorator } = this.props.form;
         return (
           <Form onSubmit={this.handleSubmit} className="post-feed">

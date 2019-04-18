@@ -33,12 +33,14 @@ class FeedList extends Component {
     }
 
     findAuthor = (peopleId) => {
+        console.log(this.props.users)
         var i = _.findIndex(this.props.users, ['id', peopleId]);
+        if (i === -1) {
+            return this.props.me
+        }
         return this.props.users[i];
     }
 }
-
-
 
 FeedList.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
@@ -46,6 +48,7 @@ FeedList.propTypes = {
 }
 
 const mapStateToProps = state => ({
+    me: state.user.user,
     token: state.user.user.token,
     feeds: state.feed.feeds,
     users: state.people.users,
