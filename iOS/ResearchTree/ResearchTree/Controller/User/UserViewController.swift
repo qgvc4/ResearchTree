@@ -236,6 +236,7 @@ extension UserViewController: UISearchResultsUpdating, UISearchControllerDelegat
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         self.dismiss(animated: true, completion: nil)
+        searchController.searchBar.text = ""
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
