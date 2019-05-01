@@ -22,6 +22,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var myJobButton: UIButton!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTheming()
@@ -97,10 +98,6 @@ class SettingViewController: UIViewController {
     @IBAction func themeTapped(_ sender: Any) {
         
         themeProvider.nextTheme()
-
-
-        
-       
             
         
     }
@@ -139,10 +136,13 @@ extension SettingViewController: Themed {
         userEmail.textColor = theme.textColor
         userLocation.textColor = theme.textColor
         userMajors.textColor = theme.textColor
+        UILabel.appearance().textColor = theme.textColor
         postsButton.backgroundColor = theme.postsButton
         myJobButton.backgroundColor = theme.myJobButton
         logoutButton.backgroundColor = theme.logoutButton
-     //  titleLabel.textColor = theme.textColor
+        UINavigationBar.appearance().barTintColor = theme.barBackgroundColor
+        UITabBar.appearance().tintColor = theme.barBackgroundColor
+        UITabBar.appearance().barStyle = theme.statusBarStyle  //  titleLabel.textColor = theme.textColor
        // subtitleLabel.textColor = theme.textColor
     }
 }

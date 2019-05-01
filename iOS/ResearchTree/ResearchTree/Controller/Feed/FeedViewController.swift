@@ -24,6 +24,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var feedsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTheming()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
@@ -148,7 +149,11 @@ extension FeedViewController: Themed {
     func applyTheme(_ theme: AppTheme) {
         view.backgroundColor = theme.backgroundColor
         
-        //  titleLabel.textColor = theme.textColor
-        // subtitleLabel.textColor = theme.textColor
+        UITableViewCell.appearance().backgroundColor = theme.backgroundColor
+        UIView.appearance(whenContainedInInstancesOf: [UITableView.self]).backgroundColor = theme.cardview
+        UITableView.appearance().backgroundView?.backgroundColor = theme.backgroundColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.textColor
+        //titleLabel.textColor = theme.textColor
+        //  subtitleLabel.textColor = theme.textColor
     }
 }

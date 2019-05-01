@@ -9,7 +9,7 @@
 import UIKit
 
 struct AppTheme {
-	var statusBarStyle: UIStatusBarStyle
+	var statusBarStyle: UIBarStyle
 	var barBackgroundColor: UIColor
 	var barForegroundColor: UIColor
 	var backgroundColor: UIColor
@@ -27,21 +27,23 @@ extension AppTheme {
 		barBackgroundColor: .white,
 		barForegroundColor: .black,
 		backgroundColor: UIColor(named: "lightMode")!,
-		textColor: .darkText,
+		textColor: .black,
         cardview: .white,
         cardview2:  UIColor(named: "lightCard")!,
         postsButton:.blue,
         myJobButton: UIColor.blue,
         logoutButton: UIColor.white
 	)
+    
+    
 
 	static let dark = AppTheme(
-		statusBarStyle: .lightContent,
+		statusBarStyle: .black  ,
 		barBackgroundColor: UIColor(white: 0, alpha: 1),
 		barForegroundColor: .white,
 		//backgroundColor: UIColor(white: 0.2, alpha: 1),
-        backgroundColor: UIColor(named: "darkCard")!,
-        textColor: .lightText,
+        backgroundColor: UIColor(named: "darkMode")!,
+        textColor: .white,
         cardview: UIColor(named: "darkCard")!,
         cardview2: .black,
         postsButton: UIColor(named: "darkButton")!,

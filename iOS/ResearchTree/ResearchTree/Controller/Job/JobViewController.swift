@@ -40,8 +40,13 @@ class JobViewController: UIViewController {
         self.jobsTableView.rowHeight = 150
         self.jobsTableView.refreshControl = refresher
         
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.becomeFirstResponder()
+
+
         definesPresentationContext = true
         //jobsTableView.tableHeaderView = searchController.searchBar
         self.navigationItem.titleView = searchController.searchBar
@@ -196,6 +201,10 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
 extension JobViewController: Themed {
     func applyTheme(_ theme: AppTheme) {
         view.backgroundColor = theme.backgroundColor
+        UITableViewCell.appearance().backgroundColor = theme.backgroundColor
+       UIView.appearance(whenContainedInInstancesOf: [UITableView.self]).backgroundColor = theme.cardview
+        UITableView.appearance().backgroundColor = theme.backgroundColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.textColor
         //titleLabel.textColor = theme.textColor
       //  subtitleLabel.textColor = theme.textColor
     }
