@@ -1,18 +1,43 @@
 import React, { Component } from 'react'
 
-import { Card } from 'antd';
+import { Card, Avatar } from 'antd';
+// import Avatar from '@material-ui/core/Avatar';
 
+import "../../style/Feed/feedCard.css";
 
 export default class FeedCard extends Component {
 
+    handleCancel = () => this.setState({ previewVisible: false })
+
     render() {
+        const { feed, author } = this.props;
+        console.log(author)
+        const authorProfile = `data:image/jpeg;base64,${author.image}`
+        const initial = `${author.firstname.charAt(0)}${author.lastname.charAt(0)}`
+        const avatar = author.image ? 
+            <Avatar alt="profile" src={authorProfile} />
+            : <Avatar>{initial}</Avatar>
+        const authorName = `${author.firstname} ${author.lastname}`
+        const feedImage = `data:image/jpeg;base64,${feed.attachment}`
+        const image = feed.attachment ?
+            <img className="attachement-image" src={feedImage} alt="attachement" />
+            : null
         return (
         <div>
-            <Card
-                title={this.props.title}
-                extra={toFormattedDateString(this.props.date)}
+            <Card                
+                title={feed.title}
+                extra={toFormattedDateString(feed.modifyTime)}
             >
-                {this.props.description}
+            <div>
+                <div className="profile-image">{avatar}</div>
+                <div className="profile-name"><p>{authorName}</p></div>
+            </div>
+            <div>
+                {feed.description}
+            </div>
+            <div>
+                { image }
+            </div>
             </Card>
         </div>
         )

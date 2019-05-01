@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom';
 import { Layout, Form, Icon, Input, Button, Alert } from 'antd'
 import '../../style/Account/login.css'
 
@@ -21,8 +22,7 @@ class Login extends Component {
 
   render() {
     if (this.props.error == null && this.props.user.token != null) {
-      console.log(this.props.user)
-      this.props.history.push('/Feed');
+      return <Redirect to='/Feed'></Redirect>
     }
     const { getFieldDecorator } = this.props.form;
 
@@ -36,6 +36,7 @@ class Login extends Component {
         <Content style={{ padding: '0 25%' }}>
           <div className="login-container" style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
             <h1 style={{color: '#c1e791'}}>ResearchTree</h1>
+            <div className="login_tree"></div>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
                 {getFieldDecorator('Email', {

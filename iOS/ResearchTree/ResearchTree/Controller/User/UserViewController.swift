@@ -9,7 +9,7 @@
 import UIKit
 
 class UserViewController: UIViewController {
-
+    
     var userToken: String?
     var filteredUser: [User] = []
     var users: [User] = []
@@ -32,6 +32,7 @@ class UserViewController: UIViewController {
         setUpTheming()
 
 
+
         self.usersCollectionView.refreshControl = refresher
         // Do any additional setup after loading the view.
         
@@ -48,7 +49,7 @@ class UserViewController: UIViewController {
         searchController.searchBar.becomeFirstResponder()
         
         self.navigationItem.titleView = searchController.searchBar
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +70,7 @@ class UserViewController: UIViewController {
             requestUsers()
         }
     }
-
+    
     @objc
     func requestUsers() {
         if (self.userToken == nil) {
@@ -106,7 +107,7 @@ class UserViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     func base64ToImage(base64: String?) -> UIImage {
         if base64 == nil {
             return UIImage(named: "DefaultProfile")!
@@ -154,7 +155,7 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         else{
             return users.count
-
+            
         }
     }
     
@@ -230,7 +231,7 @@ extension UserViewController: UISearchResultsUpdating, UISearchControllerDelegat
         } else {
             filteredUser = users.filter {
                 if $0.firstname.lowercased().contains(searchController.searchBar.text!.lowercased())
-                 //   || $0.lastname.lowercased().contains(searchController.searchBar.text!.lowercased())
+                    //   || $0.lastname.lowercased().contains(searchController.searchBar.text!.lowercased())
                 {
                     return true
                 }
@@ -241,11 +242,12 @@ extension UserViewController: UISearchResultsUpdating, UISearchControllerDelegat
         self.usersCollectionView.reloadData()
     }
     
-
+    
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         self.dismiss(animated: true, completion: nil)
+        searchController.searchBar.text = ""
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
