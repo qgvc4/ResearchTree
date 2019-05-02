@@ -136,6 +136,8 @@ extension SettingViewController: Themed {
         userEmail.textColor = theme.textColor
         userLocation.textColor = theme.textColor
         userMajors.textColor = theme.textColor
+        username.textColor = theme.textColor
+        userDescription.textColor = theme.textColor
         UILabel.appearance().textColor = theme.textColor
         postsButton.backgroundColor = theme.postsButton
         myJobButton.backgroundColor = theme.myJobButton
