@@ -18,6 +18,7 @@ class JobViewController: UIViewController {
     var searchActive : Bool = false
     
     
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     lazy var refresher: UIRefreshControl = {
@@ -32,14 +33,19 @@ class JobViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTheming()
+
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
         self.jobsTableView.rowHeight = 150
         self.jobsTableView.refreshControl = refresher
         
+
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.becomeFirstResponder()
+
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
@@ -197,6 +203,17 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource {
             destination.job = filteredJobs[row]
             jobsTableView.deselectRow(at: jobsTableView.indexPathForSelectedRow!, animated: true)
         }
+    }
+}
+extension JobViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        UITableViewCell.appearance().backgroundColor = theme.backgroundColor
+       UIView.appearance(whenContainedInInstancesOf: [UITableView.self]).backgroundColor = theme.cardview
+        UITableView.appearance().backgroundColor = theme.backgroundColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.textColor
+        //titleLabel.textColor = theme.textColor
+      //  subtitleLabel.textColor = theme.textColor
     }
 }
 

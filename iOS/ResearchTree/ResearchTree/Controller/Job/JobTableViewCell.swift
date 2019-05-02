@@ -9,7 +9,9 @@
 import UIKit
 
 class JobTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var cardView: UIView!
+    
+    @IBOutlet weak var cardView2: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var jorDescription: UILabel!
     @IBOutlet weak var userImageView: UIImageView!

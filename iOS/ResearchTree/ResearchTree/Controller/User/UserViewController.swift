@@ -29,7 +29,10 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpTheming()
+
+
+
         self.usersCollectionView.refreshControl = refresher
         // Do any additional setup after loading the view.
         
@@ -211,6 +214,14 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+}
+extension UserViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+ 
+     //   titleLabel.textColor = theme.textColor
+       // subtitleLabel.textColor = theme.textColor
+    }
 }
 
 extension UserViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {

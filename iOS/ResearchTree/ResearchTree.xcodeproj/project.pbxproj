@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		A1246F0F22248B890023AC2D /* MyJobsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1246F0E22248B890023AC2D /* MyJobsDetailViewController.swift */; };
 		A1246F1122248B9B0023AC2D /* EditMyJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1246F1022248B9B0023AC2D /* EditMyJobsViewController.swift */; };
+		A13C3DF72268F31D005EA63B /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DF42268F31C005EA63B /* Theming.swift */; };
+		A13C3DF82268F31D005EA63B /* AppThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DF52268F31C005EA63B /* AppThemeProvider.swift */; };
+		A13C3DF92268F31D005EA63B /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DF62268F31C005EA63B /* AppTheme.swift */; };
+		A13C3DFE2268F450005EA63B /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DFB2268F450005EA63B /* ArrayExtensions.swift */; };
+		A13C3DFF2268F450005EA63B /* SubscribableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DFC2268F450005EA63B /* SubscribableValue.swift */; };
+		A13C3E002268F450005EA63B /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C3DFD2268F450005EA63B /* Weak.swift */; };
 		A14BE00D22116C940029577F /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BE00C22116C940029577F /* JobDetailViewController.swift */; };
 		E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F032E21C3019500D4AE14 /* AppDelegate.swift */; };
 		E20F033421C3019500D4AE14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20F033221C3019500D4AE14 /* Main.storyboard */; };
@@ -49,6 +55,12 @@
 /* Begin PBXFileReference section */
 		A1246F0E22248B890023AC2D /* MyJobsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobsDetailViewController.swift; sourceTree = "<group>"; };
 		A1246F1022248B9B0023AC2D /* EditMyJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyJobsViewController.swift; sourceTree = "<group>"; };
+		A13C3DF42268F31C005EA63B /* Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
+		A13C3DF52268F31C005EA63B /* AppThemeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemeProvider.swift; sourceTree = "<group>"; };
+		A13C3DF62268F31C005EA63B /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		A13C3DFB2268F450005EA63B /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		A13C3DFC2268F450005EA63B /* SubscribableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribableValue.swift; sourceTree = "<group>"; };
+		A13C3DFD2268F450005EA63B /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		A14BE00C22116C940029577F /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		E20F032B21C3019500D4AE14 /* ResearchTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResearchTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20F032E21C3019500D4AE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +111,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13C3DF32268F31C005EA63B /* Theming */ = {
+			isa = PBXGroup;
+			children = (
+				A13C3DF42268F31C005EA63B /* Theming.swift */,
+				A13C3DF52268F31C005EA63B /* AppThemeProvider.swift */,
+				A13C3DF62268F31C005EA63B /* AppTheme.swift */,
+			);
+			path = Theming;
+			sourceTree = "<group>";
+		};
+		A13C3DFA2268F450005EA63B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A13C3DFB2268F450005EA63B /* ArrayExtensions.swift */,
+				A13C3DFC2268F450005EA63B /* SubscribableValue.swift */,
+				A13C3DFD2268F450005EA63B /* Weak.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		E20F032221C3019500D4AE14 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +150,8 @@
 		E20F032D21C3019500D4AE14 /* ResearchTree */ = {
 			isa = PBXGroup;
 			children = (
+				A13C3DFA2268F450005EA63B /* Helpers */,
+				A13C3DF32268F31C005EA63B /* Theming */,
 				E23B512D21D5925200C87655 /* Model */,
 				E20F034521C32C8C00D4AE14 /* Api */,
 				E20F034021C303EE00D4AE14 /* Controller */,
@@ -322,6 +356,7 @@
 				E23B512A21D57F6800C87655 /* SignupViewController.swift in Sources */,
 				E2ECE9B22200EB1D001A9E91 /* UserViewController.swift in Sources */,
 				E23B513621D593E600C87655 /* Role.swift in Sources */,
+				A13C3DF92268F31D005EA63B /* AppTheme.swift in Sources */,
 				E27B6EEF221B436500169272 /* UserJobsViewController.swift in Sources */,
 				E23B512621D573FF00C87655 /* TabViewController.swift in Sources */,
 				E2D4E58A21E6EC6D00AB97F9 /* NewFeedViewController.swift in Sources */,
@@ -331,6 +366,7 @@
 				E2A5D574220A21BF008C0411 /* Job.swift in Sources */,
 				A1246F1122248B9B0023AC2D /* EditMyJobsViewController.swift in Sources */,
 				E2A5D572220A1F30008C0411 /* JobService.swift in Sources */,
+				A13C3DFF2268F450005EA63B /* SubscribableValue.swift in Sources */,
 				E24F503B2213C9BD005BC370 /* EditMyPostViewController.swift in Sources */,
 				A1246F0F22248B890023AC2D /* MyJobsDetailViewController.swift in Sources */,
 				E24F50392213C36C005BC370 /* MyPostDetailViewController.swift in Sources */,
@@ -339,9 +375,12 @@
 				E23B513421D5935200C87655 /* Standing.swift in Sources */,
 				E20F034C21C33A7700D4AE14 /* FeedTableViewCell.swift in Sources */,
 				E23B512C21D5924000C87655 /* UserService.swift in Sources */,
+				A13C3DFE2268F450005EA63B /* ArrayExtensions.swift in Sources */,
 				E222285A220B9B5C00053364 /* JobTableViewCell.swift in Sources */,
 				E24F5037221373DE005BC370 /* MyPostsViewController.swift in Sources */,
+				A13C3DF72268F31D005EA63B /* Theming.swift in Sources */,
 				E23B513A21D59A0F00C87655 /* ApiConstant.swift in Sources */,
+				A13C3DF82268F31D005EA63B /* AppThemeProvider.swift in Sources */,
 				E23B513821D5941C00C87655 /* Major.swift in Sources */,
 				E222285C220CCA6F00053364 /* NewJobViewController.swift in Sources */,
 				A14BE00D22116C940029577F /* JobDetailViewController.swift in Sources */,
@@ -351,6 +390,7 @@
 				E27B6EED221B430C00169272 /* UserPostsViewController.swift in Sources */,
 				E20F032F21C3019500D4AE14 /* AppDelegate.swift in Sources */,
 				E2D4E58821E6C5D100AB97F9 /* FeedService.swift in Sources */,
+				A13C3E002268F450005EA63B /* Weak.swift in Sources */,
 				E27B6EEB221B3B7500169272 /* MyJobsViewController.swift in Sources */,
 				E2ECE9AA21FA24EA001A9E91 /* FeedDetailViewController.swift in Sources */,
 			);
@@ -500,13 +540,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2K66PBK3PY;
+				DEVELOPMENT_TEAM = 7W7H8FXRG2;
 				INFOPLIST_FILE = ResearchTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiwen.researchtree.ResearchTree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.melissa.researchtree.ResearchTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -520,13 +560,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2K66PBK3PY;
+				DEVELOPMENT_TEAM = 7W7H8FXRG2;
 				INFOPLIST_FILE = ResearchTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiwen.researchtree.ResearchTree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.melissa.researchtree.ResearchTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
