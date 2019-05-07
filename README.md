@@ -1,5 +1,5 @@
 # ResearchTree
-![](./Doc/logo.png =100x100)
+![](./Doc/logo.png)
 ## Backend Service API
 [Feed Service](./Doc/FeedService.md)
 
